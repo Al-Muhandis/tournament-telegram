@@ -120,7 +120,7 @@ object FrmMain: TFrmMain
                 DataSource = DtSrcAnswers
                 Options = []
                 TabOrder = 0
-                VisibleButtons = [nbFirst, nbPrior, nbLast, nbDelete, nbPost]
+                VisibleButtons = [nbFirst, nbPrior, nbLast, nbDelete, nbPost, nbRefresh]
               end
             end
             object RxDBGrd: TRxDBGrid
@@ -738,6 +738,7 @@ object FrmMain: TFrmMain
   end
   object ZCnctn: TZConnection
     ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = True
     Properties.Strings = (
       'AutoEncodeStrings='
       'controls_cp=CP_UTF8'
@@ -924,7 +925,6 @@ object FrmMain: TFrmMain
   end
   object ZQryTeams: TZQuery
     Connection = ZCnctn
-    CachedUpdates = True
     SQL.Strings = (
       'select * from teams'
     )
