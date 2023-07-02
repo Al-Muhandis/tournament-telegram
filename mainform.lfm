@@ -1,0 +1,959 @@
+object FrmMain: TFrmMain
+  Left = 431
+  Height = 572
+  Top = 186
+  Width = 1072
+  Caption = 'Интеллектуальный турнир через телеграм'
+  ClientHeight = 572
+  ClientWidth = 1072
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  SessionProperties = 'EdtAdminChatID.Text;EdtChatID.Text;EdtTelegramToken.Text;Height;Left;MmQuestion.Lines;Top;Width;ChckBxAnswertimer.Checked'
+  LCLVersion = '2.2.6.0'
+  object PgCntrl: TPageControl
+    Left = 0
+    Height = 572
+    Top = 0
+    Width = 1072
+    ActivePage = TbShtGame
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    object TbShtGame: TTabSheet
+      Caption = 'Игра'
+      ClientHeight = 539
+      ClientWidth = 1064
+      object GroupBox1: TGroupBox
+        Left = 0
+        Height = 539
+        Top = 0
+        Width = 371
+        Align = alLeft
+        Caption = 'Ведущий'
+        ClientHeight = 514
+        ClientWidth = 367
+        TabOrder = 0
+        object GrpBxQuestion: TGroupBox
+          Left = 0
+          Height = 128
+          Top = 0
+          Width = 367
+          Align = alClient
+          Caption = '❔ Номер и/или текст вопроса:'
+          ClientHeight = 103
+          ClientWidth = 363
+          TabOrder = 0
+          object MmQuestion: TMemo
+            Left = 0
+            Height = 103
+            Top = 0
+            Width = 363
+            Align = alClient
+            TabOrder = 0
+          end
+        end
+        object GroupBox2: TGroupBox
+          Left = 0
+          Height = 386
+          Top = 128
+          Width = 367
+          Align = alBottom
+          Caption = 'Таймер'
+          ClientHeight = 361
+          ClientWidth = 363
+          TabOrder = 1
+          inline FrmTmr: TFrameTimer
+            Left = 8
+            Top = 8
+            inherited PlySnd: Tplaysound
+              About.Title = 'About About About About About About About About About About PlaySound'
+            end
+          end
+        end
+      end
+      object GroupBox3: TGroupBox
+        Left = 377
+        Height = 539
+        Top = 0
+        Width = 687
+        Align = alClient
+        Caption = 'Турнирные таблицы'
+        ClientHeight = 514
+        ClientWidth = 683
+        TabOrder = 1
+        object PgCntrlTables: TPageControl
+          Left = 0
+          Height = 514
+          Top = 0
+          Width = 683
+          ActivePage = TbShtAnswers
+          Align = alClient
+          TabIndex = 0
+          TabOrder = 0
+          object TbShtAnswers: TTabSheet
+            Caption = 'Ответы'
+            ClientHeight = 481
+            ClientWidth = 675
+            object ToolBar1: TToolBar
+              Left = 0
+              Height = 33
+              Top = 0
+              Width = 675
+              Caption = 'ToolBar1'
+              TabOrder = 0
+              object DBNavigator1: TDBNavigator
+                Left = 1
+                Height = 28
+                Top = 2
+                Width = 271
+                BevelOuter = bvNone
+                ChildSizing.EnlargeHorizontal = crsScaleChilds
+                ChildSizing.EnlargeVertical = crsScaleChilds
+                ChildSizing.ShrinkHorizontal = crsScaleChilds
+                ChildSizing.ShrinkVertical = crsScaleChilds
+                ChildSizing.Layout = cclLeftToRightThenTopToBottom
+                ChildSizing.ControlsPerLine = 100
+                ClientHeight = 28
+                ClientWidth = 271
+                DataSource = DtSrcAnswers
+                Options = []
+                TabOrder = 0
+                VisibleButtons = [nbFirst, nbPrior, nbLast, nbDelete, nbPost]
+              end
+            end
+            object RxDBGrd: TRxDBGrid
+              Left = 0
+              Height = 448
+              Top = 33
+              Width = 675
+              ColumnDefValues.BlobText = '(blob)'
+              TitleButtons = False
+              AutoSort = True
+              Columns = <              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'id'
+                  Visible = False
+                  FieldName = 'id'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'question'
+                  Width = 70
+                  FieldName = 'question'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'answer'
+                  Width = 150
+                  FieldName = 'answer'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'reply'
+                  Width = 55
+                  FieldName = 'reply'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'sent'
+                  Width = 80
+                  FieldName = 'sent'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'user_id'
+                  Width = 0
+                  Visible = False
+                  FieldName = 'user_id'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'team'
+                  Width = 0
+                  Visible = False
+                  FieldName = 'team'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'Username'
+                  Width = 150
+                  FieldName = 'Username'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'TeamTitle'
+                  FieldName = 'TeamTitle'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end>
+              KeyStrokes = <              
+                item
+                  Command = rxgcShowFindDlg
+                  ShortCut = 16454
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowColumnsDlg
+                  ShortCut = 16471
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowFilterDlg
+                  ShortCut = 16468
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowSortDlg
+                  ShortCut = 16467
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowQuickFilter
+                  ShortCut = 16465
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcHideQuickFilter
+                  ShortCut = 16456
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcSelectAll
+                  ShortCut = 16449
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcDeSelectAll
+                  ShortCut = 16429
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcInvertSelection
+                  ShortCut = 16426
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcOptimizeColumnsWidth
+                  ShortCut = 16427
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcCopyCellValue
+                  ShortCut = 16451
+                  Enabled = True
+                end>
+              FooterOptions.DrawFullLine = False
+              SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
+              SearchOptions.FromStart = False
+              OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
+              Align = alClient
+              Color = clWindow
+              DrawFullLine = False
+              FocusColor = clRed
+              SelectedColor = clHighlight
+              DataSource = DtSrcAnswers
+              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+              TabOrder = 1
+              TitleStyle = tsNative
+            end
+          end
+          object TabShtPlayers: TTabSheet
+            Caption = 'Игроки'
+            ClientHeight = 481
+            ClientWidth = 675
+            object ToolBar2: TToolBar
+              Left = 0
+              Height = 33
+              Top = 0
+              Width = 675
+              Caption = 'ToolBar2'
+              TabOrder = 0
+              object DBNvgtrPlayers: TDBNavigator
+                Left = 1
+                Height = 28
+                Top = 2
+                Width = 271
+                BevelOuter = bvNone
+                ChildSizing.EnlargeHorizontal = crsScaleChilds
+                ChildSizing.EnlargeVertical = crsScaleChilds
+                ChildSizing.ShrinkHorizontal = crsScaleChilds
+                ChildSizing.ShrinkVertical = crsScaleChilds
+                ChildSizing.Layout = cclLeftToRightThenTopToBottom
+                ChildSizing.ControlsPerLine = 100
+                ClientHeight = 28
+                ClientWidth = 271
+                DataSource = DtSrcPlayers
+                Options = []
+                TabOrder = 0
+                VisibleButtons = [nbFirst, nbPrior, nbLast, nbInsert, nbDelete, nbPost]
+              end
+            end
+            object RxDBGrdPlayers: TRxDBGrid
+              Left = 0
+              Height = 448
+              Top = 33
+              Width = 675
+              ColumnDefValues.BlobText = '(blob)'
+              TitleButtons = False
+              AutoSort = True
+              Columns = <              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'id'
+                  Visible = False
+                  FieldName = 'id'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'title'
+                  Width = 250
+                  FieldName = 'title'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'team'
+                  Visible = False
+                  FieldName = 'team'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  PickList.Strings = (
+                    'Дуслар'
+                    'Низам'
+                    'Кепка Ленина'
+                    'Алга'
+                  )
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'teamtitle'
+                  Width = 250
+                  FieldName = 'TeamTitle'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end>
+              KeyStrokes = <              
+                item
+                  Command = rxgcShowFindDlg
+                  ShortCut = 16454
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowColumnsDlg
+                  ShortCut = 16471
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowFilterDlg
+                  ShortCut = 16468
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowSortDlg
+                  ShortCut = 16467
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowQuickFilter
+                  ShortCut = 16465
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcHideQuickFilter
+                  ShortCut = 16456
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcSelectAll
+                  ShortCut = 16449
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcDeSelectAll
+                  ShortCut = 16429
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcInvertSelection
+                  ShortCut = 16426
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcOptimizeColumnsWidth
+                  ShortCut = 16427
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcCopyCellValue
+                  ShortCut = 16451
+                  Enabled = True
+                end>
+              FooterOptions.DrawFullLine = False
+              SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
+              SearchOptions.FromStart = False
+              OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
+              Align = alClient
+              Color = clWindow
+              DrawFullLine = False
+              FocusColor = clRed
+              SelectedColor = clHighlight
+              DataSource = DtSrcPlayers
+              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+              TabOrder = 1
+              TitleStyle = tsNative
+            end
+          end
+          object TbShtTeams: TTabSheet
+            Caption = 'Команды'
+            ClientHeight = 481
+            ClientWidth = 675
+            object ToolBar3: TToolBar
+              Left = 0
+              Height = 33
+              Top = 0
+              Width = 675
+              Caption = 'ToolBar3'
+              TabOrder = 0
+              object DBNvgtrPlayers1: TDBNavigator
+                Left = 1
+                Height = 28
+                Top = 2
+                Width = 271
+                BevelOuter = bvNone
+                ChildSizing.EnlargeHorizontal = crsScaleChilds
+                ChildSizing.EnlargeVertical = crsScaleChilds
+                ChildSizing.ShrinkHorizontal = crsScaleChilds
+                ChildSizing.ShrinkVertical = crsScaleChilds
+                ChildSizing.Layout = cclLeftToRightThenTopToBottom
+                ChildSizing.ControlsPerLine = 100
+                ClientHeight = 28
+                ClientWidth = 271
+                DataSource = DtSrcTeams
+                Options = []
+                TabOrder = 0
+                VisibleButtons = [nbFirst, nbPrior, nbLast, nbInsert, nbDelete, nbPost]
+              end
+            end
+            object RxDBGrdPlayers1: TRxDBGrid
+              Left = 0
+              Height = 448
+              Top = 33
+              Width = 675
+              ColumnDefValues.BlobText = '(blob)'
+              TitleButtons = False
+              AutoSort = True
+              Columns = <              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'id'
+                  Visible = False
+                  FieldName = 'id'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Orientation = toHorizontal
+                  Title.Caption = 'title'
+                  Width = 250
+                  FieldName = 'title'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end>
+              KeyStrokes = <              
+                item
+                  Command = rxgcShowFindDlg
+                  ShortCut = 16454
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowColumnsDlg
+                  ShortCut = 16471
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowFilterDlg
+                  ShortCut = 16468
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowSortDlg
+                  ShortCut = 16467
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowQuickFilter
+                  ShortCut = 16465
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcHideQuickFilter
+                  ShortCut = 16456
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcSelectAll
+                  ShortCut = 16449
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcDeSelectAll
+                  ShortCut = 16429
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcInvertSelection
+                  ShortCut = 16426
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcOptimizeColumnsWidth
+                  ShortCut = 16427
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcCopyCellValue
+                  ShortCut = 16451
+                  Enabled = True
+                end>
+              FooterOptions.DrawFullLine = False
+              SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
+              SearchOptions.FromStart = False
+              OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
+              Align = alClient
+              Color = clWindow
+              DrawFullLine = False
+              FocusColor = clRed
+              SelectedColor = clHighlight
+              DataSource = DtSrcTeams
+              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+              TabOrder = 1
+              TitleStyle = tsNative
+            end
+          end
+        end
+      end
+      object Splitter1: TSplitter
+        Left = 371
+        Height = 539
+        Top = 0
+        Width = 6
+      end
+    end
+    object TbShtOptions: TTabSheet
+      Caption = 'Настройки'
+      ClientHeight = 539
+      ClientWidth = 1064
+      object GroupBox4: TGroupBox
+        Left = 16
+        Height = 299
+        Top = 16
+        Width = 504
+        Caption = 'Телеграм'
+        ClientHeight = 274
+        ClientWidth = 500
+        TabOrder = 0
+        object EdtTelegramToken: TLabeledEdit
+          Left = 16
+          Height = 28
+          Top = 24
+          Width = 464
+          Anchors = [akTop, akLeft, akRight]
+          EditLabel.Height = 20
+          EditLabel.Width = 464
+          EditLabel.Caption = 'Токен'
+          EditLabel.ParentColor = False
+          TabOrder = 0
+          TextHint = 'Введите токен телеграм бота'
+        end
+        object TglBxReceive: TToggleBox
+          Left = 16
+          Height = 63
+          Top = 112
+          Width = 432
+          Caption = 'Принимать ответы'
+          OnChange = TglBxReceiveChange
+          TabOrder = 1
+        end
+        object EdtAdminChatID: TLabeledEdit
+          Left = 136
+          Height = 28
+          Top = 216
+          Width = 344
+          Anchors = [akTop, akLeft, akRight]
+          EditLabel.Height = 20
+          EditLabel.Width = 95
+          EditLabel.Caption = 'Admin chat ID'
+          EditLabel.ParentColor = False
+          LabelPosition = lpLeft
+          TabOrder = 2
+          TextHint = 'Введите chat id канала или группы'
+        end
+        object Label2: TLabel
+          Left = 16
+          Height = 20
+          Top = 192
+          Width = 269
+          Caption = 'ID чата ведущего или администратора'
+          ParentColor = False
+        end
+        object ChckBxAnswertimer: TCheckBox
+          Left = 24
+          Height = 24
+          Top = 64
+          Width = 268
+          Caption = 'Дополнительное время для ответа'
+          Checked = True
+          State = cbChecked
+          TabOrder = 3
+        end
+      end
+    end
+  end
+  object ZCnctn: TZConnection
+    ControlsCodePage = cCP_UTF8
+    Properties.Strings = (
+      'AutoEncodeStrings='
+      'controls_cp=CP_UTF8'
+    )
+    Port = 0
+    Database = 'C:\Users\mail\Documents\Projects\Lazarus\Что Где Когда\tournament-telegram\default.sqlite3'
+    Protocol = 'sqlite-3'
+    Left = 712
+    Top = 40
+  end
+  object DtSrcAnswers: TDataSource
+    DataSet = ZQryAnswers
+    Left = 712
+    Top = 208
+  end
+  object ZQryAnswers: TZQuery
+    Connection = ZCnctn
+    OnCalcFields = ZQryAnswersCalcFields
+    SQL.Strings = (
+      'select * from rounds'
+    )
+    Params = <>
+    Left = 712
+    Top = 128
+    object ZQryID: TAutoIncField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryAnswersquestion: TStringField
+      DisplayWidth = 50
+      FieldKind = fkData
+      FieldName = 'question'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 250
+    end
+    object ZQryAnswersanswer: TStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'answer'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryAnswersreply: TLargeintField
+      FieldKind = fkData
+      FieldName = 'reply'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      OnGetText = ZQryAnswersreplyGetText
+    end
+    object ZQryAnswerssent: TTimeField
+      FieldKind = fkData
+      FieldName = 'sent'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryAnswersuser_id: TLargeintField
+      FieldKind = fkData
+      FieldName = 'user_id'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryAnswersuserteamid: TLargeintField
+      FieldKind = fkLookup
+      FieldName = 'team'
+      Index = 6
+      KeyFields = 'user_id'
+      LookupCache = False
+      LookupDataSet = ZQryPlayers
+      LookupKeyFields = 'id'
+      LookupResultField = 'team'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+    end
+    object TStringField
+      FieldKind = fkLookup
+      FieldName = 'Username'
+      Index = 7
+      KeyFields = 'user_id'
+      LookupCache = False
+      LookupDataSet = ZQryPlayers
+      LookupKeyFields = 'id'
+      LookupResultField = 'title'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 128
+    end
+    object ZQryAnswersTeamTitle: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'TeamTitle'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      OnGetText = ZQryAnswersTeamTitleGetText
+    end
+  end
+  object IniPrpStrg: TIniPropStorage
+    StoredValues = <>
+    Left = 523
+    Top = 188
+  end
+  object ZQryPlayers: TZQuery
+    Connection = ZCnctn
+    SQL.Strings = (
+      'select * from players'
+    )
+    Params = <>
+    Options = [doCalcDefaults, doSmartOpen]
+    Left = 816
+    Top = 128
+    object ZQryPlayersid: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey, pfHidden]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryPlayerstitle: TStringField
+      DisplayWidth = 840
+      FieldKind = fkData
+      FieldName = 'title'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 128
+    end
+    object ZQryPlayersteam: TLongintField
+      FieldKind = fkData
+      FieldName = 'team'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryTeamTitle: TStringField
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'TeamTitle'
+      Index = 3
+      KeyFields = 'team'
+      LookupCache = False
+      LookupDataSet = ZQryTeams
+      LookupKeyFields = 'id'
+      LookupResultField = 'title'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+  end
+  object DtSrcPlayers: TDataSource
+    DataSet = ZQryPlayers
+    Left = 816
+    Top = 208
+  end
+  object ZQryTeams: TZQuery
+    Connection = ZCnctn
+    CachedUpdates = True
+    SQL.Strings = (
+      'select * from teams'
+    )
+    Params = <>
+    Left = 928
+    Top = 128
+    object ZQryTeamsid: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey, pfHidden]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryTeamstitle: TStringField
+      FieldKind = fkData
+      FieldName = 'title'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 128
+    end
+  end
+  object DtSrcTeams: TDataSource
+    DataSet = ZQryTeams
+    Left = 928
+    Top = 208
+  end
+end
