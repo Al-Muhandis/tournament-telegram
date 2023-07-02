@@ -147,6 +147,10 @@
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="TimerFrame"/>
       </Unit>
+      <Unit>
+        <Filename Value="sql_db.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

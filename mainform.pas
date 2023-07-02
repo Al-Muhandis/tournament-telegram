@@ -73,7 +73,7 @@ type
     procedure TglBxReceiveChange(Sender: TObject);
     procedure ZQryAnswersCalcFields({%H-}DataSet: TDataSet);
     procedure ZQryAnswersreplyGetText(Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
-    procedure ZQryAnswersTeamTitleGetText(Sender: TField; var aText: string; DisplayText: Boolean);
+    procedure ZQryAnswersTeamTitleGetText({%H-}Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
   private
     FDoUpdateTelegram: Boolean;
     FTelegramFace: TTelegramFace;
@@ -90,7 +90,7 @@ var
 implementation
 
 uses
-  eventlog, tgutils, DateUtils
+  eventlog, tgutils, DateUtils, sql_db
   ;
 
 var
@@ -251,7 +251,7 @@ begin
   end;
 
 
-  FTelegramFace.Bot.sendMessage(FTelegramFace.Chat, 'Игрок '+aUser+' дал ответ {'+S+'}:'+LineEnding+aMsg.Text);
+
   if not ZQryPlayers.Locate('id', aUserID{%H-}, []) then
   begin
     ZQryPlayers.Append;
@@ -267,12 +267,19 @@ begin
   ZQryAnswerssent.AsDateTime:=aTime;
   ZQryAnswers.Post;
   ZQryAnswers.ApplyUpdates;
+  FTelegramFace.Bot.sendMessage(FTelegramFace.Chat, 'Ответ сдан '+aUser+' ['+S+']:'+
+    LineEnding+aMsg.Text);
 end;
 
 procedure TFrmMain.OpenDB;
 begin
+  ZCnctn.Disconnect;
   ZCnctn.Database:=AppDir+'default.sqlite3';
-  ZCnctn.Connected:=True;
+  ZCnctn.Connect;
+  ZCnctn.ExecuteDirect(_sql_players);
+  ZCnctn.ExecuteDirect(_sql_teams);
+  ZCnctn.ExecuteDirect(_sql_rounds);
+
   ZQryAnswers.Active:=True;
   ZQryPlayers.Active:=True;
   ZQryTeams.Active:=True;
