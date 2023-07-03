@@ -50,13 +50,13 @@ type
     ToolBar3: TToolBar;
     ZCnctn: TZConnection;
     ZQryAnswers: TZQuery;
+    ZQryAnswersquestion: TLargeintField;
     ZQryAnswersTeamTitle: TStringField;
     ZQryAnswersuserteamid: TLargeintField;
     ZQryAnswersuser_id: TLargeintField;
     ZQryPlayers: TZQuery;
     ZQryAnswersanswer: TStringField;
     ZQryID: TAutoIncField;
-    ZQryAnswersquestion: TStringField;
     ZQryAnswersreply: TLargeintField;
     ZQryAnswerssent: TTimeField;
     ZQryTeams: TZQuery;
@@ -221,6 +221,8 @@ begin
       EdtAdminChatID.Text:=aMsg.Chat.ID.ToString;
     Exit;
   end;
+  if aMsg.From.ID<>aMsg.Chat.ID then
+    Exit;
   aTime:=aDT-FrmTmr.StartTime;
   S:=TimeToStr(aDT-FrmTmr.StartTime);
   if (EdtTelegramToken.Text=EmptyStr) or

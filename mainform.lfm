@@ -62,6 +62,7 @@ object FrmMain: TFrmMain
             Height = 70
             Top = 12
             Width = 261
+            Anchors = [akTop, akLeft, akRight]
             Font.Height = 64
             MaxLength = 0
             ParentFont = False
@@ -167,8 +168,8 @@ object FrmMain: TFrmMain
                 item
                   Title.Alignment = taCenter
                   Title.Orientation = toHorizontal
-                  Title.Caption = 'question'
-                  Width = 70
+                  Title.Caption = 'Вопрос'
+                  Width = 50
                   FieldName = 'question'
                   EditButtons = <>
                   Filter.DropDownRows = 0
@@ -182,7 +183,7 @@ object FrmMain: TFrmMain
                 item
                   Title.Alignment = taCenter
                   Title.Orientation = toHorizontal
-                  Title.Caption = 'answer'
+                  Title.Caption = 'Ответ'
                   Width = 150
                   FieldName = 'answer'
                   EditButtons = <>
@@ -212,7 +213,7 @@ object FrmMain: TFrmMain
                 item
                   Title.Alignment = taCenter
                   Title.Orientation = toHorizontal
-                  Title.Caption = 'sent'
+                  Title.Caption = 'Время'
                   Width = 80
                   FieldName = 'sent'
                   EditButtons = <>
@@ -259,7 +260,7 @@ object FrmMain: TFrmMain
                 item
                   Title.Alignment = taCenter
                   Title.Orientation = toHorizontal
-                  Title.Caption = 'Username'
+                  Title.Caption = 'Игрок'
                   Width = 150
                   FieldName = 'Username'
                   EditButtons = <>
@@ -274,7 +275,7 @@ object FrmMain: TFrmMain
                 item
                   Title.Alignment = taCenter
                   Title.Orientation = toHorizontal
-                  Title.Caption = 'TeamTitle'
+                  Title.Caption = 'Команда'
                   FieldName = 'TeamTitle'
                   EditButtons = <>
                   Filter.DropDownRows = 0
@@ -757,9 +758,10 @@ object FrmMain: TFrmMain
     ControlsCodePage = cCP_UTF8
     AutoEncodeStrings = True
     Properties.Strings = (
-      'AutoEncodeStrings='
+      'AutoEncodeStrings=True'
       'controls_cp=CP_UTF8'
     )
+    Connected = True
     Port = 0
     Database = 'C:\Users\mail\Documents\Projects\Lazarus\Что Где Когда\tournament-telegram\default.sqlite3'
     Protocol = 'sqlite-3'
@@ -789,21 +791,20 @@ object FrmMain: TFrmMain
       ReadOnly = False
       Required = False
     end
-    object ZQryAnswersquestion: TStringField
-      DisplayWidth = 50
+    object ZQryAnswersanswer: TStringField
+      DisplayWidth = 100
       FieldKind = fkData
-      FieldName = 'question'
+      FieldName = 'answer'
       Index = 1
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      Size = 250
     end
-    object ZQryAnswersanswer: TStringField
-      DisplayWidth = 100
+    object ZQryAnswersquestion: TLargeintField
+      DisplayWidth = 15
       FieldKind = fkData
-      FieldName = 'answer'
+      FieldName = 'question'
       Index = 2
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
