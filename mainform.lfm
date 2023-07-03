@@ -37,31 +37,48 @@ object FrmMain: TFrmMain
         TabOrder = 0
         object GrpBxQuestion: TGroupBox
           Left = 0
-          Height = 128
+          Height = 312
           Top = 0
           Width = 367
           Align = alClient
-          Caption = '❔ Номер и/или текст вопроса:'
-          ClientHeight = 103
+          Caption = '❔ Номер следующего вопроса'
+          ClientHeight = 287
           ClientWidth = 363
           TabOrder = 0
-          object MmQuestion: TMemo
-            Left = 0
-            Height = 103
-            Top = 0
-            Width = 363
-            Align = alClient
+          object BtnStart: TButton
+            Left = 272
+            Height = 70
+            Top = 12
+            Width = 80
+            Anchors = [akTop, akRight]
+            Caption = '+1'
+            Font.Height = -33
+            OnClick = BtnStartClick
+            ParentFont = False
             TabOrder = 0
+          end
+          object SpnEdtQuestion: TSpinEditEx
+            Left = 8
+            Height = 70
+            Top = 12
+            Width = 261
+            Font.Height = 64
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 1
+            NullValue = 0
+            UpDownVisible = False
+            Value = 0
           end
         end
         object GroupBox2: TGroupBox
           Left = 0
-          Height = 386
-          Top = 128
+          Height = 202
+          Top = 312
           Width = 367
           Align = alBottom
           Caption = 'Таймер'
-          ClientHeight = 361
+          ClientHeight = 177
           ClientWidth = 363
           TabOrder = 1
           inline FrmTmr: TFrameTimer

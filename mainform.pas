@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ComCtrls, IniPropStorage, DBCtrls,
-  ZConnection, ZDataset, RxDBGrid, telegram, tgtypes, TimerFrame
+  SpinEx, ZConnection, ZDataset, RxDBGrid, telegram, tgtypes, TimerFrame, tgsendertypes
   ;
 
 type
@@ -14,6 +14,7 @@ type
   { TFrmMain }
 
   TFrmMain = class(TForm)
+    BtnStart: TButton;
     ChckBxAnswertimer: TCheckBox;
     DBNavigator1: TDBNavigator;
     DBNvgtrPlayers: TDBNavigator;
@@ -31,12 +32,12 @@ type
     EdtTelegramToken: TLabeledEdit;
     IniPrpStrg: TIniPropStorage;
     Label2: TLabel;
-    MmQuestion: TMemo;
     PgCntrlTables: TPageControl;
     PgCntrl: TPageControl;
     RxDBGrd: TRxDBGrid;
     RxDBGrdPlayers: TRxDBGrid;
     RxDBGrdPlayers1: TRxDBGrid;
+    SpnEdtQuestion: TSpinEditEx;
     Splitter1: TSplitter;
     TbShtTeams: TTabSheet;
     TabShtPlayers: TTabSheet;
@@ -65,8 +66,8 @@ type
     ZQryTeamsid: TLargeintField;
     ZQryTeamstitle: TStringField;
     ZQryTeamTitle: TStringField;
-    procedure BtnSendButtonClick({%H-}Sender: TObject);
     procedure BtnQuestionSendClick({%H-}Sender: TObject);
+    procedure BtnStartClick({%H-}Sender: TObject);
     procedure FormCreate({%H-}Sender: TObject);
     procedure FormDestroy({%H-}Sender: TObject);
     procedure FormShow({%H-}Sender: TObject);
@@ -76,7 +77,7 @@ type
     procedure ZQryAnswersTeamTitleGetText({%H-}Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
   private
     FDoUpdateTelegram: Boolean;
-    FTelegramFace: TTelegramFace;
+    FTelegramFace: TTelegramSender;
     FTelegramReceiver: TReceiverThread;
     procedure FormAppendMessage(aMsg: TTelegramMessageObj);
     procedure OpenDB;
@@ -104,14 +105,13 @@ procedure TFrmMain.FormCreate(Sender: TObject);
 var
   aLogger: TEventLog;
 begin
-  FTelegramFace:=TTelegramFace.Create;
+  FTelegramFace:=TTelegramSender.Create(EdtTelegramToken.Text);
   FDoUpdateTelegram:=False;
   aLogger:=TEventLog.Create(nil);
   aLogger.LogType:=ltFile;
   aLogger.Active:=True;
-  FTelegramFace.Bot.Logger:=aLogger;
-  FTelegramFace.Bot.LogDebug:=True;
-  FTelegramFace.ReSendInsteadEdit:=False;
+  FTelegramFace.Logger:=aLogger;
+  FTelegramFace.LogDebug:=True;
   FrmTmr.StartAudioFile:='min-start.wav';
   FrmTmr.AlertAudioFile:='min-alert.wav';
   FrmTmr.StopAudioFile:='min-stop.wav';
@@ -130,38 +130,20 @@ begin
   try
     if EdtTelegramToken.Text<>EmptyStr then
       if TryStrToInt64(Trim(EdtAdminChatID.Text), aChatID) then
-      begin
-        FTelegramFace.Chat:=aChatID;
-        FTelegramFace.Bot.Token:=EdtTelegramToken.Text;
-        FTelegramFace.UpdateQuestion(MmQuestion.Text);
-      end;
+        FTelegramFace.Token:=EdtTelegramToken.Text;
   finally
     Cursor:=crDefault;
   end;
 end;
 
-procedure TFrmMain.BtnSendButtonClick(Sender: TObject);
-var
-  aChatID: int64;
+procedure TFrmMain.BtnStartClick(Sender: TObject);
 begin
-  if not FDoUpdateTelegram then
-    Exit;
-  Cursor:=crHourGlass;
-  try
-    if EdtTelegramToken.Text<>EmptyStr then
-      if TryStrToInt64(Trim(EdtAdminChatID.Text), aChatID) then
-      begin
-        FTelegramFace.Chat:=aChatID;
-        FTelegramFace.Bot.Token:=EdtTelegramToken.Text;
-      end;
-  finally
-    Cursor:=crDefault;
-  end;
+  SpnEdtQuestion.Value:=SpnEdtQuestion.Value+1;
 end;
 
 procedure TFrmMain.FormDestroy(Sender: TObject);
 begin
-  FTelegramFace.Bot.Logger.Free;
+  FTelegramFace.Logger.Free;
   FTelegramFace.Free;
 
   if Assigned(FTelegramReceiver) then
@@ -182,10 +164,9 @@ begin
   try
     if (Sender as TToggleBox).Checked then
     begin
-      FTelegramReceiver:=TReceiverThread.Create(EmptyStr);
+      FTelegramReceiver:=TReceiverThread.Create(EdtTelegramToken.Text);
       FTelegramReceiver.FreeOnTerminate:=True;
       FTelegramReceiver.OnDoMessage:=@FormAppendMessage;
-      FTelegramReceiver.Bot.Token:=EdtTelegramToken.Text;
       FTelegramReceiver.Start;
     end
     else begin
@@ -226,7 +207,7 @@ end;
 procedure TFrmMain.FormAppendMessage(aMsg: TTelegramMessageObj);
 var
   aUser, S: String;
-  aChatID, aUserID: int64;
+  aAdminChat, aUserID: int64;
   aDT, aTime: TDateTime;
   //aAdminID: int64;
 begin
@@ -243,14 +224,10 @@ begin
   aTime:=aDT-FrmTmr.StartTime;
   S:=TimeToStr(aDT-FrmTmr.StartTime);
   if (EdtTelegramToken.Text=EmptyStr) or
-    not TryStrToInt64(Trim(EdtAdminChatID.Text), aChatID) then
+    not TryStrToInt64(Trim(EdtAdminChatID.Text), aAdminChat) then
     Exit
-  else begin
-    FTelegramFace.Chat:=aChatID;
-    FTelegramFace.Bot.Token:=EdtTelegramToken.Text;
-  end;
-
-
+  else
+    FTelegramFace.Token:=EdtTelegramToken.Text;
 
   if not ZQryPlayers.Locate('id', aUserID{%H-}, []) then
   begin
@@ -261,14 +238,13 @@ begin
     ZQryPlayers.ApplyUpdates;
   end;
   ZQryAnswers.Append;
-  ZQryAnswersquestion.AsString:=MmQuestion.Text;
+  ZQryAnswersquestion.AsInteger:=SpnEdtQuestion.Value;
   ZQryAnswersanswer.AsString:=aMsg.Text;
   ZQryAnswersuser_id.AsLargeInt:=aUserID;
   ZQryAnswerssent.AsDateTime:=aTime;
   ZQryAnswers.Post;
   ZQryAnswers.ApplyUpdates;
-  FTelegramFace.Bot.sendMessage(FTelegramFace.Chat, 'Ответ сдан '+aUser+' ['+S+']:'+
-    LineEnding+aMsg.Text);
+  FTelegramFace.sendMessage(aAdminChat, 'Ответ сдан '+aUser+' ['+S+']:'+LineEnding+aMsg.Text);
 end;
 
 procedure TFrmMain.OpenDB;
