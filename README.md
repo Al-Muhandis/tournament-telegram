@@ -1,28 +1,31 @@
-# jeopardy-game
- Своя игра в телеграм. 
- 
-Небольшая утилита, написанная за один вечер для Своей Игры с помощью телеграм. Бот постит вопросы в в группу или канал. Бот определяет первого нажавшего кнопку - сохраняет его в базе и сообщает в чате.
+# Purpose
+A program for playing games with team answers via telegram, like quiz games in a sport format. 
+The moderator asks questions and in the allotted time (~ 1 minute) the teams hand over the answers. The answers are given via a telegram bot. The bot token is set in the settings. 
+You can additionally keep a log of responses in the telegram, which is sent to the administrator. The administrator chat ID is set via /bind command sent to the bot.
+The moderator determines the correct answers and can keep track of the series of games in a separate tab. 
+There are 33 questions in the tournament, divided into 3 rounds. The functionality of the scoreboard tables is mainly designed for convenient maintenance and scoring and convenient display on the scoreboard monitor when working with two screens.
 
-Поскольку используется webhook для работы телеграм бота, то сервер не нужен. Программа запускается на десктопной компьютере (поскольку написан на Lazarus, то кроссплатформенно, но тестировалось и собиралось под Windows)
+Dependencies:
+* Using a ready-made timer frame from the project https://github.com/Al-Muhandis/ChGK_Timer
+* Ready-made set of tables is used for accounting and game management https://github.com/Al-Muhandis/tournament
+* Library is used for telegram bots https://github.com/Al-Muhandis/fp-telegram
+* To play audio tracks: playwavepackage package.
+* Database Zeos: zcomponent
+* RX sets of DB components: rxnew, rx_sort_zeos, rz_dbgrid_export_spreadsheet
+* Task worker thread: https://github.com/Al-Muhandis/taskworker/
 
-Переименуйте default.sqlite3.template в default.sqlite3
+# Назначение
+Программа для ведения игр с ответами команд через телеграм, наподобии игр ЧтоГдеКогда в спортивном формате. 
+Ведущий задает вопросы и за отведенное время (~1 минута) команды сдают ответы. Ответы сдаются через телеграм бот. Токен бота прописывается в настройках. 
+Можно вести дополнительно журнал ответов в телеграм, который отправляется администратору. Чат администратора задается с помощью команды /bind, отправленной боту.
+Ведущий определяет правильные ответы и может вести счет серий игр в отдельной вкладке. 
+В турнире 33 вопроса, разбитые на 3 раунда. Функционал таблиц табло в основном предназначен для удобного ведения и подсчета баллов и удобного отображения на мониторе-табло при работе с двумя экранами.
 
-Завимисости для сборки:
-
-* fp-telegram - для работы телеграм бота
-* rxnew, zcomponent (zeos) - DB aware для работы компонентов базы данных под SQLite3
-
-----------------------------
-
-Jeopardy game in telegram.
-
-A small utility written in one evening for Jeopardy game using telegram. The bot posts questions to a group or channel. The bot detects the first gamer (telegram user) who pressed the button - saves it in the database and reports it in the chat.
-
-Since the webhook is used for the operation of the telegram bot, the server is not needed. The program runs on a desktop computer (since it is written in Lazarus, it is cross-platform, but it was tested and built under Windows)
-
-Rename default.sqlite3.template to default.sqlite3
-
-Build Dependencies:
-
-*  fp-telegram - for the work of a telegram bot
-*  rx new, component (zeos) - DB aware for the operation of database components under SQLite3
+Зависимости:
+* Используется готовый фрейм таймера из проекта https://github.com/Al-Muhandis/ChGK_Timer
+* Используется готовый набор таблиц для учета и ведения игр https://github.com/Al-Muhandis/tournament
+* Используется фреймворк для телеграм ботов https://github.com/Al-Muhandis/fp-telegram
+* Для кроссплатформенного воспроизведения звуков: playwavepackage.
+* База данных Zeos: zcomponent
+* RX наборы компонентов БД: rxnew, rx_sort_zeos, rz_dbgrid_export_spreadsheet
+* Task worker thread: https://github.com/Al-Muhandis/taskworker/
