@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ComCtrls, IniPropStorage, DBCtrls,
-  SpinEx, ZConnection, ZDataset, RxDBGrid, telegram, tgtypes, TimerFrame, tgsendertypes
+  SpinEx, ZConnection, ZDataset, RxDBGrid, telegram, tgtypes, TimerFrame, tgsendertypes, frmtournamentform
   ;
 
 type
@@ -18,11 +18,11 @@ type
     ChckBxAnswertimer: TCheckBox;
     DBNavigator1: TDBNavigator;
     DBNvgtrPlayers: TDBNavigator;
-    DBNvgtrPlayers1: TDBNavigator;
     DtSrcAnswers: TDataSource;
     DtSrcPlayers: TDataSource;
     DtSrcTeams: TDataSource;
     EdtAdminChatID: TLabeledEdit;
+    FrmTrnmnt: TFrameTournament;
     FrmTmr: TFrameTimer;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
@@ -36,10 +36,9 @@ type
     PgCntrl: TPageControl;
     RxDBGrd: TRxDBGrid;
     RxDBGrdPlayers: TRxDBGrid;
-    RxDBGrdPlayers1: TRxDBGrid;
     SpnEdtQuestion: TSpinEditEx;
     Splitter1: TSplitter;
-    TbShtTeams: TTabSheet;
+    TbShtTournament: TTabSheet;
     TabShtPlayers: TTabSheet;
     TbShtAnswers: TTabSheet;
     TbShtGame: TTabSheet;
@@ -47,27 +46,26 @@ type
     TglBxReceive: TToggleBox;
     ToolBar1: TToolBar;
     ToolBar2: TToolBar;
-    ToolBar3: TToolBar;
     ZCnctn: TZConnection;
     ZQryAnswers: TZQuery;
     ZQryAnswersquestion: TLargeintField;
     ZQryAnswersTeamTitle: TStringField;
-    ZQryAnswersuserteamid: TLargeintField;
+    ZQryAnswersUserTEamID: TLargeintField;
     ZQryAnswersuser_id: TLargeintField;
     ZQryPlayers: TZQuery;
     ZQryAnswersanswer: TStringField;
     ZQryID: TAutoIncField;
     ZQryAnswersreply: TLargeintField;
     ZQryAnswerssent: TTimeField;
-    ZQryTeams: TZQuery;
     ZQryPlayersid: TLargeintField;
     ZQryPlayersteam: TLongintField;
     ZQryPlayerstitle: TStringField;
+    ZQryTeams: TZReadOnlyQuery;
     ZQryTeamsid: TLargeintField;
-    ZQryTeamstitle: TStringField;
-    ZQryTeamTitle: TStringField;
+    ZQryTeamsname: TStringField;
     procedure BtnQuestionSendClick({%H-}Sender: TObject);
     procedure BtnStartClick({%H-}Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate({%H-}Sender: TObject);
     procedure FormDestroy({%H-}Sender: TObject);
     procedure FormShow({%H-}Sender: TObject);
@@ -116,7 +114,8 @@ begin
   FrmTmr.AlertAudioFile:='min-alert.wav';
   FrmTmr.StopAudioFile:='min-stop.wav';
   FrmTmr.StartTime:=Now;
-  FrmTmr.AnswerTimer:=ChckBxAnswertimer.Checked;
+  FrmTmr.AnswerTimer:=ChckBxAnswertimer.Checked;  
+  FrmTrnmnt.InitDB;
   OpenDB;
 end;
 
@@ -139,6 +138,11 @@ end;
 procedure TFrmMain.BtnStartClick(Sender: TObject);
 begin
   SpnEdtQuestion.Value:=SpnEdtQuestion.Value+1;
+end;
+
+procedure TFrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  FrmTrnmnt.ApplyDB;
 end;
 
 procedure TFrmMain.FormDestroy(Sender: TObject);
@@ -197,9 +201,9 @@ procedure TFrmMain.ZQryAnswersTeamTitleGetText(Sender: TField; var aText: string
 var
   aTeamID: LongInt;
 begin
-  aTeamID:=ZQryAnswersuserteamid.AsInteger;
-  if ZQryTeams.Locate('id', aTeamID{%H-}, []) then
-    aText:=ZQryTeamstitle.AsString
+  aTeamID:=ZQryAnswersUserTEamID.AsInteger;
+  if FrmTrnmnt.ZQryTeams.Locate('id', aTeamID{%H-}, []) then
+    aText:=FrmTrnmnt.ZQryTeamsname.AsString
   else
     aText:=' *не задано* ';
 end;
@@ -225,11 +229,12 @@ begin
     Exit;
   aTime:=aDT-FrmTmr.StartTime;
   S:=TimeToStr(aDT-FrmTmr.StartTime);
-  if (EdtTelegramToken.Text=EmptyStr) or
-    not TryStrToInt64(Trim(EdtAdminChatID.Text), aAdminChat) then
+  if EdtTelegramToken.Text=EmptyStr then
     Exit
   else
     FTelegramFace.Token:=EdtTelegramToken.Text;
+  if not TryStrToInt64(Trim(EdtAdminChatID.Text), aAdminChat) then
+    aAdminChat:=0;
 
   if not ZQryPlayers.Locate('id', aUserID{%H-}, []) then
   begin
@@ -246,7 +251,8 @@ begin
   ZQryAnswerssent.AsDateTime:=aTime;
   ZQryAnswers.Post;
   ZQryAnswers.ApplyUpdates;
-  FTelegramFace.sendMessage(aAdminChat, 'Ответ сдан '+aUser+' ['+S+']:'+LineEnding+aMsg.Text);
+  if aAdminChat<>0 then
+    FTelegramFace.sendMessage(aAdminChat, 'Ответ сдан '+aUser+' ['+S+']:'+LineEnding+aMsg.Text);
 end;
 
 procedure TFrmMain.OpenDB;
@@ -255,12 +261,12 @@ begin
   ZCnctn.Database:=AppDir+'default.sqlite3';
   ZCnctn.Connect;
   ZCnctn.ExecuteDirect(_sql_players);
-  ZCnctn.ExecuteDirect(_sql_teams);
   ZCnctn.ExecuteDirect(_sql_rounds);
 
+  ZQryTeams.Connection:=FrmTrnmnt.ZCnctn;
+  ZQryTeams.Active:=True;
   ZQryAnswers.Active:=True;
   ZQryPlayers.Active:=True;
-  ZQryTeams.Active:=True;
 end;
 
 initialization

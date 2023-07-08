@@ -31,7 +31,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="..\..\taskworker;..\timer"/>
+            <OtherUnitFiles Value="..\..\taskworker;..\timer;..\tournament"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -72,7 +72,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="..\..\taskworker;..\timer"/>
+            <OtherUnitFiles Value="..\..\taskworker;..\timer;..\tournament"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -104,6 +104,12 @@
       <FormatVersion Value="2"/>
     </RunParams>
     <RequiredPackages>
+      <Item>
+        <PackageName Value="rx_sort_zeos"/>
+      </Item>
+      <Item>
+        <PackageName Value="rxdbgrid_export_spreadsheet"/>
+      </Item>
       <Item>
         <PackageName Value="LazControls"/>
       </Item>
@@ -154,6 +160,13 @@
         <Filename Value="sql_db.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="..\tournament\frmtournamentform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrameTournament"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -164,7 +177,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="..\..\taskworker;..\timer"/>
+      <OtherUnitFiles Value="..\..\taskworker;..\timer;..\tournament"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>
