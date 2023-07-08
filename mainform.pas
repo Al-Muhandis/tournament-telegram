@@ -258,7 +258,7 @@ end;
 procedure TFrmMain.OpenDB;
 begin
   ZCnctn.Disconnect;
-  ZCnctn.Database:=AppDir+'default.sqlite3';
+  ZCnctn.Database:=AppDir+'default.sqlite';
   ZCnctn.Connect;
   ZCnctn.ExecuteDirect(_sql_players);
   ZCnctn.ExecuteDirect(_sql_rounds);
