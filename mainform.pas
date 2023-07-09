@@ -53,6 +53,7 @@ type
     ZQryAnswers: TZQuery;
     ZQryAnswersquestion: TLargeintField;
     ZQryAnswersTeamTitle: TStringField;
+    ZQryAnswerstournament: TLargeintField;
     ZQryAnswersUserTEamID: TLargeintField;
     ZQryAnswersuser_id: TLargeintField;
     ZQryPlayers: TZQuery;
@@ -73,6 +74,7 @@ type
     procedure FormCreate({%H-}Sender: TObject);
     procedure FormDestroy({%H-}Sender: TObject);
     procedure FormShow({%H-}Sender: TObject);
+    procedure SpnEdtQuestionChange(Sender: TObject);
     procedure TglBxReceiveChange(Sender: TObject);
     procedure ZQryAnswersCalcFields({%H-}DataSet: TDataSet);
     procedure ZQryAnswersreplyGetText(Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
@@ -81,7 +83,7 @@ type
     FDoUpdateTelegram: Boolean;
     FTelegramFace: TTelegramSender;
     FTelegramReceiver: TReceiverThread;
-    procedure FormAppendMessage(aMsg: TTelegramMessageObj);
+    procedure FormReceiveMessage(aMsg: TTelegramMessageObj);
     procedure OpenDB;
   public
 
@@ -166,6 +168,13 @@ begin
   FDoUpdateTelegram:=True;
 end;
 
+procedure TFrmMain.SpnEdtQuestionChange(Sender: TObject);
+begin
+  ZQryAnswers.SQL.Text:=format('select * from answers where tournament = %d and question = %d',
+    [FrmTrnmnt.ZQryTournamentsid.AsInteger, SpnEdtQuestion.Value]);
+  ZQryAnswers.Open;
+end;
+
 procedure TFrmMain.TglBxReceiveChange(Sender: TObject);
 begin
   TglBxReceive.Enabled:=False;
@@ -174,7 +183,7 @@ begin
     begin
       FTelegramReceiver:=TReceiverThread.Create(EdtTelegramToken.Text);
       FTelegramReceiver.FreeOnTerminate:=True;
-      FTelegramReceiver.OnDoMessage:=@FormAppendMessage;
+      FTelegramReceiver.OnDoMessage:=@FormReceiveMessage;
       FTelegramReceiver.Start;
     end
     else begin
@@ -212,7 +221,7 @@ begin
     aText:=' *не задано* ';
 end;
 
-procedure TFrmMain.FormAppendMessage(aMsg: TTelegramMessageObj);
+procedure TFrmMain.FormReceiveMessage(aMsg: TTelegramMessageObj);
 var
   aUser, S: String;
   aAdminChat, aUserID: int64;
@@ -249,6 +258,7 @@ begin
     ZQryPlayers.ApplyUpdates;
   end;
   ZQryAnswers.Append;
+  ZQryAnswerstournament.AsInteger:=FrmTrnmnt.ZQryTournamentsid.AsInteger;
   ZQryAnswersquestion.AsInteger:=SpnEdtQuestion.Value;
   ZQryAnswersanswer.AsString:=aMsg.Text;
   ZQryAnswersuser_id.AsLargeInt:=aUserID;

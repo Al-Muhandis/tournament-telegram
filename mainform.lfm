@@ -68,6 +68,7 @@ object FrmMain: TFrmMain
             MaxLength = 0
             ParentFont = False
             TabOrder = 1
+            OnChange = SpnEdtQuestionChange
             NullValue = 0
             UpDownVisible = False
             Value = 0
@@ -81,7 +82,6 @@ object FrmMain: TFrmMain
             MaxLength = 0
             NumGlyphs = 1
             PasswordChar = #0
-            ReadOnly = True
             TabOrder = 2
             LookupDisplay = 'title'
             LookupField = 'title'
@@ -2730,11 +2730,20 @@ object FrmMain: TFrmMain
       ReadOnly = False
       Required = False
     end
+    object ZQryAnswerstournament: TLargeintField
+      FieldKind = fkData
+      FieldName = 'tournament'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
     object ZQryAnswersanswer: TStringField
       DisplayWidth = 100
       FieldKind = fkData
       FieldName = 'answer'
-      Index = 1
+      Index = 2
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2744,7 +2753,7 @@ object FrmMain: TFrmMain
       DisplayWidth = 15
       FieldKind = fkData
       FieldName = 'question'
-      Index = 2
+      Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2753,7 +2762,7 @@ object FrmMain: TFrmMain
     object ZQryAnswersreply: TLargeintField
       FieldKind = fkData
       FieldName = 'reply'
-      Index = 3
+      Index = 4
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2763,7 +2772,7 @@ object FrmMain: TFrmMain
     object ZQryAnswerssent: TTimeField
       FieldKind = fkData
       FieldName = 'sent'
-      Index = 4
+      Index = 5
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2772,7 +2781,7 @@ object FrmMain: TFrmMain
     object ZQryAnswersuser_id: TLargeintField
       FieldKind = fkData
       FieldName = 'user_id'
-      Index = 5
+      Index = 6
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2781,7 +2790,7 @@ object FrmMain: TFrmMain
     object TStringField
       FieldKind = fkLookup
       FieldName = 'Username'
-      Index = 6
+      Index = 7
       KeyFields = 'user_id'
       LookupCache = False
       LookupDataSet = ZQryPlayers
@@ -2795,7 +2804,7 @@ object FrmMain: TFrmMain
     object ZQryAnswersTeamTitle: TStringField
       FieldKind = fkCalculated
       FieldName = 'TeamTitle'
-      Index = 7
+      Index = 8
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = True
@@ -2805,7 +2814,7 @@ object FrmMain: TFrmMain
     object ZQryAnswersUserTEamID: TLargeintField
       FieldKind = fkLookup
       FieldName = 'UserTeamID'
-      Index = 8
+      Index = 9
       KeyFields = 'user_id'
       LookupCache = False
       LookupDataSet = ZQryPlayers
