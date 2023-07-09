@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ComCtrls, IniPropStorage, DBCtrls,
-  SpinEx, ZConnection, ZDataset, RxDBGrid, telegram, tgtypes, TimerFrame, tgsendertypes, frmtournamentform
+  SpinEx, ZConnection, ZDataset, RxDBGrid, rxlookup, telegram, tgtypes, TimerFrame, tgsendertypes,
+  frmtournamentform
   ;
 
 type
@@ -16,6 +17,7 @@ type
   TFrmMain = class(TForm)
     BtnStart: TButton;
     ChckBxAnswertimer: TCheckBox;
+    DtSrcTournaments: TDataSource;
     DBNavigator1: TDBNavigator;
     DBNvgtrPlayers: TDBNavigator;
     DtSrcAnswers: TDataSource;
@@ -36,6 +38,7 @@ type
     PgCntrl: TPageControl;
     RxDBGrd: TRxDBGrid;
     RxDBGrdPlayers: TRxDBGrid;
+    RxLookupEdit1: TRxLookupEdit;
     SpnEdtQuestion: TSpinEditEx;
     Splitter1: TSplitter;
     TbShtTournament: TTabSheet;
@@ -63,6 +66,7 @@ type
     ZQryTeams: TZReadOnlyQuery;
     ZQryTeamsid: TLargeintField;
     ZQryTeamsname: TStringField;
+    ZQryTournaments: TZReadOnlyQuery;
     procedure BtnQuestionSendClick({%H-}Sender: TObject);
     procedure BtnStartClick({%H-}Sender: TObject);
     procedure FormClose({%H-}Sender: TObject; var {%H-}CloseAction: TCloseAction);
@@ -261,10 +265,12 @@ begin
   ZCnctn.Database:=AppDir+'default.sqlite';
   ZCnctn.Connect;
   ZCnctn.ExecuteDirect(_sql_players);
-  ZCnctn.ExecuteDirect(_sql_rounds);
+  ZCnctn.ExecuteDirect(_sql_answers);
 
   ZQryTeams.Connection:=FrmTrnmnt.ZCnctn;
   ZQryTeams.Active:=True;
+  ZQryTournaments.Connection:=FrmTrnmnt.ZCnctn;
+  ZQryTournaments.Active:=True;
   ZQryAnswers.Active:=True;
   ZQryPlayers.Active:=True;
 end;

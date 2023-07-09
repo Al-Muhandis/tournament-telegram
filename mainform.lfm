@@ -1,5 +1,5 @@
 object FrmMain: TFrmMain
-  Left = 431
+  Left = 526
   Height = 572
   Top = 186
   Width = 1072
@@ -49,7 +49,7 @@ object FrmMain: TFrmMain
           object BtnStart: TButton
             Left = 272
             Height = 70
-            Top = 12
+            Top = 40
             Width = 80
             Anchors = [akTop, akRight]
             Caption = '+1'
@@ -61,7 +61,7 @@ object FrmMain: TFrmMain
           object SpnEdtQuestion: TSpinEditEx
             Left = 8
             Height = 70
-            Top = 12
+            Top = 40
             Width = 261
             Anchors = [akTop, akLeft, akRight]
             Font.Height = 64
@@ -71,6 +71,22 @@ object FrmMain: TFrmMain
             NullValue = 0
             UpDownVisible = False
             Value = 0
+          end
+          object RxLookupEdit1: TRxLookupEdit
+            Left = 8
+            Height = 28
+            Top = 0
+            Width = 344
+            ButtonWidth = 19
+            MaxLength = 0
+            NumGlyphs = 1
+            PasswordChar = #0
+            ReadOnly = True
+            TabOrder = 2
+            LookupDisplay = 'title'
+            LookupField = 'title'
+            LookupSource = DtSrcTournaments
+            PopUpFormOptions.Columns = <>
           end
         end
         object GroupBox2: TGroupBox
@@ -2681,8 +2697,9 @@ object FrmMain: TFrmMain
       'controls_cp=CP_UTF8'
     )
     Connected = True
+    DesignConnection = True
     Port = 0
-    Database = 'C:\Users\mail\Documents\Projects\Lazarus\Что Где Когда\tournament-telegram\default.sqlite3'
+    Database = 'C:\Users\mail\Documents\Projects\Lazarus\Что Где Когда\tournament-telegram\default.sqlite'
     Protocol = 'sqlite-3'
     Left = 712
     Top = 40
@@ -2698,7 +2715,7 @@ object FrmMain: TFrmMain
     SortType = stDescending
     OnCalcFields = ZQryAnswersCalcFields
     SQL.Strings = (
-      'select * from rounds'
+      'select * from answers'
     )
     Params = <>
     IndexFieldNames = 'id Desc'
@@ -2865,8 +2882,8 @@ object FrmMain: TFrmMain
   object DtSrcTeams: TDataSource
     AutoEdit = False
     DataSet = FrameTournament.ZQryTeams
-    Left = 928
-    Top = 208
+    Left = 944
+    Top = 328
   end
   object ZQryTeams: TZReadOnlyQuery
     Connection = FrameTournament.ZCnctn
@@ -2875,8 +2892,8 @@ object FrmMain: TFrmMain
     )
     Params = <>
     Options = [doCalcDefaults, doSmartOpen, doCachedLobs]
-    Left = 928
-    Top = 128
+    Left = 440
+    Top = 352
     object ZQryTeamsid: TLargeintField
       FieldKind = fkData
       FieldName = 'id'
@@ -2896,5 +2913,21 @@ object FrmMain: TFrmMain
       Required = False
       Size = 128
     end
+  end
+  object ZQryTournaments: TZReadOnlyQuery
+    Connection = FrameTournament.ZCnctn
+    SQL.Strings = (
+      'select * from tournaments'
+    )
+    Params = <>
+    Options = [doCalcDefaults, doSmartOpen]
+    Left = 576
+    Top = 352
+  end
+  object DtSrcTournaments: TDataSource
+    AutoEdit = False
+    DataSet = ZQryTournaments
+    Left = 576
+    Top = 426
   end
 end
