@@ -88,6 +88,7 @@ type
     procedure FormReceiveMessage(aMsg: TTelegramMessageObj);
     procedure OpenDB;
     procedure ReopenAnswers;
+    procedure FrmStopTimer(Sender: TObject);
   public
 
   end;
@@ -123,7 +124,8 @@ begin
   FrmTmr.AlertAudioFile:='min-alert.wav';
   FrmTmr.StopAudioFile:='min-stop.wav';
   FrmTmr.StartTime:=Now;
-  FrmTmr.AnswerTimer:=ChckBxAnswertimer.Checked;  
+  FrmTmr.AnswerTimer:=ChckBxAnswertimer.Checked;
+  FrmTmr.OnStop:=@FrmStopTimer;
   FrmTrnmnt.InitDB;
   OpenDB;
 end;
@@ -297,6 +299,32 @@ begin
   ZQryAnswers.SQL.Text:=format('select * from answers where tournament = %d and question = %d%s',
     [FrmTrnmnt.ZQryTournamentsid.AsInteger, SpnEdtQuestion.Value, s]);
   ZQryAnswers.Open;
+end;
+
+procedure TFrmMain.FrmStopTimer(Sender: TObject);
+begin
+  TlBtnOnlyAccepted.Down:=False;
+  ZQryAnswers.First;
+  while not ZQryAnswers.EOF do
+  begin
+    ZQryAnswers.Edit;
+    ZQryAnswersaccepted.AsBoolean:=False;
+    ZQryAnswers.Post;
+    ZQryAnswers.Next;
+  end;
+  ZQryAnswers.SQL.Text:=format(
+    'select *, max(sent) from answers where tournament = %d and question = %d and sent < ''%s'' group by user_id',
+    [FrmTrnmnt.ZQryTournamentsid.AsInteger, SpnEdtQuestion.Value, '00:01:15']);
+  ZQryAnswers.Open;
+  ZQryAnswers.First;
+  while not ZQryAnswers.EOF do
+  begin
+    ZQryAnswers.Edit;
+    ZQryAnswersaccepted.AsBoolean:=True;
+    ZQryAnswers.Post;
+    ZQryAnswers.Next;
+  end;     
+  ZQryAnswers.ApplyUpdates;
 end;
 
 initialization
