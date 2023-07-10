@@ -49,8 +49,11 @@ type
     TglBxReceive: TToggleBox;
     ToolBar1: TToolBar;
     ToolBar2: TToolBar;
+    TlBtnOnlyAccepted: TToolButton;
+    ToolButton2: TToolButton;
     ZCnctn: TZConnection;
     ZQryAnswers: TZQuery;
+    ZQryAnswersaccepted: TBooleanField;
     ZQryAnswersquestion: TLargeintField;
     ZQryAnswersTeamTitle: TStringField;
     ZQryAnswerstournament: TLargeintField;
@@ -59,7 +62,6 @@ type
     ZQryPlayers: TZQuery;
     ZQryAnswersanswer: TStringField;
     ZQryID: TAutoIncField;
-    ZQryAnswersreply: TLargeintField;
     ZQryAnswerssent: TTimeField;
     ZQryPlayersid: TLargeintField;
     ZQryPlayersteam: TLongintField;
@@ -76,7 +78,7 @@ type
     procedure FormShow({%H-}Sender: TObject);
     procedure SpnEdtQuestionChange(Sender: TObject);
     procedure TglBxReceiveChange(Sender: TObject);
-    procedure ZQryAnswersCalcFields({%H-}DataSet: TDataSet);
+    procedure TlBtnOnlyAcceptedClick(Sender: TObject);
     procedure ZQryAnswersreplyGetText(Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
     procedure ZQryAnswersTeamTitleGetText({%H-}Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
   private
@@ -85,6 +87,7 @@ type
     FTelegramReceiver: TReceiverThread;
     procedure FormReceiveMessage(aMsg: TTelegramMessageObj);
     procedure OpenDB;
+    procedure ReopenAnswers;
   public
 
   end;
@@ -170,9 +173,7 @@ end;
 
 procedure TFrmMain.SpnEdtQuestionChange(Sender: TObject);
 begin
-  ZQryAnswers.SQL.Text:=format('select * from answers where tournament = %d and question = %d',
-    [FrmTrnmnt.ZQryTournamentsid.AsInteger, SpnEdtQuestion.Value]);
-  ZQryAnswers.Open;
+  ReopenAnswers;
 end;
 
 procedure TFrmMain.TglBxReceiveChange(Sender: TObject);
@@ -196,9 +197,9 @@ begin
   end;
 end;
 
-procedure TFrmMain.ZQryAnswersCalcFields(DataSet: TDataSet);
+procedure TFrmMain.TlBtnOnlyAcceptedClick(Sender: TObject);
 begin
-
+  ReopenAnswers;
 end;
 
 procedure TFrmMain.ZQryAnswersreplyGetText(Sender: TField; var aText: string; DisplayText: Boolean);
@@ -283,6 +284,19 @@ begin
   ZQryTournaments.Active:=True;
   ZQryAnswers.Active:=True;
   ZQryPlayers.Active:=True;
+end;
+
+procedure TFrmMain.ReopenAnswers;
+var
+  s: String;
+begin
+  if TlBtnOnlyAccepted.Down then
+    s:=' and accepted = ''Y'''
+  else
+    s:=EmptyStr;
+  ZQryAnswers.SQL.Text:=format('select * from answers where tournament = %d and question = %d%s',
+    [FrmTrnmnt.ZQryTournamentsid.AsInteger, SpnEdtQuestion.Value, s]);
+  ZQryAnswers.Open;
 end;
 
 initialization

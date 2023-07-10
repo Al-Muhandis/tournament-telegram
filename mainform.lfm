@@ -136,7 +136,7 @@ object FrmMain: TFrmMain
               Height = 33
               Top = 0
               Width = 675
-              Caption = 'ToolBar1'
+              ShowCaptions = True
               TabOrder = 0
               object DBNavigator1: TDBNavigator
                 Left = 1
@@ -156,6 +156,20 @@ object FrmMain: TFrmMain
                 Options = []
                 TabOrder = 0
                 VisibleButtons = [nbFirst, nbPrior, nbLast, nbDelete, nbPost, nbRefresh]
+              end
+              object TlBtnOnlyAccepted: TToolButton
+                Left = 277
+                Top = 2
+                Caption = 'Только ☑️'
+                OnClick = TlBtnOnlyAcceptedClick
+                Style = tbsCheck
+              end
+              object ToolButton2: TToolButton
+                Left = 272
+                Height = 28
+                Top = 2
+                Caption = 'ToolButton2'
+                Style = tbsDivider
               end
             end
             object RxDBGrd: TRxDBGrid
@@ -215,9 +229,9 @@ object FrmMain: TFrmMain
                 item
                   Title.Alignment = taCenter
                   Title.Orientation = toHorizontal
-                  Title.Caption = 'reply'
-                  Width = 55
-                  FieldName = 'reply'
+                  Title.Caption = 'Принят'
+                  Width = 60
+                  FieldName = 'accepted'
                   EditButtons = <>
                   Filter.DropDownRows = 0
                   Filter.EmptyValue = '(Empty)'
@@ -2701,8 +2715,8 @@ object FrmMain: TFrmMain
     Port = 0
     Database = 'C:\Users\mail\Documents\Projects\Lazarus\Что Где Когда\tournament-telegram\default.sqlite'
     Protocol = 'sqlite-3'
-    Left = 712
-    Top = 40
+    Left = 704
+    Top = 16
   end
   object DtSrcAnswers: TDataSource
     DataSet = ZQryAnswers
@@ -2713,7 +2727,6 @@ object FrmMain: TFrmMain
     Connection = ZCnctn
     SortedFields = 'id'
     SortType = stDescending
-    OnCalcFields = ZQryAnswersCalcFields
     SQL.Strings = (
       'select * from answers'
     )
@@ -2749,25 +2762,26 @@ object FrmMain: TFrmMain
       ReadOnly = False
       Required = False
     end
-    object ZQryAnswersquestion: TLargeintField
-      DisplayWidth = 15
+    object ZQryAnswersaccepted: TBooleanField
+      DisplayWidth = 5
       FieldKind = fkData
-      FieldName = 'question'
+      FieldName = 'accepted'
       Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayValues = 'True;False'
     end
-    object ZQryAnswersreply: TLargeintField
+    object ZQryAnswersquestion: TLargeintField
+      DisplayWidth = 15
       FieldKind = fkData
-      FieldName = 'reply'
+      FieldName = 'question'
       Index = 4
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      OnGetText = ZQryAnswersreplyGetText
     end
     object ZQryAnswerssent: TTimeField
       FieldKind = fkData
