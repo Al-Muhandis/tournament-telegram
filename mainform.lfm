@@ -13,7 +13,7 @@ object FrmMain: TFrmMain
   OnShow = FormShow
   SessionProperties = 'ChckBxAnswertimer.Checked;EdtAdminChatID.Text;EdtChatID.Text;EdtTelegramToken.Text;Height;Left;MmQuestion.Lines;Top;Width'
   LCLVersion = '2.2.6.0'
-  object PgCntrl: TPageControl
+  object PgCntrlMain: TPageControl
     Left = 0
     Height = 572
     Top = 0
@@ -23,16 +23,16 @@ object FrmMain: TFrmMain
     TabIndex = 0
     TabOrder = 0
     object TbShtGame: TTabSheet
-      Caption = 'Игра'
+      Caption = 'Управление игрой'
       ClientHeight = 539
       ClientWidth = 1064
-      object GroupBox1: TGroupBox
+      object GrpBxGameControl: TGroupBox
         Left = 0
         Height = 539
         Top = 0
         Width = 371
         Align = alLeft
-        Caption = 'Ведущий'
+        Caption = 'Управление раундами'
         ClientHeight = 514
         ClientWidth = 367
         TabOrder = 0
@@ -42,14 +42,14 @@ object FrmMain: TFrmMain
           Top = 0
           Width = 367
           Align = alClient
-          Caption = '❔ Номер следующего вопроса'
+          Caption = '❔ Турнирный вопрос'
           ClientHeight = 287
           ClientWidth = 363
           TabOrder = 0
           object BtnStart: TButton
             Left = 272
             Height = 70
-            Top = 40
+            Top = 88
             Width = 80
             Anchors = [akTop, akRight]
             Caption = '+1'
@@ -61,7 +61,7 @@ object FrmMain: TFrmMain
           object SpnEdtQuestion: TSpinEditEx
             Left = 8
             Height = 70
-            Top = 40
+            Top = 88
             Width = 261
             Anchors = [akTop, akLeft, akRight]
             Font.Height = 64
@@ -73,10 +73,10 @@ object FrmMain: TFrmMain
             UpDownVisible = False
             Value = 0
           end
-          object RxLookupEdit1: TRxLookupEdit
+          object LkpEdtTournament: TRxLookupEdit
             Left = 8
             Height = 28
-            Top = 0
+            Top = 24
             Width = 344
             ButtonWidth = 19
             MaxLength = 0
@@ -88,8 +88,26 @@ object FrmMain: TFrmMain
             LookupSource = DtSrcTournaments
             PopUpFormOptions.Columns = <>
           end
+          object Label1: TLabel
+            Left = 16
+            Height = 20
+            Top = 0
+            Width = 51
+            Caption = 'Турнир'
+            FocusControl = LkpEdtTournament
+            ParentColor = False
+          end
+          object LblQuestionNumber: TLabel
+            Left = 16
+            Height = 20
+            Top = 67
+            Width = 111
+            Caption = 'Номер вопроса'
+            FocusControl = SpnEdtQuestion
+            ParentColor = False
+          end
         end
-        object GroupBox2: TGroupBox
+        object GrpBxTimer: TGroupBox
           Left = 0
           Height = 202
           Top = 312
@@ -108,13 +126,13 @@ object FrmMain: TFrmMain
           end
         end
       end
-      object GroupBox3: TGroupBox
+      object GrpBxGameTables: TGroupBox
         Left = 377
         Height = 539
         Top = 0
         Width = 687
         Align = alClient
-        Caption = 'Турнирные таблицы'
+        Caption = 'Игровые таблицы'
         ClientHeight = 514
         ClientWidth = 683
         TabOrder = 1
@@ -123,22 +141,23 @@ object FrmMain: TFrmMain
           Height = 514
           Top = 0
           Width = 683
-          ActivePage = TbShtAnswers
+          ActivePage = TabShtPlayers
           Align = alClient
-          TabIndex = 0
+          Style = tsFlatButtons
+          TabIndex = 1
           TabOrder = 0
           object TbShtAnswers: TTabSheet
             Caption = 'Ответы'
             ClientHeight = 481
             ClientWidth = 675
-            object ToolBar1: TToolBar
+            object TlBrAnswers: TToolBar
               Left = 0
               Height = 33
               Top = 0
               Width = 675
               ShowCaptions = True
               TabOrder = 0
-              object DBNavigator1: TDBNavigator
+              object DBNvgtrAnswers: TDBNavigator
                 Left = 1
                 Height = 28
                 Top = 2
@@ -164,15 +183,15 @@ object FrmMain: TFrmMain
                 OnClick = TlBtnOnlyAcceptedClick
                 Style = tbsCheck
               end
-              object ToolButton2: TToolButton
+              object TlBtn1: TToolButton
                 Left = 272
                 Height = 28
                 Top = 2
-                Caption = 'ToolButton2'
+                Caption = 'TlBtn1'
                 Style = tbsDivider
               end
             end
-            object RxDBGrd: TRxDBGrid
+            object DBGrdAnswers: TRxDBGrid
               Left = 0
               Height = 448
               Top = 33
@@ -392,12 +411,12 @@ object FrmMain: TFrmMain
             Caption = 'Игроки'
             ClientHeight = 481
             ClientWidth = 675
-            object ToolBar2: TToolBar
+            object TlBrPlayers: TToolBar
               Left = 0
               Height = 33
               Top = 0
               Width = 675
-              Caption = 'ToolBar2'
+              Caption = 'TlBrPlayers'
               TabOrder = 0
               object DBNvgtrPlayers: TDBNavigator
                 Left = 1
@@ -561,7 +580,7 @@ object FrmMain: TFrmMain
           end
         end
       end
-      object Splitter1: TSplitter
+      object Spltr: TSplitter
         Left = 371
         Height = 539
         Top = 0
@@ -638,7 +657,7 @@ object FrmMain: TFrmMain
       end
     end
     object TbShtTournament: TTabSheet
-      Caption = 'Турнир'
+      Caption = 'Турнирные таблицы'
       ClientHeight = 539
       ClientWidth = 1064
       inline FrmTrnmnt: TFrameTournament
@@ -2710,10 +2729,9 @@ object FrmMain: TFrmMain
       'AutoEncodeStrings=True'
       'controls_cp=CP_UTF8'
     )
-    Connected = True
     DesignConnection = True
     Port = 0
-    Database = 'C:\Users\mail\Documents\Projects\Lazarus\Что Где Когда\tournament-telegram\default.sqlite'
+    Database = 'C:\Users\mail\Documents\Projects\Lazarus\Что Где Когда\tournament-telegram\answers.sqlite'
     Protocol = 'sqlite-3'
     Left = 704
     Top = 16
