@@ -26,16 +26,16 @@ type
     EdtAdminChatID: TLabeledEdit;
     FrmTrnmnt: TFrameTournament;
     FrmTmr: TFrameTimer;
-    GrpBxGameControl: TGroupBox;
     GrpBxTimer: TGroupBox;
     GrpBxGameTables: TGroupBox;
-    GroupBox4: TGroupBox;
+    GrpBxTelegram: TGroupBox;
     GrpBxQuestion: TGroupBox;
     EdtTelegramToken: TLabeledEdit;
     IniPrpStrg: TIniPropStorage;
-    Label1: TLabel;
-    Label2: TLabel;
+    LblTournament: TLabel;
+    LblAdminChatID: TLabel;
     LblQuestionNumber: TLabel;
+    PgCntrlControl: TPageControl;
     PgCntrlTables: TPageControl;
     PgCntrlMain: TPageControl;
     DBGrdAnswers: TRxDBGrid;
@@ -43,11 +43,12 @@ type
     LkpEdtTournament: TRxLookupEdit;
     SpnEdtQuestion: TSpinEditEx;
     Spltr: TSplitter;
+    TbShtControlOptions: TTabSheet;
+    TbShtControl: TTabSheet;
     TbShtTournament: TTabSheet;
     TabShtPlayers: TTabSheet;
     TbShtAnswers: TTabSheet;
     TbShtGame: TTabSheet;
-    TbShtOptions: TTabSheet;
     TglBxReceive: TToggleBox;
     TlBrAnswers: TToolBar;
     TlBrPlayers: TToolBar;
@@ -78,9 +79,9 @@ type
     procedure FormCreate({%H-}Sender: TObject);
     procedure FormDestroy({%H-}Sender: TObject);
     procedure FormShow({%H-}Sender: TObject);
-    procedure SpnEdtQuestionChange(Sender: TObject);
+    procedure SpnEdtQuestionChange({%H-}Sender: TObject);
     procedure TglBxReceiveChange(Sender: TObject);
-    procedure TlBtnOnlyAcceptedClick(Sender: TObject);
+    procedure TlBtnOnlyAcceptedClick({%H-}Sender: TObject);
     procedure ZQryAnswersreplyGetText(Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
     procedure ZQryAnswersTeamTitleGetText({%H-}Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
   private
@@ -90,7 +91,7 @@ type
     procedure FormReceiveMessage(aMsg: TTelegramMessageObj);
     procedure OpenDB;
     procedure ReopenAnswers;
-    procedure FrmStopTimer(Sender: TObject);
+    procedure FrmStopTimer({%H-}Sender: TObject);
   public
 
   end;
@@ -313,7 +314,7 @@ begin
     ZQryAnswersaccepted.AsBoolean:=False;
     ZQryAnswers.Post;
     ZQryAnswers.Next;
-  end;
+  end;                                                                { #todo : 00:01:15 - accept time to turn up }
   ZQryAnswers.SQL.Text:=format(
     'select *, max(sent) from answers where tournament = %d and question = %d and sent < ''%s'' group by user_id',
     [FrmTrnmnt.ZQryTournamentsid.AsInteger, SpnEdtQuestion.Value, '00:01:15']);

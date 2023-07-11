@@ -22,139 +22,40 @@ object FrmMain: TFrmMain
     Align = alClient
     TabIndex = 0
     TabOrder = 0
+    TabPosition = tpBottom
     object TbShtGame: TTabSheet
-      Caption = 'Управление игрой'
+      Caption = '🎮 Управление игрой'
       ClientHeight = 539
       ClientWidth = 1064
-      object GrpBxGameControl: TGroupBox
-        Left = 0
-        Height = 539
-        Top = 0
-        Width = 371
-        Align = alLeft
-        Caption = 'Управление раундами'
-        ClientHeight = 514
-        ClientWidth = 367
-        TabOrder = 0
-        object GrpBxQuestion: TGroupBox
-          Left = 0
-          Height = 312
-          Top = 0
-          Width = 367
-          Align = alClient
-          Caption = '❔ Турнирный вопрос'
-          ClientHeight = 287
-          ClientWidth = 363
-          TabOrder = 0
-          object BtnStart: TButton
-            Left = 272
-            Height = 70
-            Top = 88
-            Width = 80
-            Anchors = [akTop, akRight]
-            Caption = '+1'
-            Font.Height = -33
-            OnClick = BtnStartClick
-            ParentFont = False
-            TabOrder = 0
-          end
-          object SpnEdtQuestion: TSpinEditEx
-            Left = 8
-            Height = 70
-            Top = 88
-            Width = 261
-            Anchors = [akTop, akLeft, akRight]
-            Font.Height = 64
-            MaxLength = 0
-            ParentFont = False
-            TabOrder = 1
-            OnChange = SpnEdtQuestionChange
-            NullValue = 0
-            UpDownVisible = False
-            Value = 0
-          end
-          object LkpEdtTournament: TRxLookupEdit
-            Left = 8
-            Height = 28
-            Top = 24
-            Width = 344
-            ButtonWidth = 19
-            MaxLength = 0
-            NumGlyphs = 1
-            PasswordChar = #0
-            TabOrder = 2
-            LookupDisplay = 'title'
-            LookupField = 'title'
-            LookupSource = DtSrcTournaments
-            PopUpFormOptions.Columns = <>
-          end
-          object Label1: TLabel
-            Left = 16
-            Height = 20
-            Top = 0
-            Width = 51
-            Caption = 'Турнир'
-            FocusControl = LkpEdtTournament
-            ParentColor = False
-          end
-          object LblQuestionNumber: TLabel
-            Left = 16
-            Height = 20
-            Top = 67
-            Width = 111
-            Caption = 'Номер вопроса'
-            FocusControl = SpnEdtQuestion
-            ParentColor = False
-          end
-        end
-        object GrpBxTimer: TGroupBox
-          Left = 0
-          Height = 202
-          Top = 312
-          Width = 367
-          Align = alBottom
-          Caption = 'Таймер'
-          ClientHeight = 177
-          ClientWidth = 363
-          TabOrder = 1
-          inline FrmTmr: TFrameTimer
-            Left = 8
-            Top = 8
-            inherited PlySnd: Tplaysound
-              About.Title = 'About About About About About About About About About About PlaySound'
-            end
-          end
-        end
-      end
       object GrpBxGameTables: TGroupBox
-        Left = 377
+        Left = 358
         Height = 539
         Top = 0
-        Width = 687
+        Width = 706
         Align = alClient
         Caption = 'Игровые таблицы'
         ClientHeight = 514
-        ClientWidth = 683
-        TabOrder = 1
+        ClientWidth = 702
+        TabOrder = 0
         object PgCntrlTables: TPageControl
           Left = 0
           Height = 514
           Top = 0
-          Width = 683
-          ActivePage = TabShtPlayers
+          Width = 702
+          ActivePage = TbShtAnswers
           Align = alClient
           Style = tsFlatButtons
-          TabIndex = 1
+          TabIndex = 0
           TabOrder = 0
           object TbShtAnswers: TTabSheet
-            Caption = 'Ответы'
-            ClientHeight = 481
-            ClientWidth = 675
+            Caption = '✅ Ответы'
+            ClientHeight = 478
+            ClientWidth = 694
             object TlBrAnswers: TToolBar
               Left = 0
               Height = 33
               Top = 0
-              Width = 675
+              Width = 694
               ShowCaptions = True
               TabOrder = 0
               object DBNvgtrAnswers: TDBNavigator
@@ -193,9 +94,9 @@ object FrmMain: TFrmMain
             end
             object DBGrdAnswers: TRxDBGrid
               Left = 0
-              Height = 448
+              Height = 445
               Top = 33
-              Width = 675
+              Width = 694
               ColumnDefValues.BlobText = '(blob)'
               TitleButtons = False
               AutoSort = True
@@ -408,14 +309,14 @@ object FrmMain: TFrmMain
             end
           end
           object TabShtPlayers: TTabSheet
-            Caption = 'Игроки'
-            ClientHeight = 481
-            ClientWidth = 675
+            Caption = '👥 Игроки'
+            ClientHeight = 478
+            ClientWidth = 694
             object TlBrPlayers: TToolBar
               Left = 0
               Height = 33
               Top = 0
-              Width = 675
+              Width = 694
               Caption = 'TlBrPlayers'
               TabOrder = 0
               object DBNvgtrPlayers: TDBNavigator
@@ -440,9 +341,9 @@ object FrmMain: TFrmMain
             end
             object RxDBGrdPlayers: TRxDBGrid
               Left = 0
-              Height = 448
+              Height = 445
               Top = 33
-              Width = 675
+              Width = 694
               ColumnDefValues.BlobText = '(blob)'
               TitleButtons = False
               AutoSort = True
@@ -581,83 +482,192 @@ object FrmMain: TFrmMain
         end
       end
       object Spltr: TSplitter
-        Left = 371
+        Left = 352
         Height = 539
         Top = 0
         Width = 6
       end
-    end
-    object TbShtOptions: TTabSheet
-      Caption = 'Настройки'
-      ClientHeight = 539
-      ClientWidth = 1064
-      object GroupBox4: TGroupBox
-        Left = 16
-        Height = 299
-        Top = 16
-        Width = 504
-        Caption = 'Телеграм'
-        ClientHeight = 274
-        ClientWidth = 500
-        TabOrder = 0
-        object EdtTelegramToken: TLabeledEdit
-          Left = 16
-          Height = 28
-          Top = 24
-          Width = 464
-          Anchors = [akTop, akLeft, akRight]
-          EditLabel.Height = 20
-          EditLabel.Width = 464
-          EditLabel.Caption = 'Токен'
-          EditLabel.ParentColor = False
-          TabOrder = 0
-          TextHint = 'Введите токен телеграм бота'
+      object PgCntrlControl: TPageControl
+        Left = 0
+        Height = 539
+        Top = 0
+        Width = 352
+        ActivePage = TbShtControl
+        Align = alLeft
+        Constraints.MinWidth = 300
+        Style = tsFlatButtons
+        TabIndex = 0
+        TabOrder = 2
+        object TbShtControl: TTabSheet
+          Caption = '🖱️ Управление раундами'
+          ClientHeight = 503
+          ClientWidth = 344
+          object GrpBxQuestion: TGroupBox
+            Left = 0
+            Height = 301
+            Top = 0
+            Width = 344
+            Align = alClient
+            Caption = '❔ Турнирный вопрос'
+            ClientHeight = 276
+            ClientWidth = 340
+            TabOrder = 0
+            object BtnStart: TButton
+              Left = 248
+              Height = 70
+              Top = 104
+              Width = 80
+              Anchors = [akTop, akRight]
+              Caption = '+1'
+              Font.Height = -33
+              OnClick = BtnStartClick
+              ParentFont = False
+              TabOrder = 0
+            end
+            object SpnEdtQuestion: TSpinEditEx
+              Left = 8
+              Height = 70
+              Top = 104
+              Width = 235
+              Anchors = [akTop, akLeft, akRight]
+              Font.Height = 64
+              MaxLength = 0
+              ParentFont = False
+              TabOrder = 1
+              OnChange = SpnEdtQuestionChange
+              NullValue = 0
+              UpDownVisible = False
+              Value = 0
+            end
+            object LkpEdtTournament: TRxLookupEdit
+              Left = 8
+              Height = 28
+              Top = 40
+              Width = 320
+              Anchors = [akTop, akLeft, akRight]
+              ButtonWidth = 19
+              MaxLength = 0
+              NumGlyphs = 1
+              PasswordChar = #0
+              TabOrder = 2
+              LookupDisplay = 'title'
+              LookupField = 'title'
+              LookupSource = DtSrcTournaments
+              PopUpFormOptions.Columns = <>
+            end
+            object LblTournament: TLabel
+              Left = 16
+              Height = 20
+              Top = 19
+              Width = 51
+              Caption = 'Турнир'
+              FocusControl = LkpEdtTournament
+              ParentColor = False
+            end
+            object LblQuestionNumber: TLabel
+              Left = 16
+              Height = 20
+              Top = 80
+              Width = 111
+              Caption = 'Номер вопроса'
+              FocusControl = SpnEdtQuestion
+              ParentColor = False
+            end
+          end
+          object GrpBxTimer: TGroupBox
+            Left = 0
+            Height = 202
+            Top = 301
+            Width = 344
+            Align = alBottom
+            Caption = '⌛ Таймер'
+            ClientHeight = 177
+            ClientWidth = 340
+            TabOrder = 1
+            inline FrmTmr: TFrameTimer
+              Left = 8
+              Top = 8
+              inherited PlySnd: Tplaysound
+                About.Title = 'About About About About About About About About About About PlaySound'
+              end
+            end
+          end
         end
-        object TglBxReceive: TToggleBox
-          Left = 16
-          Height = 63
-          Top = 112
-          Width = 432
-          Caption = 'Принимать ответы'
-          OnChange = TglBxReceiveChange
-          TabOrder = 1
-        end
-        object EdtAdminChatID: TLabeledEdit
-          Left = 136
-          Height = 28
-          Top = 216
-          Width = 344
-          Anchors = [akTop, akLeft, akRight]
-          EditLabel.Height = 20
-          EditLabel.Width = 95
-          EditLabel.Caption = 'Admin chat ID'
-          EditLabel.ParentColor = False
-          LabelPosition = lpLeft
-          TabOrder = 2
-          TextHint = 'Введите chat id канала или группы'
-        end
-        object Label2: TLabel
-          Left = 16
-          Height = 20
-          Top = 192
-          Width = 269
-          Caption = 'ID чата ведущего или администратора'
-          ParentColor = False
-        end
-        object ChckBxAnswertimer: TCheckBox
-          Left = 24
-          Height = 24
-          Top = 64
-          Width = 268
-          Caption = 'Дополнительное время для ответа'
-          Checked = True
-          State = cbChecked
-          TabOrder = 3
+        object TbShtControlOptions: TTabSheet
+          Caption = '⚙️ Настройки'
+          ClientHeight = 503
+          ClientWidth = 344
+          object GrpBxTelegram: TGroupBox
+            Left = 0
+            Height = 299
+            Top = 0
+            Width = 344
+            Align = alTop
+            Caption = 'Телеграм'
+            ClientHeight = 274
+            ClientWidth = 340
+            TabOrder = 0
+            object EdtTelegramToken: TLabeledEdit
+              Left = 8
+              Height = 28
+              Top = 24
+              Width = 320
+              Anchors = [akTop, akLeft, akRight]
+              EditLabel.Height = 20
+              EditLabel.Width = 320
+              EditLabel.Caption = 'Токен'
+              EditLabel.ParentColor = False
+              TabOrder = 0
+              TextHint = 'Введите токен телеграм бота'
+            end
+            object TglBxReceive: TToggleBox
+              Left = 8
+              Height = 63
+              Top = 104
+              Width = 320
+              Caption = 'Принимать ответы'
+              OnChange = TglBxReceiveChange
+              TabOrder = 1
+            end
+            object EdtAdminChatID: TLabeledEdit
+              Left = 88
+              Height = 28
+              Top = 216
+              Width = 240
+              Anchors = [akTop, akLeft, akRight]
+              EditLabel.Height = 20
+              EditLabel.Width = 49
+              EditLabel.Caption = 'Chat ID'
+              EditLabel.ParentColor = False
+              LabelPosition = lpLeft
+              TabOrder = 2
+              TextHint = 'Введите chat id канала или группы'
+            end
+            object LblAdminChatID: TLabel
+              Left = 16
+              Height = 20
+              Top = 192
+              Width = 269
+              Caption = 'ID чата ведущего или администратора'
+              FocusControl = EdtAdminChatID
+              ParentColor = False
+            end
+            object ChckBxAnswertimer: TCheckBox
+              Left = 24
+              Height = 24
+              Top = 64
+              Width = 268
+              Caption = 'Дополнительное время для ответа'
+              Checked = True
+              State = cbChecked
+              TabOrder = 3
+            end
+          end
         end
       end
     end
     object TbShtTournament: TTabSheet
-      Caption = 'Турнирные таблицы'
+      Caption = '🏆 Турнирные таблицы'
       ClientHeight = 539
       ClientWidth = 1064
       inline FrmTrnmnt: TFrameTournament
