@@ -23,6 +23,7 @@ object FrmMain: TFrmMain
     TabIndex = 0
     TabOrder = 0
     TabPosition = tpBottom
+    OnChange = PgCntrlMainChange
     object TbShtGame: TTabSheet
       Caption = '🎮 Управление игрой'
       ClientHeight = 539
@@ -399,6 +400,7 @@ object FrmMain: TFrmMain
                   Title.Caption = 'Команда'
                   Width = 250
                   FieldName = 'teamname'
+                  DirectInput = False
                   EditButtons = <>
                   Filter.DropDownRows = 0
                   Filter.EmptyValue = '(Empty)'
@@ -494,6 +496,7 @@ object FrmMain: TFrmMain
         Width = 352
         ActivePage = TbShtControl
         Align = alLeft
+        Constraints.MaxWidth = 600
         Constraints.MinWidth = 300
         Style = tsFlatButtons
         TabIndex = 0
@@ -625,6 +628,7 @@ object FrmMain: TFrmMain
               Height = 63
               Top = 104
               Width = 320
+              Anchors = [akTop, akLeft, akRight]
               Caption = 'Принимать ответы'
               OnChange = TglBxReceiveChange
               TabOrder = 1
@@ -2731,6 +2735,23 @@ object FrmMain: TFrmMain
         end
       end
     end
+    object TbShtAbout: TTabSheet
+      Caption = 'О программе...'
+      ClientHeight = 539
+      ClientWidth = 1064
+      object Memo1: TMemo
+        Left = 0
+        Height = 539
+        Top = 0
+        Width = 836
+        Align = alLeft
+        Lines.Strings = (
+          'Source: https://github.com/Al-Muhandis/tournament-telegram'
+          'License: MIT'
+        )
+        TabOrder = 0
+      end
+    end
   end
   object ZCnctn: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -2910,7 +2931,7 @@ object FrmMain: TFrmMain
       ReadOnly = False
       Required = False
     end
-    object TStringField
+    object ZQryPlayersTeamName: TStringField
       FieldKind = fkLookup
       FieldName = 'teamname'
       Index = 3
@@ -2932,9 +2953,9 @@ object FrmMain: TFrmMain
   end
   object DtSrcTeams: TDataSource
     AutoEdit = False
-    DataSet = FrameTournament.ZQryTeams
-    Left = 944
-    Top = 328
+    DataSet = ZQryTeams
+    Left = 440
+    Top = 432
   end
   object ZQryTeams: TZReadOnlyQuery
     Connection = FrameTournament.ZCnctn
@@ -2942,7 +2963,7 @@ object FrmMain: TFrmMain
       'select * from teams'
     )
     Params = <>
-    Options = [doCalcDefaults, doSmartOpen, doCachedLobs]
+    Options = [doCalcDefaults, doSmartOpen]
     Left = 440
     Top = 352
     object ZQryTeamsid: TLargeintField

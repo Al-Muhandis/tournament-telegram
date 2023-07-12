@@ -35,6 +35,7 @@ type
     LblTournament: TLabel;
     LblAdminChatID: TLabel;
     LblQuestionNumber: TLabel;
+    Memo1: TMemo;
     PgCntrlControl: TPageControl;
     PgCntrlTables: TPageControl;
     PgCntrlMain: TPageControl;
@@ -43,6 +44,7 @@ type
     LkpEdtTournament: TRxLookupEdit;
     SpnEdtQuestion: TSpinEditEx;
     Spltr: TSplitter;
+    TbShtAbout: TTabSheet;
     TbShtControlOptions: TTabSheet;
     TbShtControl: TTabSheet;
     TbShtTournament: TTabSheet;
@@ -68,6 +70,7 @@ type
     ZQryAnswerssent: TTimeField;
     ZQryPlayersid: TLargeintField;
     ZQryPlayersteam: TLongintField;
+    ZQryPlayersTeamName: TStringField;
     ZQryPlayerstitle: TStringField;
     ZQryTeams: TZReadOnlyQuery;
     ZQryTeamsid: TLargeintField;
@@ -79,6 +82,7 @@ type
     procedure FormCreate({%H-}Sender: TObject);
     procedure FormDestroy({%H-}Sender: TObject);
     procedure FormShow({%H-}Sender: TObject);
+    procedure PgCntrlMainChange(Sender: TObject);
     procedure SpnEdtQuestionChange({%H-}Sender: TObject);
     procedure TglBxReceiveChange(Sender: TObject);
     procedure TlBtnOnlyAcceptedClick({%H-}Sender: TObject);
@@ -174,6 +178,11 @@ end;
 procedure TFrmMain.FormShow(Sender: TObject);
 begin
   FDoUpdateTelegram:=True;
+end;
+
+procedure TFrmMain.PgCntrlMainChange(Sender: TObject);
+begin
+  ZQryTournaments.Refresh;
 end;
 
 procedure TFrmMain.SpnEdtQuestionChange(Sender: TObject);
