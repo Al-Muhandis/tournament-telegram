@@ -183,6 +183,7 @@ end;
 procedure TFrmMain.PgCntrlMainChange(Sender: TObject);
 begin
   ZQryTournaments.Refresh;
+  ZQryTeams.Refresh;
 end;
 
 procedure TFrmMain.SpnEdtQuestionChange(Sender: TObject);
