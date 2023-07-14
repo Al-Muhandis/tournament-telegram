@@ -542,29 +542,12 @@ object FrmMain: TFrmMain
               UpDownVisible = False
               Value = 0
             end
-            object LkpEdtTournament: TRxLookupEdit
-              Left = 8
-              Height = 28
-              Top = 40
-              Width = 320
-              Anchors = [akTop, akLeft, akRight]
-              ButtonWidth = 19
-              MaxLength = 0
-              NumGlyphs = 1
-              PasswordChar = #0
-              TabOrder = 2
-              LookupDisplay = 'title'
-              LookupField = 'title'
-              LookupSource = DtSrcTournaments
-              PopUpFormOptions.Columns = <>
-            end
             object LblTournament: TLabel
               Left = 16
               Height = 20
               Top = 19
               Width = 51
               Caption = 'Турнир'
-              FocusControl = LkpEdtTournament
               ParentColor = False
             end
             object LblQuestionNumber: TLabel
@@ -575,6 +558,21 @@ object FrmMain: TFrmMain
               Caption = 'Номер вопроса'
               FocusControl = SpnEdtQuestion
               ParentColor = False
+            end
+            object DBLkpCmbBx: TDBLookupComboBox
+              Left = 8
+              Height = 28
+              Top = 40
+              Width = 315
+              KeyField = 'id'
+              ListField = 'title'
+              ListFieldIndex = 0
+              ListSource = DtSrcTournaments
+              LookupCache = False
+              EmptyValue = '0'
+              OnChange = DBLkpCmbBxChange
+              Style = csDropDownList
+              TabOrder = 2
             end
           end
           object GrpBxTimer: TGroupBox
@@ -2986,20 +2984,47 @@ object FrmMain: TFrmMain
       Size = 128
     end
   end
+  object DtSrcTournaments: TDataSource
+    AutoEdit = False
+    DataSet = ZQryTournaments
+    Left = 576
+    Top = 426
+  end
   object ZQryTournaments: TZReadOnlyQuery
     Connection = FrameTournament.ZCnctn
     SQL.Strings = (
       'select * from tournaments'
     )
     Params = <>
-    Options = [doCalcDefaults, doSmartOpen]
     Left = 576
     Top = 352
-  end
-  object DtSrcTournaments: TDataSource
-    AutoEdit = False
-    DataSet = ZQryTournaments
-    Left = 576
-    Top = 426
+    object ZQryTournamentsid: TLargeintField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+      Required = False
+    end
+    object ZQryTournamentsdate: TDateField
+      FieldKind = fkData
+      FieldName = 'date'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+    end
+    object ZQryTournamentstitle: TStringField
+      FieldKind = fkData
+      FieldName = 'title'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 256
+    end
   end
 end

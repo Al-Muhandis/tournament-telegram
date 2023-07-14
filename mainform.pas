@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ComCtrls, IniPropStorage, DBCtrls,
-  SpinEx, ZConnection, ZDataset, RxDBGrid, rxlookup, telegram, tgtypes, TimerFrame, tgsendertypes,
+  SpinEx, ZConnection, ZDataset, RxDBGrid, telegram, tgtypes, TimerFrame, tgsendertypes,
   frmtournamentform
   ;
 
@@ -17,6 +17,7 @@ type
   TFrmMain = class(TForm)
     BtnStart: TButton;
     ChckBxAnswertimer: TCheckBox;
+    DBLkpCmbBx: TDBLookupComboBox;
     DtSrcTournaments: TDataSource;
     DBNvgtrAnswers: TDBNavigator;
     DBNvgtrPlayers: TDBNavigator;
@@ -41,7 +42,6 @@ type
     PgCntrlMain: TPageControl;
     DBGrdAnswers: TRxDBGrid;
     RxDBGrdPlayers: TRxDBGrid;
-    LkpEdtTournament: TRxLookupEdit;
     SpnEdtQuestion: TSpinEditEx;
     Spltr: TSplitter;
     TbShtAbout: TTabSheet;
@@ -76,13 +76,17 @@ type
     ZQryTeamsid: TLargeintField;
     ZQryTeamsname: TStringField;
     ZQryTournaments: TZReadOnlyQuery;
+    ZQryTournamentsdate: TDateField;
+    ZQryTournamentsid: TLargeintField;
+    ZQryTournamentstitle: TStringField;
     procedure BtnQuestionSendClick({%H-}Sender: TObject);
     procedure BtnStartClick({%H-}Sender: TObject);
+    procedure DBLkpCmbBxChange({%H-}Sender: TObject);
     procedure FormClose({%H-}Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormCreate({%H-}Sender: TObject);
     procedure FormDestroy({%H-}Sender: TObject);
     procedure FormShow({%H-}Sender: TObject);
-    procedure PgCntrlMainChange(Sender: TObject);
+    procedure PgCntrlMainChange({%H-}Sender: TObject);
     procedure SpnEdtQuestionChange({%H-}Sender: TObject);
     procedure TglBxReceiveChange(Sender: TObject);
     procedure TlBtnOnlyAcceptedClick({%H-}Sender: TObject);
@@ -94,7 +98,7 @@ type
     FTelegramReceiver: TReceiverThread;
     procedure FormReceiveMessage(aMsg: TTelegramMessageObj);
     procedure OpenDB;
-    procedure ReopenAnswers;
+    procedure UpdateAnswersTable;
     procedure FrmStopTimer({%H-}Sender: TObject);
   public
 
@@ -158,6 +162,11 @@ begin
   SpnEdtQuestion.Value:=SpnEdtQuestion.Value+1;
 end;
 
+procedure TFrmMain.DBLkpCmbBxChange(Sender: TObject);
+begin
+  UpdateAnswersTable;
+end;
+
 procedure TFrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   FrmTrnmnt.ApplyDB;
@@ -188,7 +197,7 @@ end;
 
 procedure TFrmMain.SpnEdtQuestionChange(Sender: TObject);
 begin
-  ReopenAnswers;
+  UpdateAnswersTable;
 end;
 
 procedure TFrmMain.TglBxReceiveChange(Sender: TObject);
@@ -214,7 +223,7 @@ end;
 
 procedure TFrmMain.TlBtnOnlyAcceptedClick(Sender: TObject);
 begin
-  ReopenAnswers;
+  UpdateAnswersTable;
 end;
 
 procedure TFrmMain.ZQryAnswersreplyGetText(Sender: TField; var aText: string; DisplayText: Boolean);
@@ -301,16 +310,21 @@ begin
   ZQryPlayers.Active:=True;
 end;
 
-procedure TFrmMain.ReopenAnswers;
+procedure TFrmMain.UpdateAnswersTable;
 var
   s: String;
+  aTour: Integer;
 begin
   if TlBtnOnlyAccepted.Down then
     s:=' and accepted = ''Y'''
   else
     s:=EmptyStr;
+  if DBLkpCmbBx.KeyValue = Null then
+    aTour:=-1
+  else
+    aTour:=DBLkpCmbBx.KeyValue;
   ZQryAnswers.SQL.Text:=format('select * from answers where tournament = %d and question = %d%s',
-    [FrmTrnmnt.ZQryTournamentsid.AsInteger, SpnEdtQuestion.Value, s]);
+      [aTour, SpnEdtQuestion.Value, s]);
   ZQryAnswers.Open;
 end;
 
