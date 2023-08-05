@@ -224,9 +224,14 @@ begin
 end;
 
 procedure TFrmMain.PgCntrlMainChange(Sender: TObject);
+var
+  i: Integer;
 begin
+  i:=DBLkpCmbBx.ItemIndex;
   ZQryTournaments.Refresh;
   ZQryTeams.Refresh;
+  if i<>-1 then
+    DBLkpCmbBx.ItemIndex:=i;
 end;
 
 procedure TFrmMain.SpnEdtQuestionChange(Sender: TObject);
