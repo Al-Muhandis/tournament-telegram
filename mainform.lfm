@@ -2730,6 +2730,10 @@ object FrmMain: TFrmMain
               end
             end
           end
+          inherited TbShtOptions: TTabSheet
+            ClientHeight = 503
+            ClientWidth = 1056
+          end
         end
       end
     end
@@ -2887,7 +2891,12 @@ object FrmMain: TFrmMain
     end
   end
   object IniPrpStrg: TIniPropStorage
-    StoredValues = <>
+    StoredValues = <    
+      item
+        Name = '11QInRound'
+      end>
+    OnSavingProperties = IniPrpStrgSavingProperties
+    OnRestoringProperties = IniPrpStrgRestoringProperties
     Left = 523
     Top = 188
   end

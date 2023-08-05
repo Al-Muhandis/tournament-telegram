@@ -86,6 +86,8 @@ type
     procedure FormCreate({%H-}Sender: TObject);
     procedure FormDestroy({%H-}Sender: TObject);
     procedure FormShow({%H-}Sender: TObject);
+    procedure IniPrpStrgRestoringProperties(Sender: TObject);
+    procedure IniPrpStrgSavingProperties(Sender: TObject);
     procedure PgCntrlMainChange({%H-}Sender: TObject);
     procedure SpnEdtQuestionChange({%H-}Sender: TObject);
     procedure TglBxReceiveChange(Sender: TObject);
@@ -221,6 +223,16 @@ end;
 procedure TFrmMain.FormShow(Sender: TObject);
 begin
   FDoUpdateTelegram:=True;
+end;
+
+procedure TFrmMain.IniPrpStrgRestoringProperties(Sender: TObject);
+begin
+  FrmTrnmnt.Q11InRound:=TIniPropStorage(Sender).ReadBoolean('Q11InRound', False);
+end;
+
+procedure TFrmMain.IniPrpStrgSavingProperties(Sender: TObject);
+begin
+  TIniPropStorage(Sender).WriteBoolean('Q11InRound', FrmTrnmnt.Q11InRound);
 end;
 
 procedure TFrmMain.PgCntrlMainChange(Sender: TObject);
