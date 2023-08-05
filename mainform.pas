@@ -110,13 +110,45 @@ var
 implementation
 
 uses
-  eventlog, tgutils, DateUtils, sql_db
+  eventlog, tgutils, DateUtils, sql_db, FileInfo
   ;
 
 var
   AppDir: String;
 
 {$R *.lfm}
+
+function BuildVersion: String;
+var
+  FileVerInfo: TFileVersionInfo;
+begin
+  try
+    FileVerInfo:=TFileVersionInfo.Create(nil);
+    try
+      FileVerInfo.ReadFileInfo;
+      if FileVerInfo.VersionStrings.Count>0 then
+        Result:=FileVerInfo.VersionStrings.Values['FileVersion']
+      else
+        Result:=EmptyStr;
+    finally
+      FileVerInfo.Free;
+    end;
+  except
+    Result := EmptyStr;
+  end;
+end;
+
+function BuildString: String;
+var
+  aBuildVersion: String;
+begin
+  aBuildVersion:=BuildVersion;
+  if aBuildVersion.IsEmpty then
+    Result := 'Not success getting build resource info'
+  else
+    Result:='Версия: '+aBuildVersion;
+  Result+=LineEnding+'  FPC: '+{$MACRO ON}IntToStr(FPC_FULLVERSION){$MACRO OFF};
+end;
 
 { TFrmMain }
 
@@ -139,6 +171,8 @@ begin
   FrmTmr.OnStop:=@FrmStopTimer;
   FrmTrnmnt.InitDB;
   OpenDB;
+
+  Memo1.Lines.Add(BuildString);
 end;
 
 procedure TFrmMain.BtnQuestionSendClick(Sender: TObject);
