@@ -2893,7 +2893,7 @@ object FrmMain: TFrmMain
   object IniPrpStrg: TIniPropStorage
     StoredValues = <    
       item
-        Name = '11QInRound'
+        Name = 'Q11InRound'
       end>
     OnSavingProperties = IniPrpStrgSavingProperties
     OnRestoringProperties = IniPrpStrgRestoringProperties
