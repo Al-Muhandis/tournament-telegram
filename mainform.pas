@@ -17,6 +17,7 @@ type
   TFrmMain = class(TForm)
     BtnStart: TButton;
     ChckBxAnswertimer: TCheckBox;
+    ChckBxQuestionAutoInc: TCheckBox;
     DBLkpCmbBx: TDBLookupComboBox;
     DtSrcTournaments: TDataSource;
     DBNvgtrAnswers: TDBNavigator;
@@ -59,6 +60,7 @@ type
     ZCnctn: TZConnection;
     ZQryAnswers: TZQuery;
     ZQryAnswersaccepted: TBooleanField;
+    ZQryAnswersenrolled: TBooleanField;
     ZQryAnswersquestion: TLargeintField;
     ZQryAnswersTeamTitle: TStringField;
     ZQryAnswerstournament: TLargeintField;
@@ -92,6 +94,8 @@ type
     procedure SpnEdtQuestionChange({%H-}Sender: TObject);
     procedure TglBxReceiveChange(Sender: TObject);
     procedure TlBtnOnlyAcceptedClick({%H-}Sender: TObject);
+    procedure ZQryAnswersCalcFields({%H-}DataSet: TDataSet);
+    procedure ZQryAnswersenrolledChange(Sender: TField);
     procedure ZQryAnswersreplyGetText(Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
     procedure ZQryAnswersTeamTitleGetText({%H-}Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
   private
@@ -99,6 +103,7 @@ type
     FTelegramFace: TTelegramSender;
     FTelegramReceiver: TReceiverThread;
     procedure FormReceiveMessage(aMsg: TTelegramMessageObj);
+    procedure FrmStartTimer({%H-}Sender: TObject);
     procedure OpenDB;
     procedure UpdateAnswersTable;
     procedure FrmStopTimer({%H-}Sender: TObject);
@@ -112,7 +117,7 @@ var
 implementation
 
 uses
-  eventlog, tgutils, DateUtils, sql_db, FileInfo
+  eventlog, tgutils, DateUtils, sql_db, FileInfo, Variants
   ;
 
 var
@@ -171,6 +176,7 @@ begin
   FrmTmr.StartTime:=Now;
   FrmTmr.AnswerTimer:=ChckBxAnswertimer.Checked;
   FrmTmr.OnStop:=@FrmStopTimer;
+  FrmTmr.OnStart:=@FrmStartTimer;
   FrmTrnmnt.InitDB;
   OpenDB;
 
@@ -277,6 +283,52 @@ begin
   UpdateAnswersTable;
 end;
 
+procedure TFrmMain.ZQryAnswersCalcFields(DataSet: TDataSet);
+var
+  aTour, aTeam, aQuestion: Integer;
+  aAccepted: Boolean;
+begin
+  if DBLkpCmbBx.KeyValue = Null then
+    aTour:=-1
+  else
+    aTour:=DBLkpCmbBx.KeyValue;
+  aTeam:=ZQryAnswersUserTeamID.AsInteger; 
+  aQuestion:=SpnEdtQuestion.Value;
+  aAccepted:=ZQryAnswersaccepted.AsBoolean;
+  if (aTour<>-1) and (aQuestion>0) and aAccepted and
+    (FrmTrnmnt.ZQryScoreTable.Locate('tournament; team', VarArrayOf([aTour, aTeam]), [])) then
+    ZQryAnswersenrolled.AsBoolean:=FrmTrnmnt.FieldFromQuestion(aQuestion).AsBoolean
+  else
+    ZQryAnswersenrolled.AsBoolean:=False
+end;
+
+procedure TFrmMain.ZQryAnswersenrolledChange(Sender: TField);
+var
+  aTour, aTeam, aQuestion: Integer;
+  aAccepted: Boolean;
+begin
+  if DBLkpCmbBx.KeyValue <> Null then
+    aTour:=DBLkpCmbBx.KeyValue
+  else
+    Exit;
+  aTeam:=ZQryAnswersUserTeamID.AsInteger;
+  aQuestion:=SpnEdtQuestion.Value;
+  aAccepted:=ZQryAnswersaccepted.AsBoolean;
+  if aTour=-1 then
+    Exit;
+  if aQuestion<=0 then
+    Exit;
+  if not aAccepted then
+    Exit;
+  if FrmTrnmnt.ZQryScoreTable.Locate('tournament; team', VarArrayOf([aTour, aTeam]), []) then
+  begin
+    FrmTrnmnt.ZQryScoreTable.Edit;
+    FrmTrnmnt.FieldFromQuestion(aQuestion).AsBoolean:=Sender.AsBoolean;
+    FrmTrnmnt.ZQryScoreTable.Post;
+    FrmTrnmnt.ZQryScoreTable.ApplyUpdates;
+  end;
+end;
+
 procedure TFrmMain.ZQryAnswersreplyGetText(Sender: TField; var aText: string; DisplayText: Boolean);
 begin
   case Sender.AsInteger of
@@ -290,7 +342,7 @@ procedure TFrmMain.ZQryAnswersTeamTitleGetText(Sender: TField; var aText: string
 var
   aTeamID: LongInt;
 begin
-  aTeamID:=ZQryAnswersUserTEamID.AsInteger;
+  aTeamID:=ZQryAnswersUserTeamID.AsInteger;
   if FrmTrnmnt.ZQryTeams.Locate('id', aTeamID{%H-}, []) then
     aText:=FrmTrnmnt.ZQryTeamsname.AsString
   else
@@ -343,6 +395,12 @@ begin
   ZQryAnswers.ApplyUpdates;
   if aAdminChat<>0 then
     FTelegramFace.sendMessage(aAdminChat, 'Ответ сдан '+aUser+' ['+S+']:'+LineEnding+aMsg.Text);
+end;
+
+procedure TFrmMain.FrmStartTimer(Sender: TObject);
+begin
+  if ChckBxQuestionAutoInc.Checked then
+    SpnEdtQuestion.Value:=SpnEdtQuestion.Value+1;
 end;
 
 procedure TFrmMain.OpenDB;
