@@ -310,12 +310,12 @@ begin
   if DBLkpCmbBx.KeyValue <> Null then
     aTour:=DBLkpCmbBx.KeyValue
   else
+    aTour:=-1;
+  if aTour=-1 then
     Exit;
   aTeam:=ZQryAnswersUserTeamID.AsInteger;
   aQuestion:=SpnEdtQuestion.Value;
   aAccepted:=ZQryAnswersaccepted.AsBoolean;
-  if aTour=-1 then
-    Exit;
   if aQuestion<=0 then
     Exit;
   if not aAccepted then
