@@ -18,7 +18,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="4"/>
-      <BuildNr Value="2"/>
+      <BuildNr Value="7"/>
       <Language Value="0419"/>
     </VersionInfo>
     <BuildModes>
@@ -62,6 +62,11 @@
               </Win32>
             </Options>
           </Linking>
+          <Other>
+            <CompilerMessages>
+              <IgnoredMessages idx6058="True"/>
+            </CompilerMessages>
+          </Other>
         </CompilerOptions>
       </Item>
       <Item Name="Release">

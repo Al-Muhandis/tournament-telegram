@@ -60,6 +60,7 @@ type
     ZCnctn: TZConnection;
     ZQryAnswers: TZQuery;
     ZQryAnswersaccepted: TBooleanField;
+    ZQryAnswersBetRound: TBooleanField;
     ZQryAnswersenrolled: TBooleanField;
     ZQryAnswersquestion: TLargeintField;
     ZQryAnswersTeamTitle: TStringField;
@@ -80,7 +81,8 @@ type
     ZQryTournaments: TZReadOnlyQuery;
     ZQryTournamentsdate: TDateField;
     ZQryTournamentsid: TLargeintField;
-    ZQryTournamentstitle: TStringField;
+    ZQryTournamentstitle: TStringField;   
+    procedure BetChange(Sender: TField; aRoundNum: Byte);
     procedure BtnQuestionSendClick({%H-}Sender: TObject);
     procedure BtnStartClick({%H-}Sender: TObject);
     procedure DBLkpCmbBxChange({%H-}Sender: TObject);
@@ -94,6 +96,7 @@ type
     procedure SpnEdtQuestionChange({%H-}Sender: TObject);
     procedure TglBxReceiveChange(Sender: TObject);
     procedure TlBtnOnlyAcceptedClick({%H-}Sender: TObject);
+    procedure ZQryAnswersBetRoundChange(Sender: TField);
     procedure ZQryAnswersCalcFields({%H-}DataSet: TDataSet);
     procedure ZQryAnswersenrolledChange(Sender: TField);
     procedure ZQryAnswersreplyGetText(Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
@@ -234,11 +237,13 @@ end;
 procedure TFrmMain.IniPrpStrgRestoringProperties(Sender: TObject);
 begin
   FrmTrnmnt.Q11InRound:=TIniPropStorage(Sender).ReadBoolean('Q11InRound', False);
+  FrmTrnmnt.QuestionWithBet:=TIniPropStorage(Sender).ReadInteger('QWithBet', 0);
 end;
 
 procedure TFrmMain.IniPrpStrgSavingProperties(Sender: TObject);
 begin
-  TIniPropStorage(Sender).WriteBoolean('Q11InRound', FrmTrnmnt.Q11InRound);
+  TIniPropStorage(Sender).WriteBoolean('Q11InRound', FrmTrnmnt.Q11InRound); 
+  TIniPropStorage(Sender).WriteInteger('QWithBet',   FrmTrnmnt.QuestionWithBet);
 end;
 
 procedure TFrmMain.PgCntrlMainChange(Sender: TObject);
@@ -283,6 +288,14 @@ begin
   UpdateAnswersTable;
 end;
 
+procedure TFrmMain.ZQryAnswersBetRoundChange(Sender: TField);
+var
+  aQuestion: Integer;
+begin
+  aQuestion:=SpnEdtQuestion.Value;
+  BetChange(Sender, FrmTrnmnt.RoundFromQuestion(aQuestion));
+end;
+
 procedure TFrmMain.ZQryAnswersCalcFields(DataSet: TDataSet);
 var
   aTour, aTeam, aQuestion: Integer;
@@ -297,9 +310,14 @@ begin
   aAccepted:=ZQryAnswersaccepted.AsBoolean;
   if (aTour<>-1) and (aQuestion>0) and aAccepted and
     (FrmTrnmnt.ZQryScoreTable.Locate('tournament; team', VarArrayOf([aTour, aTeam]), [])) then
-    ZQryAnswersenrolled.AsBoolean:=FrmTrnmnt.FieldFromQuestion(aQuestion).AsBoolean
-  else
-    ZQryAnswersenrolled.AsBoolean:=False
+  begin
+    ZQryAnswersenrolled.AsBoolean:=FrmTrnmnt.FieldFromQuestion(aQuestion).AsBoolean;
+    ZQryAnswersBetRound.AsBoolean:=FrmTrnmnt.BetFieldFromQuestion(aQuestion).AsBoolean;
+  end
+  else begin
+    ZQryAnswersenrolled.AsBoolean:=False;
+    ZQryAnswersBetRound.AsBoolean:=False;
+  end;
 end;
 
 procedure TFrmMain.ZQryAnswersenrolledChange(Sender: TField);
@@ -347,6 +365,41 @@ begin
     aText:=FrmTrnmnt.ZQryTeamsname.AsString
   else
     aText:=' *не задано* ';
+end;
+
+procedure TFrmMain.BetChange(Sender: TField; aRoundNum: Byte);
+var
+  aTour, aTeam, aQuestion: Integer;
+  aAccepted: Boolean;
+  aBetROundField: TBooleanField;
+begin
+  if DBLkpCmbBx.KeyValue <> Null then
+    aTour:=DBLkpCmbBx.KeyValue
+  else
+    aTour:=-1;
+  if aTour=-1 then
+    Exit;
+  aTeam:=ZQryAnswersUserTeamID.AsInteger;
+  aQuestion:=SpnEdtQuestion.Value;
+  if aQuestion<=0 then
+    Exit;
+  aAccepted:=ZQryAnswersaccepted.AsBoolean;
+  if not aAccepted then
+    Exit;
+  if FrmTrnmnt.ZQryScoreTable.Locate('tournament; team', VarArrayOf([aTour, aTeam]), []) then
+  begin
+    case aRoundNum of
+      1: aBetROundField:=FrmTrnmnt.ZQryScoreTablebet1round;
+      2: aBetROundField:=FrmTrnmnt.ZQryScoreTablebet2round;
+      3: aBetROundField:=FrmTrnmnt.ZQryScoreTablebet3round;
+    else
+      Exit;
+    end;
+    FrmTrnmnt.ZQryScoreTable.Edit;
+    aBetROundField.AsBoolean:=Sender.AsBoolean;
+    FrmTrnmnt.ZQryScoreTable.Post;
+    FrmTrnmnt.ZQryScoreTable.ApplyUpdates;
+  end;
 end;
 
 procedure TFrmMain.FormReceiveMessage(aMsg: TTelegramMessageObj);

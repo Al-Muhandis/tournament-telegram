@@ -178,6 +178,20 @@ object FrmMain: TFrmMain
                 end              
                 item
                   Title.Alignment = taCenter
+                  Title.Orientation = toVertical90
+                  Title.Caption = 'Ставка'
+                  FieldName = 'BetRound'
+                  EditButtons = <>
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.NotEmptyValue = '(Not empty)'
+                  Filter.AllValue = '(All values)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  Footers = <>
+                end              
+                item
+                  Title.Alignment = taCenter
                   Title.Orientation = toHorizontal
                   Title.Caption = 'Время'
                   Width = 80
@@ -702,7 +716,6 @@ object FrmMain: TFrmMain
       inline FrmTrnmnt: TFrameTournament
         Height = 539
         Width = 1064
-        Align = alClient
         ClientHeight = 539
         ClientWidth = 1064
         inherited PgCntrl: TPageControl
@@ -715,6 +728,9 @@ object FrmMain: TFrmMain
               Width = 1056
               inherited DBNavigator2: TDBNavigator
                 Hints.Strings = (                )
+              end
+              inherited ToolButton1: TToolButton
+                Height = 28
               end
             end
             inherited PgCntrlRounds: TPageControl
@@ -820,7 +836,7 @@ object FrmMain: TFrmMain
                       Title.Color = clBlack
                       Title.Orientation = toVertical90
                       Title.Caption = 'Итого'
-                      Width = 25
+                      Width = 23
                       FieldName = 'Result'
                       DirectInput = False
                       EditButtons = <>
@@ -838,7 +854,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|1'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q1'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -855,7 +871,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|2'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q2'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -872,7 +888,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|3'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q3'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -889,7 +905,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|4'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q4'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -906,7 +922,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|5'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q5'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -923,7 +939,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|6'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q6'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -940,7 +956,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|7'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q7'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -957,7 +973,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|8'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q8'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -974,7 +990,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|9'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q9'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -991,7 +1007,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|10'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q10'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1008,8 +1024,25 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|11'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q11'
+                      EditButtons = <>
+                      Filter.DropDownRows = 0
+                      Filter.EmptyValue = '(Empty)'
+                      Filter.NotEmptyValue = '(Not empty)'
+                      Filter.AllValue = '(All values)'
+                      Filter.EmptyFont.Style = [fsItalic]
+                      Filter.ItemIndex = -1
+                      Footers = <>
+                      KeyList.Strings = (                      )
+                    end                  
+                    item
+                      PickList.Strings = (                      )
+                      Title.Alignment = taCenter
+                      Title.Orientation = toVertical90
+                      Title.Caption = 'Ставка'
+                      Width = 23
+                      FieldName = 'bet1round'
                       EditButtons = <>
                       Filter.DropDownRows = 0
                       Filter.EmptyValue = '(Empty)'
@@ -1027,7 +1060,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taRightJustify
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|Итог'
-                      Width = 25
+                      Width = 23
                       FieldName = 'Round1'
                       DirectInput = False
                       EditButtons = <>
@@ -1045,7 +1078,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|12'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q12'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1062,7 +1095,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|13'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q13'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1079,7 +1112,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|14'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q14'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1096,7 +1129,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|15'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q15'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1113,7 +1146,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|16'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q16'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1130,7 +1163,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|17'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q17'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1147,7 +1180,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|18'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q18'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1164,7 +1197,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|19'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q19'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1181,7 +1214,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|20'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q20'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1198,7 +1231,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|21'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q21'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1215,8 +1248,25 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|22'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q22'
+                      EditButtons = <>
+                      Filter.DropDownRows = 0
+                      Filter.EmptyValue = '(Empty)'
+                      Filter.NotEmptyValue = '(Not empty)'
+                      Filter.AllValue = '(All values)'
+                      Filter.EmptyFont.Style = [fsItalic]
+                      Filter.ItemIndex = -1
+                      Footers = <>
+                      KeyList.Strings = (                      )
+                    end                  
+                    item
+                      PickList.Strings = (                      )
+                      Title.Alignment = taCenter
+                      Title.Orientation = toVertical90
+                      Title.Caption = 'Ставка'
+                      Width = 23
+                      FieldName = 'bet2round'
                       EditButtons = <>
                       Filter.DropDownRows = 0
                       Filter.EmptyValue = '(Empty)'
@@ -1233,7 +1283,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|Итог'
-                      Width = 25
+                      Width = 23
                       FieldName = 'Round2'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1250,7 +1300,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|23'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q23'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1267,7 +1317,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|24'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q24'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1284,7 +1334,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|25'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q25'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1301,7 +1351,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|26'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q26'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1318,7 +1368,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|27'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q27'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1335,7 +1385,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|28'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q28'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1352,7 +1402,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|29'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q29'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1369,7 +1419,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|30'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q30'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1387,7 +1437,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|31'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q31'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1405,7 +1455,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|32'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q32'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1423,8 +1473,25 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|33'
-                      Width = 25
+                      Width = 23
                       FieldName = 'q33'
+                      EditButtons = <>
+                      Filter.DropDownRows = 0
+                      Filter.EmptyValue = '(Empty)'
+                      Filter.NotEmptyValue = '(Not empty)'
+                      Filter.AllValue = '(All values)'
+                      Filter.EmptyFont.Style = [fsItalic]
+                      Filter.ItemIndex = -1
+                      Footers = <>
+                      KeyList.Strings = (                      )
+                    end                  
+                    item
+                      PickList.Strings = (                      )
+                      Title.Alignment = taCenter
+                      Title.Orientation = toVertical90
+                      Title.Caption = 'Ставка'
+                      Width = 23
+                      FieldName = 'bet3round'
                       EditButtons = <>
                       Filter.DropDownRows = 0
                       Filter.EmptyValue = '(Empty)'
@@ -1441,7 +1508,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|Итог'
-                      Width = 31
+                      Width = 34
                       FieldName = 'Round3'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1553,7 +1620,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Итого'
-                      Width = 62
+                      Width = 58
                       FieldName = 'Result'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1571,7 +1638,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|1'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q1'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1588,7 +1655,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|2'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q2'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1605,7 +1672,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|3'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q3'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1622,7 +1689,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|4'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q4'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1639,7 +1706,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|5'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q5'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1656,7 +1723,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|6'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q6'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1673,7 +1740,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|7'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q7'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1690,7 +1757,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|8'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q8'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1707,7 +1774,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|9'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q9'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1724,7 +1791,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|10'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q10'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1741,8 +1808,25 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 1|11'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q11'
+                      EditButtons = <>
+                      Filter.DropDownRows = 0
+                      Filter.EmptyValue = '(Empty)'
+                      Filter.NotEmptyValue = '(Not empty)'
+                      Filter.AllValue = '(All values)'
+                      Filter.EmptyFont.Style = [fsItalic]
+                      Filter.ItemIndex = -1
+                      Footers = <>
+                      KeyList.Strings = (                      )
+                    end                  
+                    item
+                      PickList.Strings = (                      )
+                      Title.Alignment = taCenter
+                      Title.Orientation = toVertical90
+                      Title.Caption = 'Ставка'
+                      Width = 58
+                      FieldName = 'bet1round'
                       EditButtons = <>
                       Filter.DropDownRows = 0
                       Filter.EmptyValue = '(Empty)'
@@ -1763,7 +1847,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Счет|Зн.'
-                      Width = 62
+                      Width = 58
                       FieldName = 'Round1'
                       DirectInput = False
                       EditButtons = <>
@@ -1785,7 +1869,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Счет|Кл.'
-                      Width = 68
+                      Width = 62
                       FieldName = 'Round1Club'
                       DirectInput = False
                       EditButtons = <>
@@ -1898,7 +1982,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Итого'
-                      Width = 62
+                      Width = 58
                       FieldName = 'Result'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1915,7 +1999,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|12'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q12'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1932,7 +2016,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|13'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q13'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1949,7 +2033,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|14'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q14'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1966,7 +2050,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|15'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q15'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1983,7 +2067,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|16'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q16'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2000,7 +2084,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|17'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q17'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2017,7 +2101,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|18'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q18'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2034,7 +2118,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|19'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q19'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2051,7 +2135,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|20'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q20'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2068,7 +2152,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|21'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q21'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2085,8 +2169,25 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 2|22'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q22'
+                      EditButtons = <>
+                      Filter.DropDownRows = 0
+                      Filter.EmptyValue = '(Empty)'
+                      Filter.NotEmptyValue = '(Not empty)'
+                      Filter.AllValue = '(All values)'
+                      Filter.EmptyFont.Style = [fsItalic]
+                      Filter.ItemIndex = -1
+                      Footers = <>
+                      KeyList.Strings = (                      )
+                    end                  
+                    item
+                      PickList.Strings = (                      )
+                      Title.Alignment = taCenter
+                      Title.Orientation = toVertical90
+                      Title.Caption = 'Ставка'
+                      Width = 58
+                      FieldName = 'bet2round'
                       EditButtons = <>
                       Filter.DropDownRows = 0
                       Filter.EmptyValue = '(Empty)'
@@ -2106,7 +2207,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Счет|Зн.'
-                      Width = 62
+                      Width = 58
                       FieldName = 'Round2'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2127,7 +2228,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Счет|Кл.'
-                      Width = 68
+                      Width = 62
                       FieldName = 'Round2Club'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2239,7 +2340,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Итого'
-                      Width = 62
+                      Width = 58
                       FieldName = 'Result'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2256,7 +2357,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|23'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q23'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2273,7 +2374,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|24'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q24'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2290,7 +2391,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|25'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q25'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2307,7 +2408,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|26'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q26'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2324,7 +2425,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|27'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q27'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2341,7 +2442,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|28'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q28'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2358,7 +2459,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|29'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q29'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2375,7 +2476,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|30'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q30'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2393,7 +2494,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|31'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q31'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2411,7 +2512,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|32'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q32'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2429,8 +2530,25 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Раунд 3|33'
-                      Width = 62
+                      Width = 58
                       FieldName = 'q33'
+                      EditButtons = <>
+                      Filter.DropDownRows = 0
+                      Filter.EmptyValue = '(Empty)'
+                      Filter.NotEmptyValue = '(Not empty)'
+                      Filter.AllValue = '(All values)'
+                      Filter.EmptyFont.Style = [fsItalic]
+                      Filter.ItemIndex = -1
+                      Footers = <>
+                      KeyList.Strings = (                      )
+                    end                  
+                    item
+                      PickList.Strings = (                      )
+                      Title.Alignment = taCenter
+                      Title.Orientation = toVertical90
+                      Title.Caption = 'Ставка'
+                      Width = 58
+                      FieldName = 'bet3round'
                       EditButtons = <>
                       Filter.DropDownRows = 0
                       Filter.EmptyValue = '(Empty)'
@@ -2450,7 +2568,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Счет|Зн.'
-                      Width = 62
+                      Width = 58
                       FieldName = 'Round3'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2471,7 +2589,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Счет|Кл.'
-                      Width = 68
+                      Width = 62
                       FieldName = 'Round3Club'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2862,11 +2980,23 @@ object FrmMain: TFrmMain
       OnChange = ZQryAnswersenrolledChange
       DisplayValues = 'True;False'
     end
+    object ZQryAnswersBetRound: TBooleanField
+      DisplayLabel = 'Ставка'
+      FieldKind = fkCalculated
+      FieldName = 'BetRound'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      OnChange = ZQryAnswersBetRoundChange
+      DisplayValues = 'True;False'
+    end
     object ZQryAnswersquestion: TLargeintField
       DisplayWidth = 15
       FieldKind = fkData
       FieldName = 'question'
-      Index = 5
+      Index = 6
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2875,7 +3005,7 @@ object FrmMain: TFrmMain
     object ZQryAnswerssent: TTimeField
       FieldKind = fkData
       FieldName = 'sent'
-      Index = 6
+      Index = 7
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2884,7 +3014,7 @@ object FrmMain: TFrmMain
     object ZQryAnswersuser_id: TLargeintField
       FieldKind = fkData
       FieldName = 'user_id'
-      Index = 7
+      Index = 8
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2893,7 +3023,7 @@ object FrmMain: TFrmMain
     object TStringField
       FieldKind = fkLookup
       FieldName = 'Username'
-      Index = 8
+      Index = 9
       KeyFields = 'user_id'
       LookupCache = False
       LookupDataSet = ZQryPlayers
@@ -2907,7 +3037,7 @@ object FrmMain: TFrmMain
     object ZQryAnswersTeamTitle: TStringField
       FieldKind = fkCalculated
       FieldName = 'TeamTitle'
-      Index = 9
+      Index = 10
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = True
@@ -2917,7 +3047,7 @@ object FrmMain: TFrmMain
     object ZQryAnswersUserTEamID: TLargeintField
       FieldKind = fkLookup
       FieldName = 'UserTeamID'
-      Index = 10
+      Index = 11
       KeyFields = 'user_id'
       LookupCache = False
       LookupDataSet = ZQryPlayers
