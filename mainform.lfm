@@ -3062,6 +3062,9 @@ object FrmMain: TFrmMain
     StoredValues = <    
       item
         Name = 'Q11InRound'
+      end    
+      item
+        Name = 'QWithBet'
       end>
     OnSavingProperties = IniPrpStrgSavingProperties
     OnRestoringProperties = IniPrpStrgRestoringProperties
