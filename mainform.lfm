@@ -3059,13 +3059,7 @@ object FrmMain: TFrmMain
     end
   end
   object IniPrpStrg: TIniPropStorage
-    StoredValues = <    
-      item
-        Name = 'Q11InRound'
-      end    
-      item
-        Name = 'QWithBet'
-      end>
+    StoredValues = <>
     OnSavingProperties = IniPrpStrgSavingProperties
     OnRestoringProperties = IniPrpStrgRestoringProperties
     Left = 523
