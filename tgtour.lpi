@@ -18,7 +18,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="4"/>
-      <BuildNr Value="8"/>
+      <BuildNr Value="9"/>
       <Language Value="0419"/>
     </VersionInfo>
     <BuildModes>

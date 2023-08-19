@@ -107,6 +107,7 @@ type
     FTelegramReceiver: TReceiverThread;
     procedure FormReceiveMessage(aMsg: TTelegramMessageObj);
     procedure FrmStartTimer({%H-}Sender: TObject);
+    procedure MainFormBetOptionChanged(aQuestionNum: Integer);
     procedure OpenDB;
     procedure UpdateAnswersTable;
     procedure FrmStopTimer({%H-}Sender: TObject);
@@ -181,6 +182,7 @@ begin
   FrmTmr.OnStop:=@FrmStopTimer;
   FrmTmr.OnStart:=@FrmStartTimer;
   FrmTrnmnt.InitDB;
+  FrmTrnmnt.OnBetOptionChanged:=@MainFormBetOptionChanged;
   OpenDB;
 
   Memo1.Lines.Add(BuildString);
@@ -454,6 +456,11 @@ procedure TFrmMain.FrmStartTimer(Sender: TObject);
 begin
   if ChckBxQuestionAutoInc.Checked then
     SpnEdtQuestion.Value:=SpnEdtQuestion.Value+1;
+end;
+
+procedure TFrmMain.MainFormBetOptionChanged(aQuestionNum: Integer);
+begin
+  ZQryAnswersBetRound.Visible:=aQuestionNum>0;
 end;
 
 procedure TFrmMain.OpenDB;
