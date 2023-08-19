@@ -462,8 +462,12 @@ begin
 end;
 
 procedure TFrmMain.MainFormBetOptionChanged(aQuestionNum: Integer);
+var
+  aIsQuestionWithBet: Boolean;
 begin
-  ZQryAnswersBetRound.Visible:=aQuestionNum>0;
+  aIsQuestionWithBet:=aQuestionNum>0;
+  ZQryAnswersBetRound.Visible:=aIsQuestionWithBet;
+  LblQuestionNumWithBet.Visible:=aIsQuestionWithBet;
 end;
 
 procedure TFrmMain.OpenDB;

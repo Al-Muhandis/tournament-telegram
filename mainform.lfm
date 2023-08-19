@@ -1,10 +1,10 @@
 object FrmMain: TFrmMain
   Left = 526
-  Height = 609
-  Top = 149
+  Height = 584
+  Top = 174
   Width = 1072
   Caption = 'Интеллектуальный турнир через телеграм'
-  ClientHeight = 609
+  ClientHeight = 584
   ClientWidth = 1072
   DesignTimePPI = 120
   OnClose = FormClose
@@ -15,7 +15,7 @@ object FrmMain: TFrmMain
   LCLVersion = '2.2.6.0'
   object PgCntrlMain: TPageControl
     Left = 0
-    Height = 609
+    Height = 584
     Top = 0
     Width = 1072
     ActivePage = TbShtGame
@@ -26,21 +26,21 @@ object FrmMain: TFrmMain
     OnChange = PgCntrlMainChange
     object TbShtGame: TTabSheet
       Caption = '🎮 Управление игрой'
-      ClientHeight = 576
+      ClientHeight = 551
       ClientWidth = 1064
       object GrpBxGameTables: TGroupBox
         Left = 358
-        Height = 576
+        Height = 551
         Top = 0
         Width = 706
         Align = alClient
         Caption = 'Игровые таблицы'
-        ClientHeight = 551
+        ClientHeight = 526
         ClientWidth = 702
         TabOrder = 0
         object PgCntrlTables: TPageControl
           Left = 0
-          Height = 551
+          Height = 526
           Top = 0
           Width = 702
           ActivePage = TbShtAnswers
@@ -50,7 +50,7 @@ object FrmMain: TFrmMain
           TabOrder = 0
           object TbShtAnswers: TTabSheet
             Caption = '✅ Ответы'
-            ClientHeight = 515
+            ClientHeight = 490
             ClientWidth = 694
             object TlBrAnswers: TToolBar
               Left = 0
@@ -95,7 +95,7 @@ object FrmMain: TFrmMain
             end
             object DBGrdAnswers: TRxDBGrid
               Left = 0
-              Height = 482
+              Height = 457
               Top = 33
               Width = 694
               ColumnDefValues.BlobText = '(blob)'
@@ -339,7 +339,7 @@ object FrmMain: TFrmMain
           end
           object TabShtPlayers: TTabSheet
             Caption = '👥 Игроки'
-            ClientHeight = 515
+            ClientHeight = 490
             ClientWidth = 694
             object TlBrPlayers: TToolBar
               Left = 0
@@ -370,7 +370,7 @@ object FrmMain: TFrmMain
             end
             object RxDBGrdPlayers: TRxDBGrid
               Left = 0
-              Height = 482
+              Height = 457
               Top = 33
               Width = 694
               ColumnDefValues.BlobText = '(blob)'
@@ -513,13 +513,13 @@ object FrmMain: TFrmMain
       end
       object Spltr: TSplitter
         Left = 352
-        Height = 576
+        Height = 551
         Top = 0
         Width = 6
       end
       object PgCntrlControl: TPageControl
         Left = 0
-        Height = 576
+        Height = 551
         Top = 0
         Width = 352
         ActivePage = TbShtControl
@@ -531,16 +531,16 @@ object FrmMain: TFrmMain
         TabOrder = 2
         object TbShtControl: TTabSheet
           Caption = '🖱️ Управление раундами'
-          ClientHeight = 540
+          ClientHeight = 515
           ClientWidth = 344
           object GrpBxQuestion: TGroupBox
             Left = 0
-            Height = 338
+            Height = 313
             Top = 0
             Width = 344
             Align = alClient
             Caption = '❔ Турнирный вопрос'
-            ClientHeight = 313
+            ClientHeight = 288
             ClientWidth = 340
             TabOrder = 0
             object LblTournament: TLabel
@@ -568,11 +568,11 @@ object FrmMain: TFrmMain
             end
             object GrpBxQuestions: TGroupBox
               Left = 8
-              Height = 220
+              Height = 196
               Top = 84
               Width = 320
               Caption = 'Вопросы'
-              ClientHeight = 195
+              ClientHeight = 171
               ClientWidth = 316
               TabOrder = 1
               object BtnStart: TButton
@@ -632,7 +632,7 @@ object FrmMain: TFrmMain
           object GrpBxTimer: TGroupBox
             Left = 0
             Height = 202
-            Top = 338
+            Top = 313
             Width = 344
             Align = alBottom
             Caption = '⌛ Таймер'
@@ -650,7 +650,7 @@ object FrmMain: TFrmMain
         end
         object TbShtControlOptions: TTabSheet
           Caption = '⚙️ Настройки'
-          ClientHeight = 540
+          ClientHeight = 515
           ClientWidth = 344
           object GrpBxTelegram: TGroupBox
             Left = 0
@@ -737,18 +737,18 @@ object FrmMain: TFrmMain
     end
     object TbShtTournament: TTabSheet
       Caption = '🏆 Турнирные таблицы'
-      ClientHeight = 576
+      ClientHeight = 551
       ClientWidth = 1064
       inline FrmTrnmnt: TFrameTournament
-        Height = 576
+        Height = 551
         Width = 1064
-        ClientHeight = 576
+        ClientHeight = 551
         ClientWidth = 1064
         inherited PgCntrl: TPageControl
-          Height = 576
+          Height = 551
           Width = 1064
           inherited TbShtScoreTableAllRounds: TTabSheet
-            ClientHeight = 540
+            ClientHeight = 515
             ClientWidth = 1056
             inherited TlBrScoreTable: TToolBar
               Width = 1056
@@ -760,13 +760,13 @@ object FrmMain: TFrmMain
               end
             end
             inherited PgCntrlRounds: TPageControl
-              Height = 507
+              Height = 482
               Width = 1056
               inherited TbShtAllRounds: TTabSheet
-                ClientHeight = 471
+                ClientHeight = 446
                 ClientWidth = 1048
                 inherited RxDBGrdScoreTable: TRxDBGrid
-                  Height = 471
+                  Height = 446
                   Width = 1048
                   Columns = <                  
                     item
@@ -1549,10 +1549,10 @@ object FrmMain: TFrmMain
                 end
               end
               inherited TbShtRound1: TTabSheet
-                ClientHeight = 471
+                ClientHeight = 446
                 ClientWidth = 1048
                 inherited RxDBGrdScoreTable1: TRxDBGrid
-                  Height = 471
+                  Height = 446
                   Width = 1048
                   Columns = <                  
                     item
@@ -1911,10 +1911,10 @@ object FrmMain: TFrmMain
                 end
               end
               inherited TbShtRound2: TTabSheet
-                ClientHeight = 471
+                ClientHeight = 446
                 ClientWidth = 1048
                 inherited RxDBGrdScoreTable2: TRxDBGrid
-                  Height = 471
+                  Height = 446
                   Width = 1048
                   Columns = <                  
                     item
@@ -2269,10 +2269,10 @@ object FrmMain: TFrmMain
                 end
               end
               inherited TbShtRound3: TTabSheet
-                ClientHeight = 471
+                ClientHeight = 446
                 ClientWidth = 1048
                 inherited RxDBGrdScoreTable3: TRxDBGrid
-                  Height = 471
+                  Height = 446
                   Width = 1048
                   Columns = <                  
                     item
@@ -2630,10 +2630,10 @@ object FrmMain: TFrmMain
                 end
               end
               inherited TbShtResult: TTabSheet
-                ClientHeight = 471
+                ClientHeight = 446
                 ClientWidth = 1048
                 inherited RxDBGrdScoreTable4: TRxDBGrid
-                  Height = 471
+                  Height = 446
                   Width = 1048
                   Columns = <                  
                     item
@@ -2871,10 +2871,10 @@ object FrmMain: TFrmMain
             end
           end
           inherited TbShtTeams: TTabSheet
-            ClientHeight = 540
+            ClientHeight = 515
             ClientWidth = 1056
             inherited RxDBGridTeams: TRxDBGrid
-              Height = 507
+              Height = 482
               Width = 1056
             end
             inherited TlBrTeams: TToolBar
@@ -2885,10 +2885,10 @@ object FrmMain: TFrmMain
             end
           end
           inherited TbShtTournament: TTabSheet
-            ClientHeight = 540
+            ClientHeight = 515
             ClientWidth = 1056
             inherited DBGrdTournaments: TRxDBGrid
-              Height = 507
+              Height = 482
               Width = 1056
             end
             inherited TlBrTournaments: TToolBar
@@ -2899,7 +2899,7 @@ object FrmMain: TFrmMain
             end
           end
           inherited TbShtOptions: TTabSheet
-            ClientHeight = 540
+            ClientHeight = 515
             ClientWidth = 1056
           end
         end
@@ -2907,11 +2907,11 @@ object FrmMain: TFrmMain
     end
     object TbShtAbout: TTabSheet
       Caption = 'О программе...'
-      ClientHeight = 576
+      ClientHeight = 551
       ClientWidth = 1064
       object Memo1: TMemo
         Left = 0
-        Height = 576
+        Height = 551
         Top = 0
         Width = 836
         Align = alLeft
