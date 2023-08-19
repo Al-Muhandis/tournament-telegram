@@ -28,12 +28,15 @@ type
     EdtAdminChatID: TLabeledEdit;
     FrmTrnmnt: TFrameTournament;
     FrmTmr: TFrameTimer;
+    GrpBxQuestions: TGroupBox;
     GrpBxTimer: TGroupBox;
     GrpBxGameTables: TGroupBox;
     GrpBxTelegram: TGroupBox;
     GrpBxQuestion: TGroupBox;
     EdtTelegramToken: TLabeledEdit;
     IniPrpStrg: TIniPropStorage;
+    LblRound: TLabel;
+    LblQuestionNumWithBet: TLabel;
     LblTournament: TLabel;
     LblAdminChatID: TLabel;
     LblQuestionNumber: TLabel;
@@ -482,7 +485,7 @@ end;
 procedure TFrmMain.UpdateAnswersTable;
 var
   s: String;
-  aTour: Integer;
+  aTour, aQuestion: Integer;
 begin
   if TlBtnOnlyAccepted.Down then
     s:=' and accepted = ''Y'''
@@ -492,9 +495,12 @@ begin
     aTour:=-1
   else
     aTour:=DBLkpCmbBx.KeyValue;
+  aQuestion:= SpnEdtQuestion.Value;
   ZQryAnswers.SQL.Text:=format('select * from answers where tournament = %d and question = %d%s',
-      [aTour, SpnEdtQuestion.Value, s]);
+      [aTour, aQuestion, s]);
   ZQryAnswers.Open;
+  LblRound.Caption:='Раунд: №'+FrmTrnmnt.RoundFromQuestion(aQuestion).ToString;
+  LblQuestionNumWithBet.Caption:='Вопросы раундов со ставкой: №'+FrmTrnmnt.QuestionWithBet.ToString;
 end;
 
 procedure TFrmMain.FrmStopTimer(Sender: TObject);
