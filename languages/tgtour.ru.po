@@ -42,6 +42,18 @@ msgstr "не задан"
 msgid "Version"
 msgstr "Версия"
 
+#: tframetimer.btnstart.caption
+msgid "▶️"
+msgstr ""
+
+#: tframetimer.btnstop.caption
+msgid "⏹️"
+msgstr ""
+
+#: tframetimer.edt.text
+msgid "00:00"
+msgstr ""
+
 #: tframetournament.dbgrdtournaments.columns[0].title.caption
 msgctxt "tframetournament.dbgrdtournaments.columns[0].title.caption"
 msgid "id"

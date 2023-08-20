@@ -10,7 +10,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, lazcontrols, mainform, frmtournamentform, zcomponent, rxnew
+  Forms, DefaultTranslator, LCLTranslator, lazcontrols, mainform, frmtournamentform, zcomponent, rxnew
   { you can add units after this };
 
 {$R *.res}

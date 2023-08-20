@@ -521,12 +521,12 @@ object FrmMain: TFrmMain
         Height = 551
         Top = 0
         Width = 352
-        ActivePage = TbShtControlOptions
+        ActivePage = TbShtControl
         Align = alLeft
         Constraints.MaxWidth = 600
         Constraints.MinWidth = 300
         Style = tsFlatButtons
-        TabIndex = 1
+        TabIndex = 0
         TabOrder = 2
         object TbShtControl: TTabSheet
           Caption = '🖱️ Round control'
@@ -640,7 +640,7 @@ object FrmMain: TFrmMain
             TabOrder = 1
             inline FrmTmr: TFrameTimer
               inherited PlySnd: Tplaysound
-                About.Title = 'About About About About About About About About About About About About About About About About PlaySound'
+                About.Title = 'About About About About About About About About About About About About About About About About About PlaySound'
               end
             end
           end
@@ -751,9 +751,6 @@ object FrmMain: TFrmMain
               Width = 1056
               inherited DBNavigator2: TDBNavigator
                 Hints.Strings = (                )
-              end
-              inherited ToolButton1: TToolButton
-                Height = 28
               end
             end
             inherited PgCntrlRounds: TPageControl
