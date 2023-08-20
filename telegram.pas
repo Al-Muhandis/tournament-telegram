@@ -59,6 +59,9 @@ uses
   Graphics, fpjson, eventlog
   ;
 
+resourcestring
+  s_StrtMsg='This is a telegram bot for an intellectual tournament';
+
 { TReceiverThread }
 
 procedure TReceiverThread.BotReceiveCallbackQuery(ASender: TObject; ACallback: TCallbackQueryObj);
@@ -74,7 +77,7 @@ end;
 procedure TReceiverThread.BotStartCommandHandler(ASender: TObject; const ACommand: String;
   AMessage: TTelegramMessageObj);
 begin
-  FBot.sendMessage('Это телеграм бот для интеллектуального турнира');
+  FBot.sendMessage(s_StrtMsg);
 end;
 
 procedure TReceiverThread.SendMsgToMainThreadCallback;

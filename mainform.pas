@@ -102,7 +102,6 @@ type
     procedure ZQryAnswersBetRoundChange(Sender: TField);
     procedure ZQryAnswersCalcFields({%H-}DataSet: TDataSet);
     procedure ZQryAnswersenrolledChange(Sender: TField);
-    procedure ZQryAnswersreplyGetText(Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
     procedure ZQryAnswersTeamTitleGetText({%H-}Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
   private
     FDoUpdateTelegram: Boolean;
@@ -132,6 +131,14 @@ var
 
 {$R *.lfm}
 
+resourcestring
+  s_QstnWthBt=    'Questions of round with a bet: #';
+  s_Rnd=          'Round';
+  s_AnswrGvnBy=   'The answer is given by ';
+  s_DYWntStChtHst='Do you want to set chat %s as a Host log?';
+  s_Unst=         'unset';
+  s_Vrsn=         'Version';
+
 function BuildVersion: String;
 var
   FileVerInfo: TFileVersionInfo;
@@ -160,7 +167,7 @@ begin
   if aBuildVersion.IsEmpty then
     Result := 'Not success getting build resource info'
   else
-    Result:='Версия: '+aBuildVersion;
+    Result:=s_Vrsn+': '+aBuildVersion;
   Result+=LineEnding+'  FPC: '+{$MACRO ON}IntToStr(FPC_FULLVERSION){$MACRO OFF};
 end;
 
@@ -352,15 +359,6 @@ begin
   end;
 end;
 
-procedure TFrmMain.ZQryAnswersreplyGetText(Sender: TField; var aText: string; DisplayText: Boolean);
-begin
-  case Sender.AsInteger of
-    0: aText:='?';
-    1: aText:='Взят';
-    2: aText:='Не взят';
-  end;
-end;
-
 procedure TFrmMain.ZQryAnswersTeamTitleGetText(Sender: TField; var aText: string; DisplayText: Boolean);
 var
   aTeamID: LongInt;
@@ -369,7 +367,7 @@ begin
   if FrmTrnmnt.ZQryTeams.Locate('id', aTeamID{%H-}, []) then
     aText:=FrmTrnmnt.ZQryTeamsname.AsString
   else
-    aText:=' *не задано* ';
+    aText:=' *'+s_Unst+'* ';
 end;
 
 procedure TFrmMain.BetChange(Sender: TField; aRoundNum: Byte);
@@ -419,7 +417,7 @@ begin
   aDT:=UnixToDateTime(aMsg.Date, False);
   if (aMsg.Text='/bind') and (EdtAdminChatID.Text=EmptyStr) then
   begin
-    S:=Format('Вы хотите установить чат %s в качестве журнала Ведущего?', [CaptionFromChat(aMsg.Chat)]);
+    S:=Format(s_DYWntStChtHst, [CaptionFromChat(aMsg.Chat)]);
     if MessageDlg(Application.Title, S, mtConfirmation, mbYesNo, 0)=mrYes then
       EdtAdminChatID.Text:=aMsg.Chat.ID.ToString;
     Exit;
@@ -452,7 +450,7 @@ begin
   ZQryAnswers.Post;
   ZQryAnswers.ApplyUpdates;
   if aAdminChat<>0 then
-    FTelegramFace.sendMessage(aAdminChat, 'Ответ сдан '+aUser+' ['+S+']:'+LineEnding+aMsg.Text);
+    FTelegramFace.sendMessage(aAdminChat, s_AnswrGvnBy+aUser+' ['+S+']:'+LineEnding+aMsg.Text);
 end;
 
 procedure TFrmMain.FrmStartTimer(Sender: TObject);
@@ -503,8 +501,8 @@ begin
   ZQryAnswers.SQL.Text:=format('select * from answers where tournament = %d and question = %d%s',
       [aTour, aQuestion, s]);
   ZQryAnswers.Open;
-  LblRound.Caption:='Раунд: №'+FrmTrnmnt.RoundFromQuestion(aQuestion).ToString;
-  LblQuestionNumWithBet.Caption:='Вопросы раундов со ставкой: №'+FrmTrnmnt.QuestionWithBet.ToString;
+  LblRound.Caption:=s_Rnd+': #'+FrmTrnmnt.RoundFromQuestion(aQuestion).ToString;
+  LblQuestionNumWithBet.Caption:=s_QstnWthBt+FrmTrnmnt.QuestionWithBet.ToString;
 end;
 
 procedure TFrmMain.FrmStopTimer(Sender: TObject);
