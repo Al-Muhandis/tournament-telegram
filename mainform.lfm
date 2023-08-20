@@ -18,9 +18,9 @@ object FrmMain: TFrmMain
     Height = 584
     Top = 0
     Width = 1072
-    ActivePage = TbShtGame
+    ActivePage = TbShtTournament
     Align = alClient
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 0
     TabPosition = tpBottom
     OnChange = PgCntrlMainChange
@@ -1083,9 +1083,9 @@ object FrmMain: TFrmMain
                       MaxSize = 64
                       PickList.Strings = (                      )
                       ReadOnly = True
-                      Title.Alignment = taRightJustify
-                      Title.Orientation = toHorizontal
-                      Title.Caption = 'Раунд 1|Итог'
+                      Title.Alignment = taCenter
+                      Title.Orientation = toVertical90
+                      Title.Caption = 'Итог'
                       Width = 23
                       FieldName = 'Round1'
                       DirectInput = False
@@ -1307,8 +1307,8 @@ object FrmMain: TFrmMain
                       PickList.Strings = (                      )
                       ReadOnly = True
                       Title.Alignment = taCenter
-                      Title.Orientation = toHorizontal
-                      Title.Caption = 'Раунд 2|Итог'
+                      Title.Orientation = toVertical90
+                      Title.Caption = 'Итог'
                       Width = 23
                       FieldName = 'Round2'
                       EditButtons = <>
@@ -1532,8 +1532,8 @@ object FrmMain: TFrmMain
                       PickList.Strings = (                      )
                       ReadOnly = True
                       Title.Alignment = taCenter
-                      Title.Orientation = toHorizontal
-                      Title.Caption = 'Раунд 3|Итог'
+                      Title.Orientation = toVertical90
+                      Title.Caption = 'Итог'
                       Width = 34
                       FieldName = 'Round3'
                       EditButtons = <>
