@@ -9,6 +9,14 @@ msgstr ""
 msgid "The answer is given by "
 msgstr ""
 
+#: mainform.s_cnctd
+msgid "connected"
+msgstr ""
+
+#: mainform.s_dscnctd
+msgid "disconnected"
+msgstr ""
+
 #: mainform.s_dywntstchthst
 #, object-pascal-format
 msgid "Do you want to set chat %s as a Host log?"
@@ -29,6 +37,11 @@ msgstr ""
 
 #: mainform.s_rnd
 msgid "Round"
+msgstr ""
+
+#: mainform.s_tlgrm
+msgctxt "mainform.s_tlgrm"
+msgid "Telegram"
 msgstr ""
 
 #: mainform.s_tmr

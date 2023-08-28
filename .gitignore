@@ -39,3 +39,4 @@ ppas.bat
 
 # Application bundle for Mac OS
 *.app/
+*.mo

@@ -40,7 +40,7 @@ type
     LblTournament: TLabel;
     LblAdminChatID: TLabel;
     LblQuestionNumber: TLabel;
-    Memo1: TMemo;
+    Mm: TMemo;
     PgCntrlControl: TPageControl;
     PgCntrlTables: TPageControl;
     PgCntrlMain: TPageControl;
@@ -109,6 +109,8 @@ type
     FTelegramFace: TTelegramSender;
     FTelegramReceiver: TReceiverThread;
     procedure FormReceiveMessage(aMsg: TTelegramMessageObj);
+    procedure FormReceiverStart;
+    procedure FormReceiverTerminate(Sender: TObject);
     procedure FrmStartTimer({%H-}Sender: TObject);
     procedure MainFormBetOptionChanged(aQuestionNum: Integer);
     procedure OpenDB;
@@ -132,6 +134,8 @@ var
 
 const
   emj_HrGlsNtDn='⏳';
+  emj_Antn=     '📡';
+  emj_StpSgn=   '🛑';
 
 {$R *.lfm}
 
@@ -145,6 +149,9 @@ resourcestring
   s_Tmr=          'Timer';
   s_IsStpd=       'is stopped';
   s_IsRnng=       'is running';
+  s_Tlgrm=        'Telegram';
+  s_cnctd=        'connected';
+  s_dscnctd=      'disconnected';
 
 function BuildVersion: String;
 var
@@ -202,7 +209,8 @@ begin
   FrmTrnmnt.OnBetOptionChanged:=@MainFormBetOptionChanged;
   OpenDB;
 
-  Memo1.Lines.Add(BuildString);
+  Mm.Lines.Add(BuildString);
+  FormReceiverTerminate(nil);
 end;
 
 procedure TFrmMain.BtnQuestionSendClick(Sender: TObject);
@@ -290,6 +298,8 @@ begin
       FTelegramReceiver:=TReceiverThread.Create(EdtTelegramToken.Text);
       FTelegramReceiver.FreeOnTerminate:=True;
       FTelegramReceiver.OnDoMessage:=@FormReceiveMessage;
+      FTelegramReceiver.OnTerminate:=@FormReceiverTerminate;
+      FormReceiverStart;
       FTelegramReceiver.Start;
     end
     else begin
@@ -458,6 +468,16 @@ begin
   ZQryAnswers.ApplyUpdates;
   if aAdminChat<>0 then
     FTelegramFace.sendMessage(aAdminChat, s_AnswrGvnBy+aUser+' ['+S+']:'+LineEnding+aMsg.Text);
+end;
+
+procedure TFrmMain.FormReceiverStart;
+begin
+  SttsBr.Panels[0].Text:=s_Tlgrm+': '+emj_Antn+' '+s_Cnctd;
+end;
+
+procedure TFrmMain.FormReceiverTerminate(Sender: TObject);
+begin
+  SttsBr.Panels[0].Text:=s_Tlgrm+': '+emj_StpSgn+' '+s_dscnctd;
 end;
 
 procedure TFrmMain.FrmStartTimer(Sender: TObject);

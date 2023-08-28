@@ -18,9 +18,9 @@ object FrmMain: TFrmMain
     Height = 555
     Top = 0
     Width = 1072
-    ActivePage = TbShtGame
+    ActivePage = TbShtAbout
     Align = alClient
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     TabPosition = tpBottom
     OnChange = PgCntrlMainChange
@@ -2860,7 +2860,7 @@ object FrmMain: TFrmMain
       Caption = 'About...'
       ClientHeight = 522
       ClientWidth = 1064
-      object Memo1: TMemo
+      object Mm: TMemo
         Left = 0
         Height = 522
         Top = 0
