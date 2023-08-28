@@ -455,6 +455,7 @@ end;
 
 procedure TFrmMain.FrmStartTimer(Sender: TObject);
 begin
+  GrpBxQuestion.Enabled:=False;
   if ChckBxQuestionAutoInc.Checked then
     SpnEdtQuestion.Value:=SpnEdtQuestion.Value+1;
 end;
@@ -507,6 +508,7 @@ end;
 
 procedure TFrmMain.FrmStopTimer(Sender: TObject);
 begin
+  GrpBxQuestion.Enabled:=True;
   TlBtnOnlyAccepted.Down:=False;
   ZQryAnswers.First;
   while not ZQryAnswers.EOF do
@@ -529,6 +531,7 @@ begin
     ZQryAnswers.Next;
   end;     
   ZQryAnswers.ApplyUpdates;
+  GrpBxQuestion.Enabled:=True;
 end;
 
 initialization
