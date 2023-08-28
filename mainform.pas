@@ -48,6 +48,7 @@ type
     RxDBGrdPlayers: TRxDBGrid;
     SpnEdtQuestion: TSpinEditEx;
     Spltr: TSplitter;
+    SttsBr: TStatusBar;
     TbShtAbout: TTabSheet;
     TbShtControlOptions: TTabSheet;
     TbShtControl: TTabSheet;
@@ -129,6 +130,9 @@ uses
 var
   AppDir: String;
 
+const
+  emj_HrGlsNtDn='⏳';
+
 {$R *.lfm}
 
 resourcestring
@@ -138,6 +142,9 @@ resourcestring
   s_DYWntStChtHst='Do you want to set chat %s as a Host log?';
   s_Unst=         'unset';
   s_Vrsn=         'Version';
+  s_Tmr=          'Timer';
+  s_IsStpd=       'is stopped';
+  s_IsRnng=       'is running';
 
 function BuildVersion: String;
 var
@@ -456,6 +463,7 @@ end;
 procedure TFrmMain.FrmStartTimer(Sender: TObject);
 begin
   GrpBxQuestion.Enabled:=False;
+  SttsBr.Panels[1].Text:=s_Tmr+' '+emj_HrGlsNtDn+' '+s_IsRnng;
   if ChckBxQuestionAutoInc.Checked then
     SpnEdtQuestion.Value:=SpnEdtQuestion.Value+1;
 end;
@@ -509,6 +517,7 @@ end;
 procedure TFrmMain.FrmStopTimer(Sender: TObject);
 begin
   GrpBxQuestion.Enabled:=True;
+  SttsBr.Panels[1].Text:=s_Tmr+' '+s_IsStpd;
   TlBtnOnlyAccepted.Down:=False;
   ZQryAnswers.First;
   while not ZQryAnswers.EOF do

@@ -25,6 +25,14 @@ msgstr "Ответ дан "
 msgid "Do you want to set chat %s as a Host log?"
 msgstr "Вы хотите установить чат %s как журнал Ведущего?"
 
+#: mainform.s_isrnng
+msgid "is running"
+msgstr "запущен"
+
+#: mainform.s_isstpd
+msgid "is stopped"
+msgstr "остановлен"
+
 #: mainform.s_qstnwthbt
 msgctxt "mainform.s_qstnwthbt"
 msgid "Questions of round with a bet: #"
@@ -33,6 +41,12 @@ msgstr "Вопросы раунда со ставкой: №"
 #: mainform.s_rnd
 msgid "Round"
 msgstr "Раунд"
+
+#: mainform.s_tmr
+#, fuzzy
+msgctxt "mainform.s_tmr"
+msgid "Timer"
+msgstr "Таймер"
 
 #: mainform.s_unst
 msgid "unset"
@@ -1353,6 +1367,7 @@ msgid "Questions"
 msgstr "Вопросы"
 
 #: tfrmmain.grpbxtelegram.caption
+msgctxt "tfrmmain.grpbxtelegram.caption"
 msgid "Telegram"
 msgstr "Телеграм"
 
@@ -1402,6 +1417,16 @@ msgctxt "tfrmmain.rxdbgrdplayers.columns[3].title.caption"
 msgid "Team"
 msgstr "Команда"
 
+#: tfrmmain.sttsbr.panels[0].text
+msgctxt "tfrmmain.sttsbr.panels[0].text"
+msgid "Telegram"
+msgstr "Телеграм"
+
+#: tfrmmain.sttsbr.panels[1].text
+msgctxt "tfrmmain.sttsbr.panels[1].text"
+msgid "Timer"
+msgstr "Таймер"
+
 #: tfrmmain.tabshtplayers.caption
 msgid "👥 Players"
 msgstr "👥 Игроки"
@@ -1435,10 +1460,7 @@ msgstr "🏆 Таблицы турнира"
 msgid "Connect to the telegram server"
 msgstr "Подключиться к серверу телеграм"
 
-#: tfrmmain.tlbtn1.caption
-msgid "TlBtn1"
-msgstr " "
-
 #: tfrmmain.tlbtnonlyaccepted.caption
 msgid "Only ☑️"
 msgstr "Только ☑️"
+

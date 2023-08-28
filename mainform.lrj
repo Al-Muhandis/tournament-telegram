@@ -4,7 +4,6 @@
 {"hash":132780467,"name":"tfrmmain.grpbxgametables.caption","sourcebytes":[71,97,109,101,32,116,97,98,108,101,115],"value":"Game tables"},
 {"hash":146185171,"name":"tfrmmain.tbshtanswers.caption","sourcebytes":[226,156,133,32,65,110,115,119,101,114,115],"value":"\u2705 Answers"},
 {"hash":251116223,"name":"tfrmmain.tlbtnonlyaccepted.caption","sourcebytes":[79,110,108,121,32,226,152,145,239,184,143],"value":"Only \u2611\uFE0F"},
-{"hash":95460113,"name":"tfrmmain.tlbtn1.caption","sourcebytes":[84,108,66,116,110,49],"value":"TlBtn1"},
 {"hash":1780,"name":"tfrmmain.dbgrdanswers.columns[0].title.caption","sourcebytes":[105,100],"value":"id"},
 {"hash":197831646,"name":"tfrmmain.dbgrdanswers.columns[1].title.caption","sourcebytes":[81,117,101,115,116,105,111,110],"value":"Question"},
 {"hash":75869634,"name":"tfrmmain.dbgrdanswers.columns[2].title.caption","sourcebytes":[65,110,115,119,101,114],"value":"Answer"},
@@ -154,5 +153,7 @@
 {"hash":107046318,"name":"tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtresult.rxdbgrdscoretabletotal.columns[8].title.caption","sourcebytes":[82,111,117,110,100,32,50,124,67,108,46],"value":"Round 2|Cl."},
 {"hash":107248302,"name":"tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtresult.rxdbgrdscoretabletotal.columns[9].title.caption","sourcebytes":[82,111,117,110,100,32,51,124,80,108,46],"value":"Round 3|Pl."},
 {"hash":107242926,"name":"tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtresult.rxdbgrdscoretabletotal.columns[10].title.caption","sourcebytes":[82,111,117,110,100,32,51,124,67,108,46],"value":"Round 3|Cl."},
-{"hash":158102910,"name":"tfrmmain.tbshtabout.caption","sourcebytes":[65,98,111,117,116,46,46,46],"value":"About..."}
+{"hash":158102910,"name":"tfrmmain.tbshtabout.caption","sourcebytes":[65,98,111,117,116,46,46,46],"value":"About..."},
+{"hash":204205533,"name":"tfrmmain.sttsbr.panels[0].text","sourcebytes":[84,101,108,101,103,114,97,109],"value":"Telegram"},
+{"hash":5964738,"name":"tfrmmain.sttsbr.panels[1].text","sourcebytes":[84,105,109,101,114],"value":"Timer"}
 ]}
