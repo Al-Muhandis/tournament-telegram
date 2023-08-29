@@ -110,7 +110,7 @@ type
     FTelegramReceiver: TReceiverThread;
     procedure FormReceiveMessage(aMsg: TTelegramMessageObj);
     procedure FormReceiverStart;
-    procedure FormReceiverTerminate(Sender: TObject);
+    procedure FormReceiverTerminate({%H-}Sender: TObject);
     procedure FrmStartTimer({%H-}Sender: TObject);
     procedure MainFormBetOptionChanged(aQuestionNum: Integer);
     procedure OpenDB;
@@ -503,7 +503,8 @@ begin
   ZCnctn.Database:=AppDir+'answers.sqlite';
   ZCnctn.Connect;
   ZCnctn.ExecuteDirect(_sql_players);
-  ZCnctn.ExecuteDirect(_sql_answers);
+  ZCnctn.ExecuteDirect(_sql_answers); 
+  ZCnctn.ExecuteDirect(_sql_index1);
 
   ZQryTeams.Connection:=FrmTrnmnt.ZCnctn;
   ZQryTeams.Active:=True;
