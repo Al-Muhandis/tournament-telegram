@@ -18,31 +18,31 @@ object FrmMain: TFrmMain
     Height = 555
     Top = 0
     Width = 1072
-    ActivePage = TbShtAbout
+    ActivePage = TbShtGame
     Align = alClient
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
-    TabPosition = tpBottom
+    TabPosition = tpLeft
     OnChange = PgCntrlMainChange
     object TbShtGame: TTabSheet
       Caption = '🎮 Game control'
-      ClientHeight = 522
-      ClientWidth = 1064
+      ClientHeight = 547
+      ClientWidth = 1038
       object GrpBxGameTables: TGroupBox
         Left = 358
-        Height = 522
+        Height = 547
         Top = 0
-        Width = 706
+        Width = 680
         Align = alClient
         Caption = 'Game tables'
-        ClientHeight = 497
-        ClientWidth = 702
+        ClientHeight = 522
+        ClientWidth = 676
         TabOrder = 0
         object PgCntrlTables: TPageControl
           Left = 0
-          Height = 497
+          Height = 522
           Top = 0
-          Width = 702
+          Width = 676
           ActivePage = TbShtAnswers
           Align = alClient
           Style = tsFlatButtons
@@ -50,13 +50,13 @@ object FrmMain: TFrmMain
           TabOrder = 0
           object TbShtAnswers: TTabSheet
             Caption = '✅ Answers'
-            ClientHeight = 461
-            ClientWidth = 694
+            ClientHeight = 486
+            ClientWidth = 668
             object TlBrAnswers: TToolBar
               Left = 0
               Height = 33
               Top = 0
-              Width = 694
+              Width = 668
               ShowCaptions = True
               TabOrder = 0
               object DBNvgtrAnswers: TDBNavigator
@@ -94,9 +94,9 @@ object FrmMain: TFrmMain
             end
             object DBGrdAnswers: TRxDBGrid
               Left = 0
-              Height = 428
+              Height = 453
               Top = 33
-              Width = 694
+              Width = 668
               ColumnDefValues.BlobText = '(blob)'
               TitleButtons = False
               AutoSort = True
@@ -338,13 +338,13 @@ object FrmMain: TFrmMain
           end
           object TabShtPlayers: TTabSheet
             Caption = '👥 Players'
-            ClientHeight = 461
-            ClientWidth = 694
+            ClientHeight = 486
+            ClientWidth = 668
             object TlBrPlayers: TToolBar
               Left = 0
               Height = 33
               Top = 0
-              Width = 694
+              Width = 668
               TabOrder = 0
               object DBNvgtrPlayers: TDBNavigator
                 Left = 1
@@ -368,9 +368,9 @@ object FrmMain: TFrmMain
             end
             object RxDBGrdPlayers: TRxDBGrid
               Left = 0
-              Height = 428
+              Height = 453
               Top = 33
-              Width = 694
+              Width = 668
               ColumnDefValues.BlobText = '(blob)'
               TitleButtons = False
               AutoSort = True
@@ -511,13 +511,13 @@ object FrmMain: TFrmMain
       end
       object Spltr: TSplitter
         Left = 352
-        Height = 522
+        Height = 547
         Top = 0
         Width = 6
       end
       object PgCntrlControl: TPageControl
         Left = 0
-        Height = 522
+        Height = 547
         Top = 0
         Width = 352
         ActivePage = TbShtControl
@@ -529,16 +529,16 @@ object FrmMain: TFrmMain
         TabOrder = 2
         object TbShtControl: TTabSheet
           Caption = '🖱️ Round control'
-          ClientHeight = 486
+          ClientHeight = 511
           ClientWidth = 344
           object GrpBxQuestion: TGroupBox
             Left = 0
-            Height = 284
+            Height = 309
             Top = 0
             Width = 344
             Align = alClient
             Caption = '❔ Tournament question'
-            ClientHeight = 259
+            ClientHeight = 284
             ClientWidth = 340
             TabOrder = 0
             object LblTournament: TLabel
@@ -630,7 +630,7 @@ object FrmMain: TFrmMain
           object GrpBxTimer: TGroupBox
             Left = 0
             Height = 202
-            Top = 284
+            Top = 309
             Width = 344
             Align = alBottom
             Caption = '⌛ Timer'
@@ -646,7 +646,7 @@ object FrmMain: TFrmMain
         end
         object TbShtControlOptions: TTabSheet
           Caption = '⚙️ Options'
-          ClientHeight = 486
+          ClientHeight = 511
           ClientWidth = 344
           object GrpBxTelegram: TGroupBox
             Left = 0
@@ -733,21 +733,21 @@ object FrmMain: TFrmMain
     end
     object TbShtTournament: TTabSheet
       Caption = '🏆 Tournament tables'
-      ClientHeight = 522
-      ClientWidth = 1064
+      ClientHeight = 547
+      ClientWidth = 1038
       inline FrmTrnmnt: TFrameTournament
-        Height = 522
-        Width = 1064
-        ClientHeight = 522
-        ClientWidth = 1064
+        Height = 547
+        Width = 1038
+        ClientHeight = 547
+        ClientWidth = 1038
         inherited PgCntrl: TPageControl
-          Height = 522
-          Width = 1064
+          Height = 547
+          Width = 1038
           inherited TbShtScoreTableAllRounds: TTabSheet
-            ClientHeight = 486
-            ClientWidth = 1056
+            ClientHeight = 511
+            ClientWidth = 1030
             inherited TlBrScoreTable: TToolBar
-              Width = 1056
+              Width = 1030
               inherited DBNavigator2: TDBNavigator
                 Hints.Strings = (                )
               end
@@ -756,14 +756,14 @@ object FrmMain: TFrmMain
               end
             end
             inherited PgCntrlRounds: TPageControl
-              Height = 453
-              Width = 1056
+              Height = 478
+              Width = 1030
               inherited TbShtAllRounds: TTabSheet
-                ClientHeight = 417
-                ClientWidth = 1048
+                ClientHeight = 442
+                ClientWidth = 1022
                 inherited RxDBGrdScoreTable: TRxDBGrid
-                  Height = 417
-                  Width = 1048
+                  Height = 442
+                  Width = 1022
                   Columns = <                  
                     item
                       PickList.Strings = (                      )
@@ -1521,7 +1521,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Result'
-                      Width = 59
+                      Width = 33
                       FieldName = 'Round3'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1536,11 +1536,11 @@ object FrmMain: TFrmMain
                 end
               end
               inherited TbShtRound1: TTabSheet
-                ClientHeight = 417
-                ClientWidth = 1048
+                ClientHeight = 442
+                ClientWidth = 1022
                 inherited RxDBGrdScoreTable1: TRxDBGrid
-                  Height = 417
-                  Width = 1048
+                  Height = 442
+                  Width = 1022
                   Columns = <                  
                     item
                       PickList.Strings = (                      )
@@ -1624,7 +1624,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Result'
-                      Width = 61
+                      Width = 59
                       FieldName = 'Result'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1642,7 +1642,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|1'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q1'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1659,7 +1659,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|2'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q2'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1676,7 +1676,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|3'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q3'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1693,7 +1693,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|4'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q4'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1710,7 +1710,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|5'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q5'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1727,7 +1727,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|6'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q6'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1744,7 +1744,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|7'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q7'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1761,7 +1761,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|8'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q8'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1778,7 +1778,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|9'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q9'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1795,7 +1795,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|10'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q10'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1812,7 +1812,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|11'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q11'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1829,7 +1829,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Bet'
-                      Width = 61
+                      Width = 59
                       FieldName = 'bet1round'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1851,7 +1851,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Score|Pl.'
-                      Width = 61
+                      Width = 59
                       FieldName = 'Round1'
                       DirectInput = False
                       EditButtons = <>
@@ -1873,7 +1873,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Score|Cl.'
-                      Width = 66
+                      Width = 68
                       FieldName = 'Round1Club'
                       DirectInput = False
                       EditButtons = <>
@@ -1889,11 +1889,11 @@ object FrmMain: TFrmMain
                 end
               end
               inherited TbShtRound2: TTabSheet
-                ClientHeight = 417
-                ClientWidth = 1048
+                ClientHeight = 442
+                ClientWidth = 1022
                 inherited RxDBGrdScoreTable2: TRxDBGrid
-                  Height = 417
-                  Width = 1048
+                  Height = 442
+                  Width = 1022
                   Columns = <                  
                     item
                       PickList.Strings = (                      )
@@ -1977,7 +1977,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Result'
-                      Width = 61
+                      Width = 59
                       FieldName = 'Result'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -1994,7 +1994,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|12'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q12'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2011,7 +2011,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|13'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q13'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2028,7 +2028,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|14'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q14'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2045,7 +2045,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|15'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q15'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2062,7 +2062,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|16'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q16'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2079,7 +2079,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|17'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q17'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2096,7 +2096,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|18'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q18'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2113,7 +2113,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|19'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q19'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2130,7 +2130,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|20'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q20'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2147,7 +2147,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|21'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q21'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2164,7 +2164,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|22'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q22'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2181,7 +2181,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Bet'
-                      Width = 61
+                      Width = 59
                       FieldName = 'bet2round'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2202,7 +2202,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Score|Pl.'
-                      Width = 61
+                      Width = 59
                       FieldName = 'Round2'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2223,7 +2223,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Score|Cl.'
-                      Width = 66
+                      Width = 68
                       FieldName = 'Round2Club'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2238,11 +2238,11 @@ object FrmMain: TFrmMain
                 end
               end
               inherited TbShtRound3: TTabSheet
-                ClientHeight = 417
-                ClientWidth = 1048
+                ClientHeight = 442
+                ClientWidth = 1022
                 inherited RxDBGrdScoreTable3: TRxDBGrid
-                  Height = 417
-                  Width = 1048
+                  Height = 442
+                  Width = 1022
                   Columns = <                  
                     item
                       PickList.Strings = (                      )
@@ -2326,7 +2326,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Result'
-                      Width = 61
+                      Width = 59
                       FieldName = 'Result'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2343,7 +2343,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|23'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q23'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2360,7 +2360,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|24'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q24'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2377,7 +2377,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|25'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q25'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2394,7 +2394,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|26'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q26'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2411,7 +2411,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|27'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q27'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2428,7 +2428,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|28'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q28'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2445,7 +2445,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|29'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q29'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2462,7 +2462,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|30'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q30'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2480,7 +2480,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|31'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q31'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2498,7 +2498,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|32'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q32'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2516,7 +2516,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|33'
-                      Width = 61
+                      Width = 59
                       FieldName = 'q33'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2533,7 +2533,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Bet'
-                      Width = 61
+                      Width = 59
                       FieldName = 'bet3round'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2554,7 +2554,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Score|Pl.'
-                      Width = 61
+                      Width = 59
                       FieldName = 'Round3'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2575,7 +2575,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Score|Cl.'
-                      Width = 66
+                      Width = 68
                       FieldName = 'Round3Club'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2590,11 +2590,11 @@ object FrmMain: TFrmMain
                 end
               end
               inherited TbShtResult: TTabSheet
-                ClientHeight = 417
-                ClientWidth = 1048
+                ClientHeight = 442
+                ClientWidth = 1022
                 inherited RxDBGrdScoreTableTotal: TRxDBGrid
-                  Height = 417
-                  Width = 1048
+                  Height = 442
+                  Width = 1022
                   Columns = <                  
                     item
                       PickList.Strings = (                      )
@@ -2679,7 +2679,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Overall result'
-                      Width = 131
+                      Width = 127
                       FieldName = 'Result'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2699,7 +2699,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|Pl.'
-                      Width = 131
+                      Width = 127
                       FieldName = 'Round1'
                       DirectInput = False
                       EditButtons = <>
@@ -2721,7 +2721,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 1|Cl.'
-                      Width = 131
+                      Width = 127
                       FieldName = 'Round1Club'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2741,7 +2741,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|Pl.'
-                      Width = 131
+                      Width = 127
                       FieldName = 'Round2'
                       DirectInput = False
                       EditButtons = <>
@@ -2763,7 +2763,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 2|Cl.'
-                      Width = 131
+                      Width = 127
                       FieldName = 'Round2Club'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2783,7 +2783,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|Pl.'
-                      Width = 131
+                      Width = 127
                       FieldName = 'Round3'
                       DirectInput = False
                       EditButtons = <>
@@ -2805,7 +2805,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|Cl.'
-                      Width = 134
+                      Width = 132
                       FieldName = 'Round3Club'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2822,47 +2822,47 @@ object FrmMain: TFrmMain
             end
           end
           inherited TbShtTeams: TTabSheet
-            ClientHeight = 486
-            ClientWidth = 1056
+            ClientHeight = 511
+            ClientWidth = 1030
             inherited RxDBGridTeams: TRxDBGrid
-              Height = 453
-              Width = 1056
+              Height = 478
+              Width = 1030
             end
             inherited TlBrTeams: TToolBar
-              Width = 1056
+              Width = 1030
               inherited DBNvgtr: TDBNavigator
                 Hints.Strings = (                )
               end
             end
           end
           inherited TbShtTournament: TTabSheet
-            ClientHeight = 486
-            ClientWidth = 1056
+            ClientHeight = 511
+            ClientWidth = 1030
             inherited DBGrdTournaments: TRxDBGrid
-              Height = 453
-              Width = 1056
+              Height = 478
+              Width = 1030
             end
             inherited TlBrTournaments: TToolBar
-              Width = 1056
+              Width = 1030
               inherited DBNvgtrTournaments: TDBNavigator
                 Hints.Strings = (                )
               end
             end
           end
           inherited TbShtOptions: TTabSheet
-            ClientHeight = 486
-            ClientWidth = 1056
+            ClientHeight = 511
+            ClientWidth = 1030
           end
         end
       end
     end
     object TbShtAbout: TTabSheet
       Caption = 'About...'
-      ClientHeight = 522
-      ClientWidth = 1064
+      ClientHeight = 547
+      ClientWidth = 1038
       object Mm: TMemo
         Left = 0
-        Height = 522
+        Height = 547
         Top = 0
         Width = 836
         Align = alLeft
