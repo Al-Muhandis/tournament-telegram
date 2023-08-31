@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ComCtrls, IniPropStorage, DBCtrls,
-  SpinEx, ZConnection, ZDataset, RxDBGrid, telegram, tgtypes, TimerFrame, tgsendertypes,
+  SpinEx, ZConnection, ZDataset, RxDBGrid, RxDBGridExportSpreadSheet, telegram, tgtypes, TimerFrame, tgsendertypes,
   frmtournamentform
   ;
 
@@ -46,6 +46,7 @@ type
     PgCntrlMain: TPageControl;
     DBGrdAnswers: TRxDBGrid;
     RxDBGrdPlayers: TRxDBGrid;
+    DBGrdExprtSprdSht: TRxDBGridExportSpreadSheet;
     SpnEdtQuestion: TSpinEditEx;
     Spltr: TSplitter;
     SttsBr: TStatusBar;

@@ -98,7 +98,7 @@ object FrmMain: TFrmMain
               Top = 33
               Width = 668
               ColumnDefValues.BlobText = '(blob)'
-              TitleButtons = False
+              TitleButtons = True
               AutoSort = True
               Columns = <              
                 item
@@ -324,14 +324,14 @@ object FrmMain: TFrmMain
               FooterOptions.DrawFullLine = False
               SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
               SearchOptions.FromStart = False
-              OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
+              OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter, rdgAllowToolMenu]
               Align = alClient
               Color = clWindow
               DrawFullLine = False
               FocusColor = clRed
               SelectedColor = clHighlight
               DataSource = DtSrcAnswers
-              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+              Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgHeaderPushedLook]
               TabOrder = 1
               TitleStyle = tsNative
             end
@@ -3193,5 +3193,14 @@ object FrmMain: TFrmMain
       Required = False
       Size = 256
     end
+  end
+  object DBGrdExprtSprdSht: TRxDBGridExportSpreadSheet
+    RxDBGrid = DBGrdAnswers
+    Caption = 'Export to speadsheet'
+    ShowSetupForm = True
+    Options = [ressExportTitle]
+    OpenAfterExport = True
+    Left = 606
+    Top = 251
   end
 end
