@@ -339,9 +339,10 @@ msgid "Bet"
 msgstr "Ставка"
 
 #: tframetournament.rxdbgrdscoretable.columns[46].title.caption
+#, fuzzy
 msgctxt "tframetournament.rxdbgrdscoretable.columns[46].title.caption"
 msgid "Result"
-msgstr ""
+msgstr "Итог"
 
 #: tframetournament.rxdbgrdscoretable.columns[4].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[4].title.caption"
@@ -798,10 +799,6 @@ msgstr "id"
 #: tframetournament.rxdbgridteams.columns[1].title.caption
 msgid "Team name"
 msgstr "Команда"
-
-#: tframetournament.rxlookupedit1.text
-msgid "Первая серия игр 1442 гх."
-msgstr ""
 
 #: tframetournament.tbshtallrounds.caption
 msgid "All rounds"

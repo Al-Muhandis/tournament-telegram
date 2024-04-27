@@ -703,10 +703,6 @@ msgstr ""
 msgid "Team name"
 msgstr ""
 
-#: tframetournament.rxlookupedit1.text
-msgid "Первая серия игр 1442 гх."
-msgstr ""
-
 #: tframetournament.tbshtallrounds.caption
 msgid "All rounds"
 msgstr ""
