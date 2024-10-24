@@ -75,6 +75,7 @@ msgid "id"
 msgstr ""
 
 #: tframetournament.dbgrdtournaments.columns[1].title.caption
+msgctxt "tframetournament.dbgrdtournaments.columns[1].title.caption"
 msgid "date"
 msgstr ""
 
@@ -1413,6 +1414,21 @@ msgstr ""
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[9].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[9].title.caption"
 msgid "Round 3|29"
+msgstr ""
+
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[0].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[0].title.caption"
+msgid "id"
+msgstr ""
+
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[1].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[1].title.caption"
+msgid "date"
+msgstr ""
+
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[2].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[2].title.caption"
+msgid "title"
 msgstr ""
 
 #: tfrmmain.grpbxgametables.caption
