@@ -22,7 +22,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="3"/>
+      <BuildNr Value="6"/>
       <Language Value="0419"/>
     </VersionInfo>
     <BuildModes>
@@ -36,7 +36,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="..\..\taskworker;..\timer;..\tournament"/>
+            <OtherUnitFiles Value="..\..\tournament;..\..\timer"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -82,7 +82,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="..\..\taskworker;..\timer;..\tournament"/>
+            <OtherUnitFiles Value="..\..\tournament;..\..\timer"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -119,6 +119,9 @@
       <FormatVersion Value="2"/>
     </RunParams>
     <RequiredPackages>
+      <Item>
+        <PackageName Value="TaskWorkerPkg"/>
+      </Item>
       <Item>
         <PackageName Value="rx_sort_zeos"/>
       </Item>
@@ -160,27 +163,22 @@
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
-        <Filename Value="..\..\taskworker\taskworker.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="..\timer\timerframe.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="FrameTimer"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-        <UnitName Value="TimerFrame"/>
-      </Unit>
-      <Unit>
         <Filename Value="sql_db.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="..\tournament\frmtournamentform.pas"/>
+        <Filename Value="..\..\tournament\frmtournamentform.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrameTournament"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\timer\timerframe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrameTimer"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="TimerFrame"/>
       </Unit>
     </Units>
   </ProjectOptions>
@@ -192,7 +190,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="..\..\taskworker;..\timer;..\tournament"/>
+      <OtherUnitFiles Value="..\..\tournament;..\..\timer"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>
@@ -202,6 +200,11 @@
         </Win32>
       </Options>
     </Linking>
+    <Other>
+      <CompilerMessages>
+        <IgnoredMessages idx6058="True"/>
+      </CompilerMessages>
+    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions>
