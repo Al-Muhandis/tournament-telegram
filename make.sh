@@ -27,7 +27,7 @@ function priv_use
 function pub_build
 (
     git submodule update --init --recursive
-    priv_use 'PlaysoundPackage' 'Rx'
+    priv_use 'PlaysoundPackage' 'Rx' 'FPSpreadsheet'
     find 'use' -type 'f' -name '*.lpk' -exec lazbuild --add-package-link {} \;
     find 'src' -type 'f' -name '*.lpi' -exec lazbuild --recursive --build-mode=release {} \;
 )
