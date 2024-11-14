@@ -38,6 +38,7 @@ type
     FOnDoCallback: TOnEventCallback; 
     FOnDoMessage: TOnEventMessage;
     FLPTimeout: Integer;
+    FTelegramMessage: TTelegramMessageObj;
     procedure BotReceiveCallbackQuery({%H-}ASender: TObject; {%H-}ACallback: TCallbackQueryObj);
     procedure BotReceiveMessage({%H-}ASender: TObject; {%H-}AMessage: TTelegramMessageObj);
     procedure BotStartCommandHandler({%H-}ASender: TObject; const {%H-}ACommand: String;
@@ -52,6 +53,12 @@ type
     property OnDoCallback: TOnEventCallback read FOnDoCallback write FOnDoCallback;  
     property OnDoMessage: TOnEventMessage read FOnDoMessage write FOnDoMessage;
   end;
+
+  TClassReceiverThread = class of TReceiverThread;
+
+var
+  AppDir: String;
+  _TourReceiverThreadClass: TClassReceiverThread;
 
 implementation
 
@@ -71,6 +78,7 @@ end;
 
 procedure TReceiverThread.BotReceiveMessage(ASender: TObject; AMessage: TTelegramMessageObj);
 begin
+  FTelegramMessage:=AMessage;
   Synchronize(@SendMsgToMainThreadAnswer);
 end;
 
@@ -89,7 +97,8 @@ end;
 procedure TReceiverThread.SendMsgToMainThreadAnswer;
 begin                                               
   if Assigned(FOnDoMessage) then
-    FOnDoMessage(FBot.CurrentUpdate.Message);
+    FOnDoMessage(FTelegramMessage);
+  FTelegramMessage:=nil;
 end;
 
 constructor TReceiverThread.Create(const AToken: String);
@@ -141,6 +150,9 @@ begin
   end else
     inherited Assign(Source);
 end;
+
+initialization
+  _TourReceiverThreadClass:=TReceiverThread;
 
 end.
 

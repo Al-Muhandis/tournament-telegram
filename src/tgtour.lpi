@@ -22,7 +22,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="6"/>
+      <BuildNr Value="14"/>
       <Language Value="0419"/>
     </VersionInfo>
     <BuildModes>
@@ -36,7 +36,6 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="..\..\tournament;..\..\timer"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -82,7 +81,6 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="..\..\tournament;..\..\timer"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -120,31 +118,22 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="ChgkTimer"/>
+      </Item>
+      <Item>
+        <PackageName Value="TournamentFramePkg"/>
+      </Item>
+      <Item>
         <PackageName Value="TaskWorkerPkg"/>
       </Item>
       <Item>
-        <PackageName Value="rx_sort_zeos"/>
-      </Item>
-      <Item>
-        <PackageName Value="rxdbgrid_export_spreadsheet"/>
-      </Item>
-      <Item>
         <PackageName Value="LazControls"/>
-      </Item>
-      <Item>
-        <PackageName Value="playwavepackage"/>
       </Item>
       <Item>
         <PackageName Value="fptelegram"/>
       </Item>
       <Item>
         <PackageName Value="FCL"/>
-      </Item>
-      <Item>
-        <PackageName Value="rxnew"/>
-      </Item>
-      <Item>
-        <PackageName Value="zcomponent"/>
       </Item>
       <Item>
         <PackageName Value="LCL"/>
@@ -167,18 +156,8 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="..\..\tournament\frmtournamentform.pas"/>
+        <Filename Value="stresstest_telegram.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="FrameTournament"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-      </Unit>
-      <Unit>
-        <Filename Value="..\..\timer\timerframe.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="FrameTimer"/>
-        <ResourceBaseClass Value="Frame"/>
-        <UnitName Value="TimerFrame"/>
       </Unit>
     </Units>
   </ProjectOptions>
@@ -190,10 +169,12 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="..\..\tournament;..\..\timer"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf3"/>
+      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>

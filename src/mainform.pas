@@ -106,17 +106,19 @@ type
     procedure ZQryAnswersenrolledChange(Sender: TField);
     procedure ZQryAnswersTeamTitleGetText({%H-}Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
   private
+    FCurrentTour: Integer;
     FDoUpdateTelegram: Boolean;
+    FCurrentQuestion: Integer;
     FTelegramFace: TTelegramSender;
     FTelegramReceiver: TReceiverThread;
     procedure FormReceiveMessage(aMsg: TTelegramMessageObj);
     procedure FormReceiverStart;
     procedure FormReceiverTerminate({%H-}Sender: TObject);
     procedure FrmStartTimer({%H-}Sender: TObject);
+    procedure FrmStopTimer({%H-}Sender: TObject);
     procedure MainFormBetOptionChanged(aQuestionNum: Integer);
     procedure OpenDB;
     procedure UpdateAnswersTable;
-    procedure FrmStopTimer({%H-}Sender: TObject);
   public
 
   end;
@@ -129,9 +131,6 @@ implementation
 uses
   eventlog, tgutils, DateUtils, sql_db, FileInfo, Variants
   ;
-
-var
-  AppDir: String;
 
 const
   emj_HrGlsNtDn='⏳';
@@ -184,6 +183,26 @@ begin
   else
     Result:=s_Vrsn+': '+aBuildVersion;
   Result+=LineEnding+'  FPC: '+{$MACRO ON}IntToStr(FPC_FULLVERSION){$MACRO OFF};
+end;
+
+function BuildSQLSelectAnswers(aTour, aQuestion: Integer; aOnlyAccepted: Boolean): String;
+begin
+  Result:=format('select * from answers where tournament = %d and question = %d', [aTour, aQuestion]);
+  if aOnlyAccepted then
+    Result+=' and accepted = ''Y''';
+end;
+
+function BuildSQLUpdateAnswers(aValue: Boolean; aTour, aQuestion: Integer): String;
+begin
+  Result:=format('update answers set `accepted` = ''%s'' where tournament = %d and question = %d',
+    [BoolToStr(aValue, 'Y', 'N'), aTour, aQuestion])
+end;
+
+function BuildSQLUpdateAnswersAccepted(aTour, aQuestion: Integer; const aTime: String): String;
+begin
+  Result:=format('update answers set `accepted` = ''Y'' where (user_id, sent) in '+
+    '(select user_id, MAX(sent) from answers where tournament = %d and question = %d and sent < ''%s'' GROUP BY user_id)',
+    [aTour, aQuestion, aTime])
 end;
 
 { TFrmMain }
@@ -296,7 +315,7 @@ begin
   try
     if (Sender as TToggleBox).Checked then
     begin
-      FTelegramReceiver:=TReceiverThread.Create(EdtTelegramToken.Text);
+      FTelegramReceiver:=_TourReceiverThreadClass.Create(EdtTelegramToken.Text);
       FTelegramReceiver.FreeOnTerminate:=True;
       FTelegramReceiver.OnDoMessage:=@FormReceiveMessage;
       FTelegramReceiver.OnTerminate:=@FormReceiverTerminate;
@@ -460,8 +479,8 @@ begin
     ZQryPlayers.ApplyUpdates;
   end;
   ZQryAnswers.Append;
-  ZQryAnswerstournament.AsInteger:=FrmTrnmnt.ZQryTournamentsid.AsInteger;
-  ZQryAnswersquestion.AsInteger:=SpnEdtQuestion.Value;
+  ZQryAnswerstournament.AsInteger:=FCurrentTour;
+  ZQryAnswersquestion.AsInteger:=FCurrentQuestion;
   ZQryAnswersanswer.AsString:=aMsg.Text;
   ZQryAnswersuser_id.AsLargeInt:=aUserID;
   ZQryAnswerssent.AsDateTime:=aTime;
@@ -487,6 +506,11 @@ begin
   SttsBr.Panels[1].Text:=s_Tmr+' '+emj_HrGlsNtDn+' '+s_IsRnng;
   if ChckBxQuestionAutoInc.Checked then
     SpnEdtQuestion.Value:=SpnEdtQuestion.Value+1;
+  FCurrentQuestion:=SpnEdtQuestion.Value;
+  if DBLkpCmbBx.KeyValue = Null then
+    FCurrentTour:=-1
+  else
+    FCurrentTour:=DBLkpCmbBx.KeyValue;
 end;
 
 procedure TFrmMain.MainFormBetOptionChanged(aQuestionNum: Integer);
@@ -517,20 +541,14 @@ end;
 
 procedure TFrmMain.UpdateAnswersTable;
 var
-  s: String;
   aTour, aQuestion: Integer;
 begin
-  if TlBtnOnlyAccepted.Down then
-    s:=' and accepted = ''Y'''
-  else
-    s:=EmptyStr;
   if DBLkpCmbBx.KeyValue = Null then
     aTour:=-1
   else
     aTour:=DBLkpCmbBx.KeyValue;
   aQuestion:= SpnEdtQuestion.Value;
-  ZQryAnswers.SQL.Text:=format('select * from answers where tournament = %d and question = %d%s',
-      [aTour, aQuestion, s]);
+  ZQryAnswers.SQL.Text:=BuildSQLSelectAnswers(aTour, aQuestion, TlBtnOnlyAccepted.Down);
   ZQryAnswers.Open;
   LblRound.Caption:=s_Rnd+': #'+FrmTrnmnt.RoundFromQuestion(aQuestion).ToString;
   LblQuestionNumWithBet.Caption:=s_QstnWthBt+FrmTrnmnt.QuestionWithBet.ToString;
@@ -538,36 +556,35 @@ end;
 
 procedure TFrmMain.FrmStopTimer(Sender: TObject);
 begin
+  FTelegramFace.Logger.Debug('CP1');
   GrpBxQuestion.Enabled:=True;
   SttsBr.Panels[1].Text:=s_Tmr+' '+s_IsStpd;
   TlBtnOnlyAccepted.Down:=False;
-  ZQryAnswers.First;
-  while not ZQryAnswers.EOF do
-  begin
-    ZQryAnswers.Edit;
-    ZQryAnswersaccepted.AsBoolean:=False;
-    ZQryAnswers.Post;
-    ZQryAnswers.Next;
-  end;                                                                { #todo : 00:01:15 - accept time to turn up }
-  ZQryAnswers.SQL.Text:=format(
-    'select *, max(sent) from answers where tournament = %d and question = %d and sent < ''%s'' group by user_id',
-    [FrmTrnmnt.ZQryTournamentsid.AsInteger, SpnEdtQuestion.Value, '00:01:15']);
-  ZQryAnswers.Open;
-  ZQryAnswers.First;
-  while not ZQryAnswers.EOF do
-  begin
-    ZQryAnswers.Edit;
-    ZQryAnswersaccepted.AsBoolean:=True;
-    ZQryAnswers.Post;
-    ZQryAnswers.Next;
-  end;     
-  ZQryAnswers.ApplyUpdates;
-  GrpBxQuestion.Enabled:=True;
+  DtSrcAnswers.Enabled:=False;
+  ZQryAnswers.DisableControls;  
+  ZQryPlayers.DisableControls;
+  try
+    ZQryAnswers.SQL.Text:=BuildSQLUpdateAnswers(False, FCurrentTour, FCurrentQuestion);
+    ZQryAnswers.ExecSQL;
+    FTelegramFace.Logger.Debug('CP2');                                  { #todo : 00:01:15 - accept time to turn up }
+    ZQryAnswers.SQL.Text:=BuildSQLUpdateAnswersAccepted(FCurrentTour, FCurrentQuestion, '00:01:15');       
+    ZQryAnswers.ExecSQL;
+    FTelegramFace.Logger.Debug('CP3');
+    ZQryAnswers.ApplyUpdates;
+    GrpBxQuestion.Enabled:=True;
+    UpdateAnswersTable;
+  finally
+    ZQryPlayers.EnableControls;
+    ZQryAnswers.EnableControls;
+    DtSrcAnswers.Enabled:=True;
+  end;
+  FTelegramFace.Logger.Debug('CP4');
 end;
 
 initialization
 
   AppDir:=IncludeTrailingPathDelimiter(ExtractFileDir(ParamStr(0)));
+  _TourReceiverThreadClass:=TReceiverThread;
 
 end.
 
