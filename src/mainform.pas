@@ -556,8 +556,6 @@ end;
 
 procedure TFrmMain.FrmStopTimer(Sender: TObject);
 begin
-  FTelegramFace.Logger.Debug('CP1');
-  GrpBxQuestion.Enabled:=True;
   SttsBr.Panels[1].Text:=s_Tmr+' '+s_IsStpd;
   TlBtnOnlyAccepted.Down:=False;
   DtSrcAnswers.Enabled:=False;
@@ -566,19 +564,17 @@ begin
   try
     ZQryAnswers.SQL.Text:=BuildSQLUpdateAnswers(False, FCurrentTour, FCurrentQuestion);
     ZQryAnswers.ExecSQL;
-    FTelegramFace.Logger.Debug('CP2');                                  { #todo : 00:01:15 - accept time to turn up }
+                                 { #todo : 00:01:15 - accept time to turn up }
     ZQryAnswers.SQL.Text:=BuildSQLUpdateAnswersAccepted(FCurrentTour, FCurrentQuestion, '00:01:15');       
     ZQryAnswers.ExecSQL;
-    FTelegramFace.Logger.Debug('CP3');
     ZQryAnswers.ApplyUpdates;
-    GrpBxQuestion.Enabled:=True;
     UpdateAnswersTable;
   finally
     ZQryPlayers.EnableControls;
     ZQryAnswers.EnableControls;
-    DtSrcAnswers.Enabled:=True;
+    DtSrcAnswers.Enabled:=True;  
+    GrpBxQuestion.Enabled:=True;
   end;
-  FTelegramFace.Logger.Debug('CP4');
 end;
 
 initialization
