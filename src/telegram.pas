@@ -63,7 +63,7 @@ var
 implementation
 
 uses
-  Graphics, fpjson, eventlog
+  eventlog
   ;
 
 resourcestring
