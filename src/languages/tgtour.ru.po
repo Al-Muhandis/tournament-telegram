@@ -9,12 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Bookmarks: -1,3,-1,-1,-1,-1,-1,-1,-1,-1\n"
-
-#: frmtournamentform.s_intelgames
-msgid "Intellectual games"
-msgstr "Интеллектуальные игры"
 
 #: mainform.s_answrgvnby
 msgid "The answer is given by "
@@ -50,14 +46,17 @@ msgstr "Вопросы раунда со ставкой: №"
 msgid "Round"
 msgstr "Раунд"
 
+#: mainform.s_sttsbr_answrs
+#, object-pascal-format
+msgid "Answers: %d << Current question: %d, current tour: %s"
+msgstr "Ответы: %d << Текущий вопрос: %d, текущий тур: %s"
+
 #: mainform.s_tlgrm
-#, fuzzy
 msgctxt "mainform.s_tlgrm"
 msgid "Telegram"
 msgstr "Телеграм"
 
 #: mainform.s_tmr
-#, fuzzy
 msgctxt "mainform.s_tmr"
 msgid "Timer"
 msgstr "Таймер"
@@ -69,775 +68,6 @@ msgstr "не задан"
 #: mainform.s_vrsn
 msgid "Version"
 msgstr "Версия"
-
-#: tframetimer.btnstart.caption
-msgid "▶️"
-msgstr ""
-
-#: tframetimer.btnstop.caption
-msgid "⏹️"
-msgstr ""
-
-#: tframetimer.edt.text
-msgid "00:00"
-msgstr ""
-
-#: tframetournament.dbgrdtournaments.columns[0].title.caption
-msgctxt "tframetournament.dbgrdtournaments.columns[0].title.caption"
-msgid "id"
-msgstr "id"
-
-#: tframetournament.dbgrdtournaments.columns[1].title.caption
-msgctxt "tframetournament.dbgrdtournaments.columns[1].title.caption"
-msgid "date"
-msgstr "Дата"
-
-#: tframetournament.dbgrdtournaments.columns[2].title.caption
-msgctxt "tframetournament.dbgrdtournaments.columns[2].title.caption"
-msgid "title"
-msgstr "Наименование"
-
-#: tframetournament.grpbxbet.caption
-msgctxt "tframetournament.grpbxbet.caption"
-msgid "Bet"
-msgstr "Ставка"
-
-#: tframetournament.grpbxrules.caption
-msgid "Rules"
-msgstr "Правила"
-
-#: tframetournament.lblbet0isoff.caption
-msgid "(0 - bets are off)"
-msgstr "(0 - ставки выключены)"
-
-#: tframetournament.lblbetnuminround.caption
-msgid "Question number in a round"
-msgstr "Номер вопроса в раунде"
-
-#: tframetournament.rdgrpquestioncount.caption
-#, fuzzy
-#| msgid "In round"
-msgid "Questions in round"
-msgstr "В раунде"
-
-#: tframetournament.rxdbgrdscoretable.columns[0].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[0].title.caption"
-msgid "id"
-msgstr "id"
-
-#: tframetournament.rxdbgrdscoretable.columns[10].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[10].title.caption"
-msgid "Round 1|6"
-msgstr "Раунд 1|6"
-
-#: tframetournament.rxdbgrdscoretable.columns[11].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[11].title.caption"
-msgid "Round 1|7"
-msgstr "Раунд 1|7"
-
-#: tframetournament.rxdbgrdscoretable.columns[12].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[12].title.caption"
-msgid "Round 1|8"
-msgstr "Раунд 1|8"
-
-#: tframetournament.rxdbgrdscoretable.columns[13].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[13].title.caption"
-msgid "Round 1|9"
-msgstr "Раунд 1|9"
-
-#: tframetournament.rxdbgrdscoretable.columns[14].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[14].title.caption"
-msgid "Round 1|10"
-msgstr "Раунд 1|10"
-
-#: tframetournament.rxdbgrdscoretable.columns[15].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[15].title.caption"
-msgid "Round 1|11"
-msgstr "Раунд 1|11"
-
-#: tframetournament.rxdbgrdscoretable.columns[16].title.caption
-#, fuzzy
-#| msgid "Bet"
-msgctxt "tframetournament.rxdbgrdscoretable.columns[16].title.caption"
-msgid "Round 1|12"
-msgstr "Ставка"
-
-#: tframetournament.rxdbgrdscoretable.columns[17].title.caption
-#, fuzzy
-#| msgid "Result"
-msgctxt "tframetournament.rxdbgrdscoretable.columns[17].title.caption"
-msgid "Bet"
-msgstr "Итог"
-
-#: tframetournament.rxdbgrdscoretable.columns[18].title.caption
-#, fuzzy
-#| msgid "Round 2|12"
-msgctxt "tframetournament.rxdbgrdscoretable.columns[18].title.caption"
-msgid "Result"
-msgstr "Раунд 2|12"
-
-#: tframetournament.rxdbgrdscoretable.columns[19].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[19].title.caption"
-msgid "Round 2|13"
-msgstr "Раунд 2|13"
-
-#: tframetournament.rxdbgrdscoretable.columns[1].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[1].title.caption"
-msgid "Tournament"
-msgstr "Турнир"
-
-#: tframetournament.rxdbgrdscoretable.columns[20].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[20].title.caption"
-msgid "Round 2|14"
-msgstr "Раунд 2|14"
-
-#: tframetournament.rxdbgrdscoretable.columns[21].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[21].title.caption"
-msgid "Round 2|15"
-msgstr "Раунд 2|15"
-
-#: tframetournament.rxdbgrdscoretable.columns[22].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[22].title.caption"
-msgid "Round 2|16"
-msgstr "Раунд 2|16"
-
-#: tframetournament.rxdbgrdscoretable.columns[23].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[23].title.caption"
-msgid "Round 2|17"
-msgstr "Раунд 2|17"
-
-#: tframetournament.rxdbgrdscoretable.columns[24].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[24].title.caption"
-msgid "Round 2|18"
-msgstr "Раунд 2|18"
-
-#: tframetournament.rxdbgrdscoretable.columns[25].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[25].title.caption"
-msgid "Round 2|19"
-msgstr "Раунд 2|19"
-
-#: tframetournament.rxdbgrdscoretable.columns[26].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[26].title.caption"
-msgid "Round 2|20"
-msgstr "Раунд 2|20"
-
-#: tframetournament.rxdbgrdscoretable.columns[27].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[27].title.caption"
-msgid "Round 2|21"
-msgstr "Раунд 2|21"
-
-#: tframetournament.rxdbgrdscoretable.columns[28].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[28].title.caption"
-msgid "Round 2|22"
-msgstr "Раунд 2|22"
-
-#: tframetournament.rxdbgrdscoretable.columns[29].title.caption
-#, fuzzy
-#| msgid "Bet"
-msgctxt "tframetournament.rxdbgrdscoretable.columns[29].title.caption"
-msgid "Round 2|23"
-msgstr "Ставка"
-
-#: tframetournament.rxdbgrdscoretable.columns[2].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[2].title.caption"
-msgid "Team"
-msgstr "Команда"
-
-#: tframetournament.rxdbgrdscoretable.columns[30].title.caption
-#, fuzzy
-#| msgid "Result"
-msgctxt "tframetournament.rxdbgrdscoretable.columns[30].title.caption"
-msgid "Round 2|24"
-msgstr "Итог"
-
-#: tframetournament.rxdbgrdscoretable.columns[31].title.caption
-#, fuzzy
-#| msgid "Round 3|23"
-msgctxt "tframetournament.rxdbgrdscoretable.columns[31].title.caption"
-msgid "Bet"
-msgstr "Раунд 3|23"
-
-#: tframetournament.rxdbgrdscoretable.columns[32].title.caption
-#, fuzzy
-#| msgid "Round 3|24"
-msgctxt "tframetournament.rxdbgrdscoretable.columns[32].title.caption"
-msgid "Result"
-msgstr "Раунд 3|24"
-
-#: tframetournament.rxdbgrdscoretable.columns[33].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[33].title.caption"
-msgid "Round 3|25"
-msgstr "Раунд 3|25"
-
-#: tframetournament.rxdbgrdscoretable.columns[34].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[34].title.caption"
-msgid "Round 3|26"
-msgstr "Раунд 3|26"
-
-#: tframetournament.rxdbgrdscoretable.columns[35].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[35].title.caption"
-msgid "Round 3|27"
-msgstr "Раунд 3|27"
-
-#: tframetournament.rxdbgrdscoretable.columns[36].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[36].title.caption"
-msgid "Round 3|28"
-msgstr "Раунд 3|28"
-
-#: tframetournament.rxdbgrdscoretable.columns[37].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[37].title.caption"
-msgid "Round 3|29"
-msgstr "Раунд 3|29"
-
-#: tframetournament.rxdbgrdscoretable.columns[38].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[38].title.caption"
-msgid "Round 3|30"
-msgstr "Раунд 3|30"
-
-#: tframetournament.rxdbgrdscoretable.columns[39].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[39].title.caption"
-msgid "Round 3|31"
-msgstr "Раунд 3|31"
-
-#: tframetournament.rxdbgrdscoretable.columns[3].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[3].title.caption"
-msgid "Team"
-msgstr "Команда"
-
-#: tframetournament.rxdbgrdscoretable.columns[40].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[40].title.caption"
-msgid "Round 3|32"
-msgstr "Раунд 3|32"
-
-#: tframetournament.rxdbgrdscoretable.columns[41].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[41].title.caption"
-msgid "Round 3|33"
-msgstr "Раунд 3|33"
-
-#: tframetournament.rxdbgrdscoretable.columns[42].title.caption
-#, fuzzy
-#| msgid "Bet"
-msgctxt "tframetournament.rxdbgrdscoretable.columns[42].title.caption"
-msgid "Round 3|34"
-msgstr "Ставка"
-
-#: tframetournament.rxdbgrdscoretable.columns[43].title.caption
-#, fuzzy
-#| msgid "Result"
-msgctxt "tframetournament.rxdbgrdscoretable.columns[43].title.caption"
-msgid "Round 3|35"
-msgstr "Итог"
-
-#: tframetournament.rxdbgrdscoretable.columns[44].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[44].title.caption"
-msgid "Round 3|36"
-msgstr ""
-
-#: tframetournament.rxdbgrdscoretable.columns[45].title.caption
-#, fuzzy
-msgctxt "tframetournament.rxdbgrdscoretable.columns[45].title.caption"
-msgid "Bet"
-msgstr "Ставка"
-
-#: tframetournament.rxdbgrdscoretable.columns[46].title.caption
-#, fuzzy
-msgctxt "tframetournament.rxdbgrdscoretable.columns[46].title.caption"
-msgid "Result"
-msgstr "Итог"
-
-#: tframetournament.rxdbgrdscoretable.columns[4].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[4].title.caption"
-msgid "Totals"
-msgstr "Итоги"
-
-#: tframetournament.rxdbgrdscoretable.columns[5].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[5].title.caption"
-msgid "Round 1|1"
-msgstr "Раунд 1|1"
-
-#: tframetournament.rxdbgrdscoretable.columns[6].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[6].title.caption"
-msgid "Round 1|2"
-msgstr "Раунд 1|2"
-
-#: tframetournament.rxdbgrdscoretable.columns[7].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[7].title.caption"
-msgid "Round 1|3"
-msgstr "Раунд 1|3"
-
-#: tframetournament.rxdbgrdscoretable.columns[8].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[8].title.caption"
-msgid "Round 1|4"
-msgstr "Раунд 1|4"
-
-#: tframetournament.rxdbgrdscoretable.columns[9].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable.columns[9].title.caption"
-msgid "Round 1|5"
-msgstr "Раунд 1|5"
-
-#: tframetournament.rxdbgrdscoretable1.columns[0].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[0].title.caption"
-msgid "id"
-msgstr "id"
-
-#: tframetournament.rxdbgrdscoretable1.columns[10].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[10].title.caption"
-msgid "Round 1|6"
-msgstr "Раунд 1|6"
-
-#: tframetournament.rxdbgrdscoretable1.columns[11].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[11].title.caption"
-msgid "Round 1|7"
-msgstr "Раунд 1|7"
-
-#: tframetournament.rxdbgrdscoretable1.columns[12].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[12].title.caption"
-msgid "Round 1|8"
-msgstr "Раунд 1|8"
-
-#: tframetournament.rxdbgrdscoretable1.columns[13].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[13].title.caption"
-msgid "Round 1|9"
-msgstr "Раунд 1|9"
-
-#: tframetournament.rxdbgrdscoretable1.columns[14].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[14].title.caption"
-msgid "Round 1|10"
-msgstr "Раунд 1|10"
-
-#: tframetournament.rxdbgrdscoretable1.columns[15].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[15].title.caption"
-msgid "Round 1|11"
-msgstr "Раунд 1|11"
-
-#: tframetournament.rxdbgrdscoretable1.columns[16].title.caption
-#, fuzzy
-#| msgid "Bet"
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[16].title.caption"
-msgid "Round 1|12"
-msgstr "Ставка"
-
-#: tframetournament.rxdbgrdscoretable1.columns[17].title.caption
-#, fuzzy
-#| msgid "Score|Pl."
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[17].title.caption"
-msgid "Bet"
-msgstr "Счёт|Зн."
-
-#: tframetournament.rxdbgrdscoretable1.columns[18].title.caption
-#, fuzzy
-#| msgid "Score|Cl."
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[18].title.caption"
-msgid "Score|Pl."
-msgstr "Счёт|Кл."
-
-#: tframetournament.rxdbgrdscoretable1.columns[19].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[19].title.caption"
-msgid "Score|Cl."
-msgstr ""
-
-#: tframetournament.rxdbgrdscoretable1.columns[1].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[1].title.caption"
-msgid "tournament"
-msgstr "Турнир"
-
-#: tframetournament.rxdbgrdscoretable1.columns[2].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[2].title.caption"
-msgid "team"
-msgstr "Команда"
-
-#: tframetournament.rxdbgrdscoretable1.columns[3].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[3].title.caption"
-msgid "Team"
-msgstr "Команда"
-
-#: tframetournament.rxdbgrdscoretable1.columns[4].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[4].title.caption"
-msgid "Result"
-msgstr "Итог"
-
-#: tframetournament.rxdbgrdscoretable1.columns[5].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[5].title.caption"
-msgid "Round 1|1"
-msgstr "Раунд 1|1"
-
-#: tframetournament.rxdbgrdscoretable1.columns[6].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[6].title.caption"
-msgid "Round 1|2"
-msgstr "Раунд 1|2"
-
-#: tframetournament.rxdbgrdscoretable1.columns[7].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[7].title.caption"
-msgid "Round 1|3"
-msgstr "Раунд 1|3"
-
-#: tframetournament.rxdbgrdscoretable1.columns[8].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[8].title.caption"
-msgid "Round 1|4"
-msgstr "Раунд 1|4"
-
-#: tframetournament.rxdbgrdscoretable1.columns[9].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable1.columns[9].title.caption"
-msgid "Round 1|5"
-msgstr "Раунд 1|5"
-
-#: tframetournament.rxdbgrdscoretable2.columns[0].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[0].title.caption"
-msgid "id"
-msgstr "id"
-
-#: tframetournament.rxdbgrdscoretable2.columns[10].title.caption
-#, fuzzy
-#| msgid "Round 2|17"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[10].title.caption"
-msgid "Round 2|18"
-msgstr "Раунд 2|17"
-
-#: tframetournament.rxdbgrdscoretable2.columns[11].title.caption
-#, fuzzy
-#| msgid "Round 2|18"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[11].title.caption"
-msgid "Round 2|19"
-msgstr "Раунд 2|18"
-
-#: tframetournament.rxdbgrdscoretable2.columns[12].title.caption
-#, fuzzy
-#| msgid "Round 2|19"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[12].title.caption"
-msgid "Round 2|20"
-msgstr "Раунд 2|19"
-
-#: tframetournament.rxdbgrdscoretable2.columns[13].title.caption
-#, fuzzy
-#| msgid "Round 2|20"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[13].title.caption"
-msgid "Round 2|21"
-msgstr "Раунд 2|20"
-
-#: tframetournament.rxdbgrdscoretable2.columns[14].title.caption
-#, fuzzy
-#| msgid "Round 2|21"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[14].title.caption"
-msgid "Round 2|22"
-msgstr "Раунд 2|21"
-
-#: tframetournament.rxdbgrdscoretable2.columns[15].title.caption
-#, fuzzy
-#| msgid "Round 2|22"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[15].title.caption"
-msgid "Round 2|23"
-msgstr "Раунд 2|22"
-
-#: tframetournament.rxdbgrdscoretable2.columns[16].title.caption
-#, fuzzy
-#| msgid "Bet"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[16].title.caption"
-msgid "Round 2|24"
-msgstr "Ставка"
-
-#: tframetournament.rxdbgrdscoretable2.columns[17].title.caption
-#, fuzzy
-#| msgid "Score|Pl."
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[17].title.caption"
-msgid "Bet"
-msgstr "Счёт|Зн."
-
-#: tframetournament.rxdbgrdscoretable2.columns[18].title.caption
-#, fuzzy
-#| msgid "Score|Cl."
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[18].title.caption"
-msgid "Score|Pl."
-msgstr "Счёт|Кл."
-
-#: tframetournament.rxdbgrdscoretable2.columns[19].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[19].title.caption"
-msgid "Score|Cl."
-msgstr ""
-
-#: tframetournament.rxdbgrdscoretable2.columns[1].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[1].title.caption"
-msgid "tournament"
-msgstr "Турнир"
-
-#: tframetournament.rxdbgrdscoretable2.columns[2].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[2].title.caption"
-msgid "team"
-msgstr "Команда"
-
-#: tframetournament.rxdbgrdscoretable2.columns[3].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[3].title.caption"
-msgid "Team"
-msgstr "Команда"
-
-#: tframetournament.rxdbgrdscoretable2.columns[4].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[4].title.caption"
-msgid "Result"
-msgstr "Итог"
-
-#: tframetournament.rxdbgrdscoretable2.columns[5].title.caption
-#, fuzzy
-#| msgid "Round 2|12"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[5].title.caption"
-msgid "Round 2|13"
-msgstr "Раунд 2|12"
-
-#: tframetournament.rxdbgrdscoretable2.columns[6].title.caption
-#, fuzzy
-#| msgid "Round 2|13"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[6].title.caption"
-msgid "Round 2|14"
-msgstr "Раунд 2|13"
-
-#: tframetournament.rxdbgrdscoretable2.columns[7].title.caption
-#, fuzzy
-#| msgid "Round 2|14"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[7].title.caption"
-msgid "Round 2|15"
-msgstr "Раунд 2|14"
-
-#: tframetournament.rxdbgrdscoretable2.columns[8].title.caption
-#, fuzzy
-#| msgid "Round 2|15"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[8].title.caption"
-msgid "Round 2|16"
-msgstr "Раунд 2|15"
-
-#: tframetournament.rxdbgrdscoretable2.columns[9].title.caption
-#, fuzzy
-#| msgid "Round 2|16"
-msgctxt "tframetournament.rxdbgrdscoretable2.columns[9].title.caption"
-msgid "Round 2|17"
-msgstr "Раунд 2|16"
-
-#: tframetournament.rxdbgrdscoretable3.columns[0].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[0].title.caption"
-msgid "id"
-msgstr "id"
-
-#: tframetournament.rxdbgrdscoretable3.columns[10].title.caption
-#, fuzzy
-#| msgid "Round 3|28"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[10].title.caption"
-msgid "Round 3|30"
-msgstr "Раунд 3|28"
-
-#: tframetournament.rxdbgrdscoretable3.columns[11].title.caption
-#, fuzzy
-#| msgid "Round 3|29"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[11].title.caption"
-msgid "Round 3|31"
-msgstr "Раунд 3|29"
-
-#: tframetournament.rxdbgrdscoretable3.columns[12].title.caption
-#, fuzzy
-#| msgid "Round 3|30"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[12].title.caption"
-msgid "Round 3|32"
-msgstr "Раунд 3|30"
-
-#: tframetournament.rxdbgrdscoretable3.columns[13].title.caption
-#, fuzzy
-#| msgid "Round 3|31"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[13].title.caption"
-msgid "Round 3|33"
-msgstr "Раунд 3|31"
-
-#: tframetournament.rxdbgrdscoretable3.columns[14].title.caption
-#, fuzzy
-#| msgid "Round 3|32"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[14].title.caption"
-msgid "Round 3|34"
-msgstr "Раунд 3|32"
-
-#: tframetournament.rxdbgrdscoretable3.columns[15].title.caption
-#, fuzzy
-#| msgid "Round 3|33"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[15].title.caption"
-msgid "Round 3|35"
-msgstr "Раунд 3|33"
-
-#: tframetournament.rxdbgrdscoretable3.columns[16].title.caption
-#, fuzzy
-#| msgid "Bet"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[16].title.caption"
-msgid "Round 3|36"
-msgstr "Ставка"
-
-#: tframetournament.rxdbgrdscoretable3.columns[17].title.caption
-#, fuzzy
-#| msgid "Score|Pl."
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[17].title.caption"
-msgid "Bet"
-msgstr "Счёт|Зн."
-
-#: tframetournament.rxdbgrdscoretable3.columns[18].title.caption
-#, fuzzy
-#| msgid "Score|Cl."
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[18].title.caption"
-msgid "Score|Pl."
-msgstr "Счёт|Кл."
-
-#: tframetournament.rxdbgrdscoretable3.columns[19].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[19].title.caption"
-msgid "Score|Cl."
-msgstr ""
-
-#: tframetournament.rxdbgrdscoretable3.columns[1].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[1].title.caption"
-msgid "tournament"
-msgstr "Турнир"
-
-#: tframetournament.rxdbgrdscoretable3.columns[2].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[2].title.caption"
-msgid "team"
-msgstr "Команда"
-
-#: tframetournament.rxdbgrdscoretable3.columns[3].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[3].title.caption"
-msgid "Team"
-msgstr "Команда"
-
-#: tframetournament.rxdbgrdscoretable3.columns[4].title.caption
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[4].title.caption"
-msgid "Result"
-msgstr "Итог"
-
-#: tframetournament.rxdbgrdscoretable3.columns[5].title.caption
-#, fuzzy
-#| msgid "Round 3|23"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[5].title.caption"
-msgid "Round 3|25"
-msgstr "Раунд 3|23"
-
-#: tframetournament.rxdbgrdscoretable3.columns[6].title.caption
-#, fuzzy
-#| msgid "Round 3|24"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[6].title.caption"
-msgid "Round 3|26"
-msgstr "Раунд 3|24"
-
-#: tframetournament.rxdbgrdscoretable3.columns[7].title.caption
-#, fuzzy
-#| msgid "Round 3|25"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[7].title.caption"
-msgid "Round 3|27"
-msgstr "Раунд 3|25"
-
-#: tframetournament.rxdbgrdscoretable3.columns[8].title.caption
-#, fuzzy
-#| msgid "Round 3|26"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[8].title.caption"
-msgid "Round 3|28"
-msgstr "Раунд 3|26"
-
-#: tframetournament.rxdbgrdscoretable3.columns[9].title.caption
-#, fuzzy
-#| msgid "Round 3|27"
-msgctxt "tframetournament.rxdbgrdscoretable3.columns[9].title.caption"
-msgid "Round 3|29"
-msgstr "Раунд 3|27"
-
-#: tframetournament.rxdbgrdscoretabletotal.columns[0].title.caption
-msgctxt "tframetournament.rxdbgrdscoretabletotal.columns[0].title.caption"
-msgid "id"
-msgstr "id"
-
-#: tframetournament.rxdbgrdscoretabletotal.columns[10].title.caption
-msgctxt "tframetournament.rxdbgrdscoretabletotal.columns[10].title.caption"
-msgid "Round 3|Cl."
-msgstr "Раунд 3|Кл."
-
-#: tframetournament.rxdbgrdscoretabletotal.columns[1].title.caption
-msgctxt "tframetournament.rxdbgrdscoretabletotal.columns[1].title.caption"
-msgid "tournament"
-msgstr "Турнир"
-
-#: tframetournament.rxdbgrdscoretabletotal.columns[2].title.caption
-msgctxt "tframetournament.rxdbgrdscoretabletotal.columns[2].title.caption"
-msgid "team"
-msgstr "Команда"
-
-#: tframetournament.rxdbgrdscoretabletotal.columns[3].title.caption
-msgctxt "tframetournament.rxdbgrdscoretabletotal.columns[3].title.caption"
-msgid "Team"
-msgstr "Команда"
-
-#: tframetournament.rxdbgrdscoretabletotal.columns[4].title.caption
-msgctxt "tframetournament.rxdbgrdscoretabletotal.columns[4].title.caption"
-msgid "Overall result"
-msgstr "Общий итог"
-
-#: tframetournament.rxdbgrdscoretabletotal.columns[5].title.caption
-msgctxt "tframetournament.rxdbgrdscoretabletotal.columns[5].title.caption"
-msgid "Round 1|Pl."
-msgstr "Раунд 1|Зн."
-
-#: tframetournament.rxdbgrdscoretabletotal.columns[6].title.caption
-msgctxt "tframetournament.rxdbgrdscoretabletotal.columns[6].title.caption"
-msgid "Round 1|Cl."
-msgstr "Раунд 1|Кл."
-
-#: tframetournament.rxdbgrdscoretabletotal.columns[7].title.caption
-msgctxt "tframetournament.rxdbgrdscoretabletotal.columns[7].title.caption"
-msgid "Round 2|Pl."
-msgstr "Раунд 2|Зн."
-
-#: tframetournament.rxdbgrdscoretabletotal.columns[8].title.caption
-msgctxt "tframetournament.rxdbgrdscoretabletotal.columns[8].title.caption"
-msgid "Round 2|Cl."
-msgstr "Раунд 2|Кл."
-
-#: tframetournament.rxdbgrdscoretabletotal.columns[9].title.caption
-msgctxt "tframetournament.rxdbgrdscoretabletotal.columns[9].title.caption"
-msgid "Round 3|Pl."
-msgstr "Раунд 3|Зн."
-
-#: tframetournament.rxdbgridteams.columns[0].title.caption
-msgctxt "tframetournament.rxdbgridteams.columns[0].title.caption"
-msgid "id"
-msgstr "id"
-
-#: tframetournament.rxdbgridteams.columns[1].title.caption
-msgid "Team name"
-msgstr "Команда"
-
-#: tframetournament.tbshtallrounds.caption
-msgid "All rounds"
-msgstr "Все раунды"
-
-#: tframetournament.tbshtoptions.caption
-msgctxt "tframetournament.tbshtoptions.caption"
-msgid "⚙️ Options"
-msgstr "⚙️ Настройки"
-
-#: tframetournament.tbshtresult.caption
-msgctxt "tframetournament.tbshtresult.caption"
-msgid "Totals"
-msgstr "Итоги"
-
-#: tframetournament.tbshtround1.caption
-msgid "Round 1"
-msgstr "Раунд 1"
-
-#: tframetournament.tbshtround2.caption
-msgid "Round 2"
-msgstr "Раунд 2"
-
-#: tframetournament.tbshtround3.caption
-msgid "Round 3"
-msgstr "Раунд 3"
-
-#: tframetournament.tbshtscoretableallrounds.caption
-msgid "🧮 Score / Rounds"
-msgstr "🧮 Счёт / Раунды"
-
-#: tframetournament.tbshtteams.caption
-msgid "🔖 Teams"
-msgstr "🔖 Команды"
-
-#: tframetournament.tbshttournament.caption
-msgid "🏅 Tournament"
-msgstr "🏅 Турнир"
 
 #: tfrmmain.btnstart.caption
 msgid "+1"
@@ -959,25 +189,19 @@ msgid "Round 1|11"
 msgstr "Раунд 1|11"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[16].title.caption
-#, fuzzy
-#| msgid "Bet"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[16].title.caption"
 msgid "Round 1|12"
-msgstr "Ставка"
+msgstr "Раунд 1|12"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[17].title.caption
-#, fuzzy
-#| msgid "Result"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[17].title.caption"
 msgid "Bet"
-msgstr "Итог"
+msgstr "Ставка"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[18].title.caption
-#, fuzzy
-#| msgid "Round 2|12"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[18].title.caption"
 msgid "Result"
-msgstr "Раунд 2|12"
+msgstr "Итог"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[19].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[19].title.caption"
@@ -1035,11 +259,9 @@ msgid "Round 2|22"
 msgstr "Раунд 2|22"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[29].title.caption
-#, fuzzy
-#| msgid "Bet"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[29].title.caption"
 msgid "Round 2|23"
-msgstr "Ставка"
+msgstr "Раунд 2|23"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[2].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[2].title.caption"
@@ -1047,25 +269,19 @@ msgid "Team"
 msgstr "Команда"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[30].title.caption
-#, fuzzy
-#| msgid "Result"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[30].title.caption"
 msgid "Round 2|24"
-msgstr "Итог"
+msgstr "Раунд 2|24"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[31].title.caption
-#, fuzzy
-#| msgid "Round 3|23"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[31].title.caption"
 msgid "Bet"
-msgstr "Раунд 3|23"
+msgstr "Ставка"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[32].title.caption
-#, fuzzy
-#| msgid "Round 3|24"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[32].title.caption"
 msgid "Result"
-msgstr "Раунд 3|24"
+msgstr "Итог"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[33].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[33].title.caption"
@@ -1118,32 +334,26 @@ msgid "Round 3|33"
 msgstr "Раунд 3|33"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[42].title.caption
-#, fuzzy
-#| msgid "Bet"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[42].title.caption"
 msgid "Round 3|34"
-msgstr "Ставка"
+msgstr "Раунд 3|34"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[43].title.caption
-#, fuzzy
-#| msgid "Result"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[43].title.caption"
 msgid "Round 3|35"
-msgstr "Итог"
+msgstr "Раунд 3|35"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[44].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[44].title.caption"
 msgid "Round 3|36"
-msgstr ""
+msgstr "Раунд 3|36"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[45].title.caption
-#, fuzzy
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[45].title.caption"
 msgid "Bet"
 msgstr "Ставка"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[46].title.caption
-#, fuzzy
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[46].title.caption"
 msgid "Result"
 msgstr "Итог"
@@ -1269,30 +479,24 @@ msgid "Round 1|11"
 msgstr "Раунд 1|11"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround1.rxdbgrdscoretable1.columns[16].title.caption
-#, fuzzy
-#| msgid "Bet"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround1.rxdbgrdscoretable1.columns[16].title.caption"
 msgid "Round 1|12"
-msgstr "Ставка"
+msgstr "Раунд 1|12"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround1.rxdbgrdscoretable1.columns[17].title.caption
-#, fuzzy
-#| msgid "Score|Pl."
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround1.rxdbgrdscoretable1.columns[17].title.caption"
 msgid "Bet"
-msgstr "Счёт|Зн."
+msgstr "Ставка"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround1.rxdbgrdscoretable1.columns[18].title.caption
-#, fuzzy
-#| msgid "Score|Cl."
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround1.rxdbgrdscoretable1.columns[18].title.caption"
 msgid "Score|Pl."
-msgstr "Счёт|Кл."
+msgstr "Счёт|Игр."
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround1.rxdbgrdscoretable1.columns[19].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround1.rxdbgrdscoretable1.columns[19].title.caption"
 msgid "Score|Cl."
-msgstr ""
+msgstr "Счёт|Кл."
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround1.rxdbgrdscoretable1.columns[1].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround1.rxdbgrdscoretable1.columns[1].title.caption"
@@ -1345,72 +549,54 @@ msgid "id"
 msgstr "id"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[10].title.caption
-#, fuzzy
-#| msgid "Round 2|17"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[10].title.caption"
 msgid "Round 2|18"
-msgstr "Раунд 2|17"
-
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[11].title.caption
-#, fuzzy
-#| msgid "Round 2|18"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[11].title.caption"
-msgid "Round 2|19"
 msgstr "Раунд 2|18"
 
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[12].title.caption
-#, fuzzy
-#| msgid "Round 2|19"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[12].title.caption"
-msgid "Round 2|20"
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[11].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[11].title.caption"
+msgid "Round 2|19"
 msgstr "Раунд 2|19"
 
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[13].title.caption
-#, fuzzy
-#| msgid "Round 2|20"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[13].title.caption"
-msgid "Round 2|21"
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[12].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[12].title.caption"
+msgid "Round 2|20"
 msgstr "Раунд 2|20"
 
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[14].title.caption
-#, fuzzy
-#| msgid "Round 2|21"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[14].title.caption"
-msgid "Round 2|22"
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[13].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[13].title.caption"
+msgid "Round 2|21"
 msgstr "Раунд 2|21"
 
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[15].title.caption
-#, fuzzy
-#| msgid "Round 2|22"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[15].title.caption"
-msgid "Round 2|23"
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[14].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[14].title.caption"
+msgid "Round 2|22"
 msgstr "Раунд 2|22"
 
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[15].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[15].title.caption"
+msgid "Round 2|23"
+msgstr "Раунд 2|23"
+
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[16].title.caption
-#, fuzzy
-#| msgid "Bet"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[16].title.caption"
 msgid "Round 2|24"
-msgstr "Ставка"
+msgstr "Раунд 2|24"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[17].title.caption
-#, fuzzy
-#| msgid "Score|Pl."
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[17].title.caption"
 msgid "Bet"
-msgstr "Счёт|Зн."
+msgstr "Ставка"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[18].title.caption
-#, fuzzy
-#| msgid "Score|Cl."
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[18].title.caption"
 msgid "Score|Pl."
-msgstr "Счёт|Кл."
+msgstr "Счёт|Иг."
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[19].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[19].title.caption"
 msgid "Score|Cl."
-msgstr ""
+msgstr "Счёт|Кл."
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[1].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[1].title.caption"
@@ -1433,39 +619,29 @@ msgid "Result"
 msgstr "Итог"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[5].title.caption
-#, fuzzy
-#| msgid "Round 2|12"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[5].title.caption"
 msgid "Round 2|13"
-msgstr "Раунд 2|12"
-
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[6].title.caption
-#, fuzzy
-#| msgid "Round 2|13"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[6].title.caption"
-msgid "Round 2|14"
 msgstr "Раунд 2|13"
 
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[7].title.caption
-#, fuzzy
-#| msgid "Round 2|14"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[7].title.caption"
-msgid "Round 2|15"
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[6].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[6].title.caption"
+msgid "Round 2|14"
 msgstr "Раунд 2|14"
 
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[8].title.caption
-#, fuzzy
-#| msgid "Round 2|15"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[8].title.caption"
-msgid "Round 2|16"
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[7].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[7].title.caption"
+msgid "Round 2|15"
 msgstr "Раунд 2|15"
 
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[8].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[8].title.caption"
+msgid "Round 2|16"
+msgstr "Раунд 2|16"
+
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[9].title.caption
-#, fuzzy
-#| msgid "Round 2|16"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround2.rxdbgrdscoretable2.columns[9].title.caption"
 msgid "Round 2|17"
-msgstr "Раунд 2|16"
+msgstr "Раунд 2|17"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[0].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[0].title.caption"
@@ -1473,72 +649,54 @@ msgid "id"
 msgstr "id"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[10].title.caption
-#, fuzzy
-#| msgid "Round 3|28"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[10].title.caption"
 msgid "Round 3|30"
-msgstr "Раунд 3|28"
-
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[11].title.caption
-#, fuzzy
-#| msgid "Round 3|29"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[11].title.caption"
-msgid "Round 3|31"
-msgstr "Раунд 3|29"
-
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[12].title.caption
-#, fuzzy
-#| msgid "Round 3|30"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[12].title.caption"
-msgid "Round 3|32"
 msgstr "Раунд 3|30"
 
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[13].title.caption
-#, fuzzy
-#| msgid "Round 3|31"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[13].title.caption"
-msgid "Round 3|33"
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[11].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[11].title.caption"
+msgid "Round 3|31"
 msgstr "Раунд 3|31"
 
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[14].title.caption
-#, fuzzy
-#| msgid "Round 3|32"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[14].title.caption"
-msgid "Round 3|34"
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[12].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[12].title.caption"
+msgid "Round 3|32"
 msgstr "Раунд 3|32"
 
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[15].title.caption
-#, fuzzy
-#| msgid "Round 3|33"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[15].title.caption"
-msgid "Round 3|35"
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[13].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[13].title.caption"
+msgid "Round 3|33"
 msgstr "Раунд 3|33"
 
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[14].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[14].title.caption"
+msgid "Round 3|34"
+msgstr "Раунд 3|34"
+
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[15].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[15].title.caption"
+msgid "Round 3|35"
+msgstr "Раунд 3|35"
+
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[16].title.caption
-#, fuzzy
-#| msgid "Bet"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[16].title.caption"
 msgid "Round 3|36"
-msgstr "Ставка"
+msgstr "Раунд 3|36"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[17].title.caption
-#, fuzzy
-#| msgid "Score|Pl."
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[17].title.caption"
 msgid "Bet"
-msgstr "Счёт|Зн."
+msgstr "Ставка"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[18].title.caption
-#, fuzzy
-#| msgid "Score|Cl."
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[18].title.caption"
 msgid "Score|Pl."
-msgstr "Счёт|Кл."
+msgstr "Счёт|Иг."
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[19].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[19].title.caption"
 msgid "Score|Cl."
-msgstr ""
+msgstr "Счёт|Кл."
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[1].title.caption
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[1].title.caption"
@@ -1561,54 +719,41 @@ msgid "Result"
 msgstr "Итог"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[5].title.caption
-#, fuzzy
-#| msgid "Round 3|23"
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[5].title.caption"
 msgid "Round 3|25"
-msgstr "Раунд 3|23"
-
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[6].title.caption
-#, fuzzy
-#| msgid "Round 3|24"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[6].title.caption"
-msgid "Round 3|26"
-msgstr "Раунд 3|24"
-
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[7].title.caption
-#, fuzzy
-#| msgid "Round 3|25"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[7].title.caption"
-msgid "Round 3|27"
 msgstr "Раунд 3|25"
 
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[8].title.caption
-#, fuzzy
-#| msgid "Round 3|26"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[8].title.caption"
-msgid "Round 3|28"
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[6].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[6].title.caption"
+msgid "Round 3|26"
 msgstr "Раунд 3|26"
 
-#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[9].title.caption
-#, fuzzy
-#| msgid "Round 3|27"
-msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[9].title.caption"
-msgid "Round 3|29"
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[7].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[7].title.caption"
+msgid "Round 3|27"
 msgstr "Раунд 3|27"
 
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[8].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[8].title.caption"
+msgid "Round 3|28"
+msgstr "Раунд 3|28"
+
+#: tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[9].title.caption
+msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[9].title.caption"
+msgid "Round 3|29"
+msgstr "Раунд 3|29"
+
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[0].title.caption
-#, fuzzy
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[0].title.caption"
 msgid "id"
 msgstr "id"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[1].title.caption
-#, fuzzy
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[1].title.caption"
 msgid "date"
 msgstr "Дата"
 
 #: tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[2].title.caption
-#, fuzzy
 msgctxt "tfrmmain.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[2].title.caption"
 msgid "title"
 msgstr "Наименование"
@@ -1686,6 +831,10 @@ msgctxt "tfrmmain.sttsbr.panels[1].text"
 msgid "Timer"
 msgstr "Таймер"
 
+#: tfrmmain.sttsbr.panels[2].text
+msgid "Answers"
+msgstr "Ответы"
+
 #: tfrmmain.tabshtplayers.caption
 msgid "👥 Players"
 msgstr "👥 Игроки"
@@ -1722,4 +871,3 @@ msgstr "Подключиться к серверу телеграм"
 #: tfrmmain.tlbtnonlyaccepted.caption
 msgid "Only ☑️"
 msgstr "Только ☑️"
-

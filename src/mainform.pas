@@ -114,7 +114,9 @@ type
     procedure ZQryAnswersenrolledChange(Sender: TField);
     procedure ZQryAnswersTeamTitleGetText({%H-}Sender: TField; var aText: string; {%H-}DisplayText: Boolean);
   private
+    FCurrentAnswer: Integer;
     FCurrentTour: Integer;
+    FCurrentTourTitle: String;
     FDoUpdateTelegram: Boolean;
     FCurrentQuestion: Integer;
     FTelegramFace: TTelegramSender;
@@ -160,6 +162,7 @@ resourcestring
   s_Tlgrm=        'Telegram';
   s_cnctd=        'connected';
   s_dscnctd=      'disconnected';
+  s_sttsbr_Answrs='Answers: %d << Current question: %d, current tour: %s';
 
 function BuildVersion: String;
 var
@@ -477,7 +480,8 @@ begin
     FTelegramFace.Token:=EdtTelegramToken.Text;
   if not TryStrToInt64(Trim(EdtAdminChatID.Text), aAdminChat) then
     aAdminChat:=0;
-
+  Inc(FCurrentAnswer);
+  SttsBr.Panels[2].Text:=Format(s_sttsbr_Answrs, [FCurrentAnswer, FCurrentQuestion, FCurrentTourTitle]);
   if not ZQryPlayers.Locate('id', aUserID{%H-}, []) then
   begin
     ZQryPlayers.Append;
@@ -516,9 +520,15 @@ begin
     SpnEdtQuestion.Value:=SpnEdtQuestion.Value+1;
   FCurrentQuestion:=SpnEdtQuestion.Value;
   if DBLkpCmbBx.KeyValue = Null then
-    FCurrentTour:=-1
-  else
+  begin
+    FCurrentTour:=-1;
+    FCurrentTourTitle:='--';
+  end
+  else begin
     FCurrentTour:=DBLkpCmbBx.KeyValue;
+    FCurrentTourTitle:=DBLkpCmbBx.Caption;
+  end;
+  FCurrentAnswer:=0;
 end;
 
 procedure TFrmMain.MainFormBetOptionChanged(aQuestionNum: Integer);

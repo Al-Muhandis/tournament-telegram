@@ -3259,6 +3259,10 @@ object FrmMain: TFrmMain
       end    
       item
         Text = 'Timer'
+        Width = 200
+      end    
+      item
+        Text = 'Answers'
         Width = 50
       end>
     SimplePanel = False
