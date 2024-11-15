@@ -22,7 +22,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="14"/>
+      <BuildNr Value="16"/>
       <Language Value="0419"/>
     </VersionInfo>
     <BuildModes>
@@ -117,6 +117,12 @@
       <FormatVersion Value="2"/>
     </RunParams>
     <RequiredPackages>
+      <Item>
+        <PackageName Value="zcomponentdesign"/>
+      </Item>
+      <Item>
+        <PackageName Value="zcomponent"/>
+      </Item>
       <Item>
         <PackageName Value="ChgkTimer"/>
       </Item>

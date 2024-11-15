@@ -237,11 +237,13 @@ object FrmMain: TFrmMain
                   Footers = <>
                 end              
                 item
+                  ReadOnly = True
                   Title.Alignment = taCenter
                   Title.Orientation = toHorizontal
                   Title.Caption = 'Player'
                   Width = 150
-                  FieldName = 'Username'
+                  FieldName = 'PlayerTitle'
+                  DirectInput = False
                   EditButtons = <>
                   Filter.DropDownRows = 0
                   Filter.EmptyValue = '(Empty)'
@@ -3216,6 +3218,14 @@ object FrmMain: TFrmMain
             ClientWidth = 1030
           end
         end
+        inherited ZCnctn: TZConnection
+          Properties.Strings = (
+            'AutoEncodeStrings=ON'
+            'codepage=UTF-8'
+            'controls_cp=CP_UTF8'
+          )
+          Connected = False
+        end
       end
     end
     object TbShtAbout: TTabSheet
@@ -3258,7 +3268,9 @@ object FrmMain: TFrmMain
     Properties.Strings = (
       'AutoEncodeStrings=True'
       'controls_cp=CP_UTF8'
+      'RawStringEncoding=DB_CP'
     )
+    Connected = True
     DesignConnection = True
     DisableSavepoints = False
     Port = 0
@@ -3374,10 +3386,24 @@ object FrmMain: TFrmMain
       ReadOnly = False
       Required = False
     end
+    object TStringField
+      FieldKind = fkLookup
+      FieldName = 'PlayerTitle'
+      Index = 9
+      KeyFields = 'user_id'
+      LookupCache = False
+      LookupDataSet = ZQryPlayers
+      LookupKeyFields = 'id'
+      LookupResultField = 'title'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 128
+    end
     object ZQryAnswersTeamTitle: TStringField
       FieldKind = fkCalculated
       FieldName = 'TeamTitle'
-      Index = 9
+      Index = 10
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = True
@@ -3387,7 +3413,7 @@ object FrmMain: TFrmMain
     object ZQryAnswersUserTEamID: TLargeintField
       FieldKind = fkLookup
       FieldName = 'UserTeamID'
-      Index = 10
+      Index = 11
       KeyFields = 'user_id'
       LookupCache = False
       LookupDataSet = ZQryPlayers
