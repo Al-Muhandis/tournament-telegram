@@ -514,7 +514,7 @@ end;
 
 procedure TFrmMain.FrmStartTimer(Sender: TObject);
 begin
-  GrpBxQuestion.Enabled:=False;
+  //GrpBxQuestion.Enabled:=False;
   SttsBr.Panels[1].Text:=s_Tmr+' '+emj_HrGlsNtDn+' '+s_IsRnng;
   if ChckBxQuestionAutoInc.Checked then
     SpnEdtQuestion.Value:=SpnEdtQuestion.Value+1;
@@ -592,7 +592,7 @@ begin
     ZQryPlayers.EnableControls;
     ZQryAnswers.EnableControls;
     DtSrcAnswers.Enabled:=True;  
-    GrpBxQuestion.Enabled:=True;
+    //GrpBxQuestion.Enabled:=True;
   end;
 end;
 
