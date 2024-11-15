@@ -81,7 +81,7 @@ begin
         finally
           aMessage.Free;
         end;
-        Sleep(5);
+        Sleep(100);
       end;
     finally
       aJSON.Free;
