@@ -64,14 +64,22 @@ type
     TlBtn1: TToolButton;
     ZCnctn: TZConnection;
     ZQryAnswers: TZQuery;
+    ZQryAnswersAdding: TZQuery;
     ZQryAnswersaccepted: TBooleanField;
+    ZQryAnswersAddingaccepted: TBooleanField;
+    ZQryAnswersAddinganswer: TStringField;
     ZQryAnswersBetRound: TBooleanField;
     ZQryAnswersenrolled: TBooleanField;
     ZQryAnswersquestion: TLargeintField;
+    ZQryAnswersAddingquestion: TLargeintField;
+    ZQryAnswersAddingsent: TTimeField;
     ZQryAnswersTeamTitle: TStringField;
     ZQryAnswerstournament: TLargeintField;
+    ZQryAnswersAddingtournament: TLargeintField;
     ZQryAnswersUserTEamID: TLargeintField;
     ZQryAnswersuser_id: TLargeintField;
+    ZQryAnswersAddinguser_id: TLargeintField;
+    ZQryID1: TAutoIncField;
     ZQryPlayers: TZQuery;
     ZQryAnswersanswer: TStringField;
     ZQryID: TAutoIncField;
@@ -478,14 +486,14 @@ begin
     ZQryPlayers.Post;
     ZQryPlayers.ApplyUpdates;
   end;
-  ZQryAnswers.Append;
-  ZQryAnswerstournament.AsInteger:=FCurrentTour;
-  ZQryAnswersquestion.AsInteger:=FCurrentQuestion;
-  ZQryAnswersanswer.AsString:=aMsg.Text;
-  ZQryAnswersuser_id.AsLargeInt:=aUserID;
-  ZQryAnswerssent.AsDateTime:=aTime;
-  ZQryAnswers.Post;
-  ZQryAnswers.ApplyUpdates;
+  ZQryAnswersAdding.Append;
+  ZQryAnswersAddingtournament.AsInteger:=FCurrentTour;
+  ZQryAnswersAddingquestion.AsInteger:=FCurrentQuestion;
+  ZQryAnswersAddinganswer.AsString:=aMsg.Text;
+  ZQryAnswersAddinguser_id.AsLargeInt:=aUserID;
+  ZQryAnswersAddingsent.AsDateTime:=aTime;
+  ZQryAnswersAdding.Post;
+  ZQryAnswersAdding.ApplyUpdates;
   if aAdminChat<>0 then
     FTelegramFace.sendMessage(aAdminChat, s_AnswrGvnBy+aUser+' ['+S+']:'+LineEnding+aMsg.Text);
 end;
@@ -535,7 +543,8 @@ begin
   ZQryTeams.Active:=True;
   ZQryTournaments.Connection:=FrmTrnmnt.ZCnctn;
   ZQryTournaments.Active:=True;
-  ZQryAnswers.Active:=True;
+  ZQryAnswers.Active:=True;    
+  ZQryAnswersAdding.Active:=True;
   ZQryPlayers.Active:=True;
 end;
 

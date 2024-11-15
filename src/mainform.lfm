@@ -3576,4 +3576,84 @@ object FrmMain: TFrmMain
     Left = 606
     Top = 251
   end
+  object ZQryAnswersAdding: TZQuery
+    SortedFields = 'id'
+    SortType = stDescending
+    OnCalcFields = ZQryAnswersCalcFields
+    Connection = ZCnctn
+    SQL.Strings = (
+      'select * from answers'
+    )
+    Params = <>
+    IndexFieldNames = 'id Desc'
+    Left = 720
+    Top = 336
+    object ZQryID1: TAutoIncField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryAnswersAddingtournament: TLargeintField
+      FieldKind = fkData
+      FieldName = 'tournament'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryAnswersAddinganswer: TStringField
+      DisplayWidth = 100
+      FieldKind = fkData
+      FieldName = 'answer'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryAnswersAddingaccepted: TBooleanField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'accepted'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object ZQryAnswersAddingquestion: TLargeintField
+      DisplayWidth = 15
+      FieldKind = fkData
+      FieldName = 'question'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryAnswersAddingsent: TTimeField
+      FieldKind = fkData
+      FieldName = 'sent'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object ZQryAnswersAddinguser_id: TLargeintField
+      FieldKind = fkData
+      FieldName = 'user_id'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
 end
