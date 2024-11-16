@@ -62,6 +62,10 @@ msgstr ""
 msgid "+1"
 msgstr ""
 
+#: tfrmmain.btntournamentsrefresh.caption
+msgid "🔄"
+msgstr ""
+
 #: tfrmmain.caption
 msgid "Intellectual tournament via telegram"
 msgstr ""

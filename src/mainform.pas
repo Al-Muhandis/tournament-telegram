@@ -16,6 +16,7 @@ type
 
   TFrmMain = class(TForm)
     BtnStart: TButton;
+    BtnTournamentsRefresh: TButton;
     ChckBxAnswertimer: TCheckBox;
     ChckBxQuestionAutoInc: TCheckBox;
     DBLkpCmbBx: TDBLookupComboBox;
@@ -98,6 +99,7 @@ type
     procedure BetChange(Sender: TField; aRoundNum: Byte);
     procedure BtnQuestionSendClick({%H-}Sender: TObject);
     procedure BtnStartClick({%H-}Sender: TObject);
+    procedure BtnTournamentsRefreshClick({%H-}Sender: TObject);
     procedure DBLkpCmbBxChange({%H-}Sender: TObject);
     procedure FormClose({%H-}Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormCreate({%H-}Sender: TObject);
@@ -107,6 +109,7 @@ type
     procedure IniPrpStrgSavingProperties(Sender: TObject);
     procedure PgCntrlMainChange({%H-}Sender: TObject);
     procedure SpnEdtQuestionChange({%H-}Sender: TObject);
+    procedure TbShtTournamentExit(Sender: TObject);
     procedure TglBxReceiveChange(Sender: TObject);
     procedure TlBtnOnlyAcceptedClick({%H-}Sender: TObject);
     procedure ZQryAnswersBetRoundChange(Sender: TField);
@@ -265,6 +268,13 @@ begin
   SpnEdtQuestion.Value:=SpnEdtQuestion.Value+1;
 end;
 
+procedure TFrmMain.BtnTournamentsRefreshClick(Sender: TObject);
+begin
+  ZQryTournaments.Refresh;
+  DBLkpCmbBx.ListSource:=nil;
+  DBLkpCmbBx.ListSource:=DtSrcTournaments;
+end;
+
 procedure TFrmMain.DBLkpCmbBxChange(Sender: TObject);
 begin
   UpdateAnswersTable;
@@ -318,6 +328,11 @@ end;
 procedure TFrmMain.SpnEdtQuestionChange(Sender: TObject);
 begin
   UpdateAnswersTable;
+end;
+
+procedure TFrmMain.TbShtTournamentExit(Sender: TObject);
+begin
+  FrmTrnmnt.ZQryTournaments.ApplyUpdates;
 end;
 
 procedure TFrmMain.TglBxReceiveChange(Sender: TObject);

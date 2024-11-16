@@ -73,6 +73,10 @@ msgstr "Версия"
 msgid "+1"
 msgstr "+1"
 
+#: tfrmmain.btntournamentsrefresh.caption
+msgid "🔄"
+msgstr ""
+
 #: tfrmmain.caption
 msgid "Intellectual tournament via telegram"
 msgstr "Интеллектуальные игры через телеграм"
@@ -871,3 +875,4 @@ msgstr "Подключиться к серверу телеграм"
 #: tfrmmain.tlbtnonlyaccepted.caption
 msgid "Only ☑️"
 msgstr "Только ☑️"
+

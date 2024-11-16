@@ -22,7 +22,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="21"/>
+      <BuildNr Value="24"/>
       <Language Value="0419"/>
     </VersionInfo>
     <BuildModes>
@@ -203,6 +203,9 @@
       </Item>
       <Item>
         <Name Value="EFOpenError"/>
+      </Item>
+      <Item>
+        <Name Value="ESocketError"/>
       </Item>
     </Exceptions>
   </Debugging>

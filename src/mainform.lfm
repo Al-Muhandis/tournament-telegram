@@ -555,7 +555,8 @@ object FrmMain: TFrmMain
               Left = 8
               Height = 28
               Top = 40
-              Width = 315
+              Width = 296
+              Anchors = [akTop, akLeft, akRight]
               KeyField = 'id'
               ListField = 'title'
               ListFieldIndex = 0
@@ -627,6 +628,16 @@ object FrmMain: TFrmMain
                 Caption = 'Questions of round with a bet: #'
                 ParentColor = False
               end
+            end
+            object BtnTournamentsRefresh: TButton
+              Left = 304
+              Height = 30
+              Top = 39
+              Width = 30
+              Anchors = [akTop, akLeft, akRight]
+              Caption = '🔄'
+              TabOrder = 2
+              OnClick = BtnTournamentsRefreshClick
             end
           end
           object GrpBxTimer: TGroupBox
@@ -734,6 +745,7 @@ object FrmMain: TFrmMain
       Caption = '🏆 Tournament tables'
       ClientHeight = 547
       ClientWidth = 1038
+      OnExit = TbShtTournamentExit
       inline FrmTrnmnt: TFrameTournament
         Height = 547
         Width = 1038
@@ -2577,7 +2589,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Result'
-                      Width = 66
+                      Width = 56
                       FieldName = 'Result'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2594,7 +2606,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|25'
-                      Width = 66
+                      Width = 56
                       FieldName = 'q25'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2611,7 +2623,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|26'
-                      Width = 66
+                      Width = 56
                       FieldName = 'q26'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2628,7 +2640,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|27'
-                      Width = 66
+                      Width = 56
                       FieldName = 'q27'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2645,7 +2657,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|28'
-                      Width = 65
+                      Width = 56
                       FieldName = 'q28'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2662,7 +2674,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|29'
-                      Width = 65
+                      Width = 56
                       FieldName = 'q29'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2679,7 +2691,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|30'
-                      Width = 65
+                      Width = 56
                       FieldName = 'q30'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2692,12 +2704,11 @@ object FrmMain: TFrmMain
                       KeyList.Strings = (                      )
                     end                  
                     item
-                      MaxSize = 40
                       PickList.Strings = (                      )
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|31'
-                      Width = 40
+                      Width = 56
                       FieldName = 'q31'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2710,12 +2721,11 @@ object FrmMain: TFrmMain
                       KeyList.Strings = (                      )
                     end                  
                     item
-                      MaxSize = 40
                       PickList.Strings = (                      )
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|32'
-                      Width = 40
+                      Width = 56
                       FieldName = 'q32'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2728,12 +2738,11 @@ object FrmMain: TFrmMain
                       KeyList.Strings = (                      )
                     end                  
                     item
-                      MaxSize = 40
                       PickList.Strings = (                      )
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|33'
-                      Width = 40
+                      Width = 56
                       FieldName = 'q33'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2746,12 +2755,11 @@ object FrmMain: TFrmMain
                       KeyList.Strings = (                      )
                     end                  
                     item
-                      MaxSize = 40
                       PickList.Strings = (                      )
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|34'
-                      Width = 40
+                      Width = 56
                       FieldName = 'q34'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2764,12 +2772,11 @@ object FrmMain: TFrmMain
                       KeyList.Strings = (                      )
                     end                  
                     item
-                      MaxSize = 40
                       PickList.Strings = (                      )
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|35'
-                      Width = 40
+                      Width = 56
                       FieldName = 'q35'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2782,12 +2789,11 @@ object FrmMain: TFrmMain
                       KeyList.Strings = (                      )
                     end                  
                     item
-                      MaxSize = 40
                       PickList.Strings = (                      )
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Round 3|36'
-                      Width = 40
+                      Width = 56
                       FieldName = 'q36'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2804,7 +2810,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toVertical90
                       Title.Caption = 'Bet'
-                      Width = 65
+                      Width = 56
                       FieldName = 'bet3round'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2825,7 +2831,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Score|Pl.'
-                      Width = 65
+                      Width = 55
                       FieldName = 'Round3'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -2846,7 +2852,7 @@ object FrmMain: TFrmMain
                       Title.Alignment = taCenter
                       Title.Orientation = toHorizontal
                       Title.Caption = 'Score|Cl.'
-                      Width = 65
+                      Width = 55
                       FieldName = 'Round3Club'
                       EditButtons = <>
                       Filter.DropDownRows = 0
@@ -3218,14 +3224,6 @@ object FrmMain: TFrmMain
             ClientWidth = 1030
           end
         end
-        inherited ZCnctn: TZConnection
-          Properties.Strings = (
-            'AutoEncodeStrings=ON'
-            'codepage=UTF-8'
-            'controls_cp=CP_UTF8'
-          )
-          Connected = False
-        end
       end
     end
     object TbShtAbout: TTabSheet
@@ -3274,7 +3272,6 @@ object FrmMain: TFrmMain
       'controls_cp=CP_UTF8'
       'RawStringEncoding=DB_CP'
     )
-    Connected = True
     DesignConnection = True
     DisableSavepoints = False
     Port = 0
