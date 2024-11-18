@@ -109,7 +109,7 @@ type
     procedure IniPrpStrgSavingProperties(Sender: TObject);
     procedure PgCntrlMainChange({%H-}Sender: TObject);
     procedure SpnEdtQuestionChange({%H-}Sender: TObject);
-    procedure TbShtTournamentExit(Sender: TObject);
+    procedure TbShtTournamentExit({%H-}Sender: TObject);
     procedure TglBxReceiveChange(Sender: TObject);
     procedure TlBtnOnlyAcceptedClick({%H-}Sender: TObject);
     procedure ZQryAnswersBetRoundChange(Sender: TField);

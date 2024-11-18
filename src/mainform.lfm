@@ -762,9 +762,6 @@ object FrmMain: TFrmMain
               inherited DBNavigator2: TDBNavigator
                 Hints.Strings = (                )
               end
-              inherited ToolButton1: TToolButton
-                Height = 28
-              end
             end
             inherited PgCntrlRounds: TPageControl
               Height = 478
