@@ -5,27 +5,10 @@ unit telegram;
 interface
 
 uses
-  Classes, SysUtils, tgsendertypes, taskworker, tgtypes
+  Classes, SysUtils, tgsendertypes, tgtypes
   ;
 
 type
-
-  { TTelegramTask }
-
-  TTelegramTask = class(TPersistent)
-  private
-    FAnswer: String;
-    FID: Integer;
-    FQuestion: Integer;
-  public
-    procedure Assign(Source: TPersistent); override;
-  published
-    property Question: Integer read FQuestion write FQuestion;
-    property Answer: String read FAnswer write FAnswer;
-    property ID: Integer read FID write FID;
-  end;
-
-  TCustomTelegramThread = specialize TgTaskWorkerThread<TTelegramTask>;
 
   TOnEventCallback = procedure (aClbck: TCallbackQueryObj) of object;
   TOnEventMessage =  procedure (aMsg: TTelegramMessageObj) of object;
@@ -132,23 +115,6 @@ begin
     on E: Exception do
       FBot.Logger.Error(E.ClassName+': '+ E.Message);
   end;
-end;
-
-{ TTelegramTask }
-
-
-procedure TTelegramTask.Assign(Source: TPersistent);
-var
-  aSource: TTelegramTask;
-begin
-  if Source is TTelegramTask then
-  begin
-    aSource:=TTelegramTask(Source);
-    FQuestion:=aSource.Question;
-    FAnswer:=aSource.Answer;
-    FID:=aSource.ID;
-  end else
-    inherited Assign(Source);
 end;
 
 initialization
