@@ -1,7 +1,7 @@
 object FrmMain: TFrmMain
-  Left = 479
+  Left = 433
   Height = 584
-  Top = 234
+  Top = 217
   Width = 1072
   Caption = 'Intellectual tournament via telegram'
   ClientHeight = 584
@@ -761,6 +761,9 @@ object FrmMain: TFrmMain
               Width = 1030
               inherited DBNavigator2: TDBNavigator
                 Hints.Strings = (                )
+              end
+              inherited ToolButton1: TToolButton
+                Height = 28
               end
             end
             inherited PgCntrlRounds: TPageControl
@@ -3653,5 +3656,21 @@ object FrmMain: TFrmMain
       ReadOnly = False
       Required = False
     end
+  end
+  object DTLngPlngBt: TDTLongPollBot
+    StartText.Strings = (
+      'This is a telegram bot for an intellectual tournament'
+    )
+    HelpText.Strings = (
+      'This is help text for `/help` command.'
+      'You can change this text by the property `TDTLongPolBot.HelpText`.'
+      'Caution: it is markdown markup'
+    )
+    LongPollingTime = 4
+    OnReceiveMessageUpdate = DTLngPlngBtReceiveMessageUpdate
+    OnDisconnectReceiver = DTLngPlngBtDisconnectReceiver
+    ReplyMarkups = <>
+    Left = 440
+    Top = 128
   end
 end

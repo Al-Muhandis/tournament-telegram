@@ -6,8 +6,8 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ComCtrls, IniPropStorage, DBCtrls,
-  SpinEx, ZConnection, ZDataset, RxDBGrid, RxDBGridExportSpreadSheet, telegram, tgtypes, TimerFrame, tgsendertypes,
-  frmtournamentform
+  SpinEx, ZConnection, ZDataset, RxDBGrid, RxDBGridExportSpreadSheet, tgtypes, TimerFrame, tgsendertypes,
+  tgbot_dt, frmtournamentform
   ;
 
 type
@@ -20,6 +20,7 @@ type
     ChckBxAnswertimer: TCheckBox;
     ChckBxQuestionAutoInc: TCheckBox;
     DBLkpCmbBx: TDBLookupComboBox;
+    DTLngPlngBt: TDTLongPollBot;
     DtSrcTournaments: TDataSource;
     DBNvgtrAnswers: TDBNavigator;
     DBNvgtrPlayers: TDBNavigator;
@@ -97,10 +98,11 @@ type
     ZQryTournamentsid: TLargeintField;
     ZQryTournamentstitle: TStringField;   
     procedure BetChange(Sender: TField; aRoundNum: Byte);
-    procedure BtnQuestionSendClick({%H-}Sender: TObject);
     procedure BtnStartClick({%H-}Sender: TObject);
     procedure BtnTournamentsRefreshClick({%H-}Sender: TObject);
     procedure DBLkpCmbBxChange({%H-}Sender: TObject);
+    procedure DTLngPlngBtDisconnectReceiver({%H-}aSender: TCustomDTTelegramBot);
+    procedure DTLngPlngBtReceiveMessageUpdate({%H-}ASender: TObject; AMessage: TTelegramMessageObj);
     procedure FormClose({%H-}Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormCreate({%H-}Sender: TObject);
     procedure FormDestroy({%H-}Sender: TObject);
@@ -122,11 +124,7 @@ type
     FCurrentTourTitle: String;
     FDoUpdateTelegram: Boolean;
     FCurrentQuestion: Integer;
-    FTelegramFace: TTelegramSender;
-    FTelegramReceiver: TReceiverThread;
-    procedure FormReceiveMessage(aMsg: TTelegramMessageObj);
     procedure FormReceiverStart;
-    procedure FormReceiverTerminate({%H-}Sender: TObject);
     procedure FrmStartTimer({%H-}Sender: TObject);
     procedure FrmStopTimer({%H-}Sender: TObject);
     procedure MainFormBetOptionChanged(aQuestionNum: Integer);
@@ -138,6 +136,7 @@ type
 
 var
   FrmMain: TFrmMain;
+  AppDir: String;
 
 implementation
 
@@ -225,13 +224,12 @@ procedure TFrmMain.FormCreate(Sender: TObject);
 var
   aLogger: TEventLog;
 begin
-  FTelegramFace:=TTelegramSender.Create(EdtTelegramToken.Text);
   FDoUpdateTelegram:=False;
   aLogger:=TEventLog.Create(nil);
   aLogger.LogType:=ltFile;
   aLogger.Active:=True;
-  FTelegramFace.Logger:=aLogger;
-  FTelegramFace.LogDebug:=True;
+  DTLngPlngBt.SenderBot.Logger:=aLogger;
+  DTLngPlngBt.SenderBot.LogDebug:=False;
   FrmTmr.StartAudioFile:='min-start.wav';
   FrmTmr.AlertAudioFile:='min-alert.wav';
   FrmTmr.StopAudioFile:='min-stop.wav';
@@ -244,23 +242,7 @@ begin
   OpenDB;
 
   Mm.Lines.Add(BuildString);
-  FormReceiverTerminate(nil);
-end;
-
-procedure TFrmMain.BtnQuestionSendClick(Sender: TObject);
-var
-  aChatID: int64;
-begin
-  if not FDoUpdateTelegram then
-    Exit;
-  Cursor:=crHourGlass;
-  try
-    if EdtTelegramToken.Text<>EmptyStr then
-      if TryStrToInt64(Trim(EdtAdminChatID.Text), aChatID) then
-        FTelegramFace.Token:=EdtTelegramToken.Text;
-  finally
-    Cursor:=crDefault;
-  end;
+  DTLngPlngBtDisconnectReceiver(DTLngPlngBt);
 end;
 
 procedure TFrmMain.BtnStartClick(Sender: TObject);
@@ -280,6 +262,57 @@ begin
   UpdateAnswersTable;
 end;
 
+procedure TFrmMain.DTLngPlngBtDisconnectReceiver(aSender: TCustomDTTelegramBot);
+begin
+  EdtTelegramToken.Color:=clWindow;
+  EdtTelegramToken.ReadOnly:=False;
+  SttsBr.Panels[0].Text:=s_Tlgrm+': '+emj_StpSgn+' '+s_dscnctd;
+end;
+
+procedure TFrmMain.DTLngPlngBtReceiveMessageUpdate(ASender: TObject; AMessage: TTelegramMessageObj);
+var
+  aUser, S: String;
+  aAdminChat, aUserID: int64;
+  aDT, aTime: TDateTime;
+begin
+  aUserID:=AMessage.From.id;
+  aUser:=CaptionFromUser(AMessage.From);
+  aDT:=UnixToDateTime(AMessage.Date, False);
+  if AMessage.Text='/bind' then
+  begin
+    S:=Format(s_DYWntStChtHst, [CaptionFromChat(AMessage.Chat)]);
+    if MessageDlg(Application.Title, S, mtConfirmation, mbYesNo, 0)=mrYes then
+      EdtAdminChatID.Text:=AMessage.Chat.ID.ToString;
+    Exit;
+  end;
+  if AMessage.From.ID<>AMessage.Chat.ID then
+    Exit;
+  aTime:=aDT-FrmTmr.StartTime;
+  S:=TimeToStr(aDT-FrmTmr.StartTime);
+  if not TryStrToInt64(Trim(EdtAdminChatID.Text), aAdminChat) then
+    aAdminChat:=0;
+  Inc(FCurrentAnswer);
+  SttsBr.Panels[2].Text:=Format(s_sttsbr_Answrs, [FCurrentAnswer, FCurrentQuestion, FCurrentTourTitle]);
+  if not ZQryPlayers.Locate('id', aUserID{%H-}, []) then
+  begin
+    ZQryPlayers.Append;
+    ZQryPlayersid.AsLargeInt:=aUserID;
+    ZQryPlayerstitle.AsString:=aUser;
+    ZQryPlayers.Post;
+    ZQryPlayers.ApplyUpdates;
+  end;
+  ZQryAnswersAdding.Append;
+  ZQryAnswersAddingtournament.AsInteger:=FCurrentTour;
+  ZQryAnswersAddingquestion.AsInteger:=FCurrentQuestion;
+  ZQryAnswersAddinganswer.AsString:=AMessage.Text;
+  ZQryAnswersAddinguser_id.AsLargeInt:=aUserID;
+  ZQryAnswersAddingsent.AsDateTime:=aTime;
+  ZQryAnswersAdding.Post;
+  ZQryAnswersAdding.ApplyUpdates;
+  if aAdminChat<>0 then
+    DTLngPlngBt.SenderBot.sendMessage(aAdminChat, s_AnswrGvnBy+aUser+' ['+S+']:'+LineEnding+AMessage.Text);
+end;
+
 procedure TFrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   FrmTrnmnt.ApplyDB;
@@ -287,14 +320,9 @@ end;
 
 procedure TFrmMain.FormDestroy(Sender: TObject);
 begin
-  FTelegramFace.Logger.Free;
-  FTelegramFace.Free;
-
-  if Assigned(FTelegramReceiver) then
-  begin
-    FTelegramReceiver.Terminate;
-    FTelegramReceiver.WaitFor;
-  end;
+  DTLngPlngBt.SenderBot.Logger.Free;
+  if DTLngPlngBt.Active then
+    DTLngPlngBt.StopReceiver;
 end;
 
 procedure TFrmMain.FormShow(Sender: TObject);
@@ -338,24 +366,17 @@ end;
 procedure TFrmMain.TglBxReceiveChange(Sender: TObject);
 begin
   TglBxReceive.Enabled:=False;
-  try
-    if (Sender as TToggleBox).Checked then
-    begin
-      FTelegramReceiver:=_TourReceiverThreadClass.Create(EdtTelegramToken.Text);
-      FTelegramReceiver.FreeOnTerminate:=True;
-      FTelegramReceiver.OnDoMessage:=@FormReceiveMessage;
-      FTelegramReceiver.OnTerminate:=@FormReceiverTerminate;
-      FormReceiverStart;
-      FTelegramReceiver.Start;
-    end
-    else begin
-      FTelegramReceiver.Terminate;
-      FTelegramReceiver.WaitFor;
-      FTelegramReceiver:=nil;
-    end;
-  finally
-    TglBxReceive.Enabled:=True;
-  end;
+  if (Sender as TToggleBox).Checked then
+  begin
+    FormReceiverStart;
+    DTLngPlngBt.Token:=EdtTelegramToken.Text;
+    DTLngPlngBt.ReceiverLogFilename:='receiver.log';
+    DTLngPlngBt.ReceiverLogActive:=True;
+    DTLngPlngBt.StartReceiver;
+  end
+  else
+    DTLngPlngBt.StopReceiver;
+  TglBxReceive.Enabled:=True;
 end;
 
 procedure TFrmMain.TlBtnOnlyAcceptedClick(Sender: TObject);
@@ -468,63 +489,11 @@ begin
   end;
 end;
 
-procedure TFrmMain.FormReceiveMessage(aMsg: TTelegramMessageObj);
-var
-  aUser, S: String;
-  aAdminChat, aUserID: int64;
-  aDT, aTime: TDateTime;
-  //aAdminID: int64;
-begin
-  aUserID:=aMsg.From.id;
-  aUser:=CaptionFromUser(aMsg.From);
-  aDT:=UnixToDateTime(aMsg.Date, False);
-  if (aMsg.Text='/bind') and (EdtAdminChatID.Text=EmptyStr) then
-  begin
-    S:=Format(s_DYWntStChtHst, [CaptionFromChat(aMsg.Chat)]);
-    if MessageDlg(Application.Title, S, mtConfirmation, mbYesNo, 0)=mrYes then
-      EdtAdminChatID.Text:=aMsg.Chat.ID.ToString;
-    Exit;
-  end;
-  if aMsg.From.ID<>aMsg.Chat.ID then
-    Exit;
-  aTime:=aDT-FrmTmr.StartTime;
-  S:=TimeToStr(aDT-FrmTmr.StartTime);
-  if EdtTelegramToken.Text=EmptyStr then
-    Exit
-  else
-    FTelegramFace.Token:=EdtTelegramToken.Text;
-  if not TryStrToInt64(Trim(EdtAdminChatID.Text), aAdminChat) then
-    aAdminChat:=0;
-  Inc(FCurrentAnswer);
-  SttsBr.Panels[2].Text:=Format(s_sttsbr_Answrs, [FCurrentAnswer, FCurrentQuestion, FCurrentTourTitle]);
-  if not ZQryPlayers.Locate('id', aUserID{%H-}, []) then
-  begin
-    ZQryPlayers.Append;
-    ZQryPlayersid.AsLargeInt:=aUserID;
-    ZQryPlayerstitle.AsString:=aUser;
-    ZQryPlayers.Post;
-    ZQryPlayers.ApplyUpdates;
-  end;
-  ZQryAnswersAdding.Append;
-  ZQryAnswersAddingtournament.AsInteger:=FCurrentTour;
-  ZQryAnswersAddingquestion.AsInteger:=FCurrentQuestion;
-  ZQryAnswersAddinganswer.AsString:=aMsg.Text;
-  ZQryAnswersAddinguser_id.AsLargeInt:=aUserID;
-  ZQryAnswersAddingsent.AsDateTime:=aTime;
-  ZQryAnswersAdding.Post;
-  ZQryAnswersAdding.ApplyUpdates;
-  if aAdminChat<>0 then
-    FTelegramFace.sendMessage(aAdminChat, s_AnswrGvnBy+aUser+' ['+S+']:'+LineEnding+aMsg.Text);
-end;
-
 procedure TFrmMain.FormReceiverStart;
 begin
+  EdtTelegramToken.ReadOnly:=True;
+  EdtTelegramToken.Color:=clBtnFace;
   SttsBr.Panels[0].Text:=s_Tlgrm+': '+emj_Antn+' '+s_Cnctd;
-end;
-
-procedure TFrmMain.FormReceiverTerminate(Sender: TObject);
-begin
-  SttsBr.Panels[0].Text:=s_Tlgrm+': '+emj_StpSgn+' '+s_dscnctd;
 end;
 
 procedure TFrmMain.FrmStartTimer(Sender: TObject);
@@ -614,7 +583,6 @@ end;
 initialization
 
   AppDir:=IncludeTrailingPathDelimiter(ExtractFileDir(ParamStr(0)));
-  _TourReceiverThreadClass:=TReceiverThread;
 
 end.
 

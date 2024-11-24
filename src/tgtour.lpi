@@ -23,7 +23,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="2"/>
+      <BuildNr Value="5"/>
       <Language Value="0419"/>
     </VersionInfo>
     <BuildModes>
@@ -119,6 +119,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="fptelegram_dt"/>
+      </Item>
+      <Item>
         <PackageName Value="zcomponentdesign"/>
       </Item>
       <Item>
@@ -132,9 +135,6 @@
       </Item>
       <Item>
         <PackageName Value="LazControls"/>
-      </Item>
-      <Item>
-        <PackageName Value="fptelegram"/>
       </Item>
       <Item>
         <PackageName Value="FCL"/>
@@ -157,10 +157,6 @@
       </Unit>
       <Unit>
         <Filename Value="sql_db.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="stresstest_telegram.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
     </Units>
