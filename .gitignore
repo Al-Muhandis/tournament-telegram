@@ -37,6 +37,7 @@ backup/
 lib/
 ppas.bat
 
+use/*/
 # Application bundle for Mac OS
 *.app/
 *.7z
