@@ -1,15 +1,12 @@
 [submodule "use/ChGK_Timer"]
-	path = use/ChGK_Timer
-	url = https://github.com/Al-Muhandis/ChGK_Timer.git
+    path = use/ChGK_Timer
+    url = https://github.com/Al-Muhandis/ChGK_Timer.git
 [submodule "use/tournament"]
-	path = use/tournament
-	url = https://github.com/Al-Muhandis/tournament.git
+    path = use/tournament
+    url = https://github.com/Al-Muhandis/tournament.git
 [submodule "use/fp-telegram"]
-	path = use/fp-telegram
-	url = https://github.com/Al-Muhandis/fp-telegram.git
+    path = use/fp-telegram
+    url = https://github.com/Al-Muhandis/fp-telegram.git
 [submodule "use/taskworker"]
-	path = use/taskworker
-	url = https://github.com/Al-Muhandis/taskworker.git
-[submodule "use/zeoslib"]
-	path = use/zeoslib
-	url = https://github.com/marsupilami79/zeoslib
+    path = use/taskworker
+    url = https://github.com/Al-Muhandis/taskworker.git
