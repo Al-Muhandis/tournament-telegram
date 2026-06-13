@@ -167,12 +167,6 @@ begin
     for Result in List do
       AddPackage(Result, true);
     List.Clear;
-    OutLog(etDebug, #10'#----------------------------------[GET INTERNAL DEPENDENCIES]--------------------------#'#10);
-    FindAllFiles(List, GetCurrentDir + PathDelim + 'bgrabitmap', '*.lpk');
-    FindAllFiles(List, GetCurrentDir + PathDelim + 'bglcontrols', '*.lpk');
-    for Result in List do
-      AddPackage(Result, false);
-    List.Clear;
     OutLog(etDebug, #10'#----------------------------------[BUILD            PROJECTS]--------------------------#'#10);
     FindAllFiles(List, GetCurrentDir, '*.lpi');
     for Result in List do

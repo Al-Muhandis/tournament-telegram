@@ -52,7 +52,7 @@ Function Install-Package {
 
 $ErrorActionPreference = 'stop'
 Set-PSDebug -Strict
-'lazarus' | Get-Url | Get-Package | Install-Package
+'https://download.lazarus-ide.org/Lazarus%20Windows%2064%20bits/Lazarus%204.8/lazarus-4.8-fpc-3.2.2-cross-i386-win32-win64.exe' | Get-Package | Install-Package
 $env:PATH+=';C:\Lazarus;C:\Lazarus\fpc\3.2.2\bin\x86_64-win64'
 (Get-Command 'lazbuild').Source | Out-Log
 (Get-Command 'instantfpc').Source | Out-Log
