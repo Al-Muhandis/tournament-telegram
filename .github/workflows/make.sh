@@ -3,7 +3,7 @@
 
 set -xeuo pipefail
 if [[ -f '/etc/os-release' ]]; then
-    sudo bash -c 'apt-get update && apt-get install -y lazarus libxtst-dev' >/dev/null
+    sudo bash -c 'apt-get update && apt-get install -y lazarus' >/dev/null
     declare -rx INSTANTFPCOPTIONS='-Fu/usr/lib/lazarus/*/components/lazutils'
 elif [[ -f '/System/Library/CoreServices/SystemVersion.plist' ]]; then
     brew install --cask lazarus >/dev/null
